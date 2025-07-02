@@ -69,13 +69,6 @@ const CustomNavbar = () => {
             >
               Contact
             </Nav.Link>
-            <Nav.Link 
-              as={Link} 
-              to="/admin" 
-              className={`${isActive('/admin') ? 'active' : ''} text-warning`}
-            >
-              Admin
-            </Nav.Link>
           </Nav>
         </Navbar.Collapse>
       </Container>
