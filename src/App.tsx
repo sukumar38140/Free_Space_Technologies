@@ -22,6 +22,9 @@ import NotFound from "./pages/NotFound";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 
+// Context
+import { AdminAuthProvider } from "./contexts/AdminAuthContext";
+
 const queryClient = new QueryClient();
 
 const App = () => (
@@ -29,25 +32,27 @@ const App = () => (
     <TooltipProvider>
       <Toaster />
       <Sonner />
-      <BrowserRouter>
-        <div className="app-container">
-          <Navbar />
-          <main className="main-content">
-            <Routes>
-              <Route path="/" element={<Index />} />
-              <Route path="/services" element={<Services />} />
-              <Route path="/career" element={<Career />} />
-              <Route path="/contact" element={<Contact />} />
-              <Route path="/about" element={<About />} />
-              <Route path="/privacy-policy" element={<PrivacyPolicy />} />
-              <Route path="/terms-of-service" element={<TermsOfService />} />
-              <Route path="/myAdminPage" element={<Admin />} />
-              <Route path="*" element={<NotFound />} />
-            </Routes>
-          </main>
-          <Footer />
-        </div>
-      </BrowserRouter>
+      <AdminAuthProvider>
+        <BrowserRouter>
+          <div className="app-container">
+            <Navbar />
+            <main className="main-content">
+              <Routes>
+                <Route path="/" element={<Index />} />
+                <Route path="/services" element={<Services />} />
+                <Route path="/career" element={<Career />} />
+                <Route path="/contact" element={<Contact />} />
+                <Route path="/about" element={<About />} />
+                <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+                <Route path="/terms-of-service" element={<TermsOfService />} />
+                <Route path="/myAdminPage" element={<Admin />} />
+                <Route path="*" element={<NotFound />} />
+              </Routes>
+            </main>
+            <Footer />
+          </div>
+        </BrowserRouter>
+      </AdminAuthProvider>
     </TooltipProvider>
   </QueryClientProvider>
 );

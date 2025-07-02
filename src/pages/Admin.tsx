@@ -1,6 +1,8 @@
-
 import React, { useState, useEffect } from 'react';
-import { Container, Row, Col, Card, Form, Button, Table, Modal, Alert } from 'react-bootstrap';
+import { Container, Row, Col, Card, Form, Button, Table, Modal, Alert, Nav } from 'react-bootstrap';
+import { useAdminAuth } from '../contexts/AdminAuthContext';
+import AdminLogin from '../components/AdminLogin';
+import AdminManagement from '../components/AdminManagement';
 
 interface JobPost {
   id: string;
@@ -14,6 +16,8 @@ interface JobPost {
 }
 
 const Admin = () => {
+  const { currentUser, logout, isAuthenticated, isRootAdmin } = useAdminAuth();
+  const [activeTab, setActiveTab] = useState('jobs');
   const [jobs, setJobs] = useState<JobPost[]>([]);
   const [showModal, setShowModal] = useState(false);
   const [editingJob, setEditingJob] = useState<JobPost | null>(null);
@@ -29,8 +33,15 @@ const Admin = () => {
   });
 
   useEffect(() => {
-    loadJobs();
-  }, []);
+    if (isAuthenticated) {
+      loadJobs();
+    }
+  }, [isAuthenticated]);
+
+  // If not authenticated, show login form
+  if (!isAuthenticated) {
+    return <AdminLogin />;
+  }
 
   const loadJobs = () => {
     const savedJobs = localStorage.getItem('careerPosts');
@@ -129,17 +140,57 @@ const Admin = () => {
     setShowModal(true);
   };
 
+  const handleLogout = () => {
+    logout();
+  };
+
   return (
     <>
       {/* Admin Header */}
       <section className="admin-header" style={{marginTop: '80px'}}>
         <Container>
           <Row>
-            <Col lg={12} className="text-center">
-              <h1 className="display-4 fw-bold mb-3">Admin Dashboard</h1>
-              <p className="lead">Manage career posts and job listings</p>
+            <Col lg={12} className="d-flex justify-content-between align-items-center">
+              <div className="text-center">
+                <h1 className="display-4 fw-bold mb-3">Admin Dashboard</h1>
+                <p className="lead">Welcome, {currentUser?.username} ({currentUser?.role})</p>
+              </div>
+              <Button variant="outline-secondary" onClick={handleLogout}>
+                <i className="fas fa-sign-out-alt me-2"></i>
+                Logout
+              </Button>
             </Col>
           </Row>
+        </Container>
+      </section>
+
+      {/* Admin Navigation */}
+      <section className="py-3 bg-light">
+        <Container>
+          <Nav variant="tabs">
+            <Nav.Item>
+              <Nav.Link 
+                active={activeTab === 'jobs'} 
+                onClick={() => setActiveTab('jobs')}
+                style={{ cursor: 'pointer' }}
+              >
+                <i className="fas fa-briefcase me-2"></i>
+                Job Posts
+              </Nav.Link>
+            </Nav.Item>
+            {isRootAdmin && (
+              <Nav.Item>
+                <Nav.Link 
+                  active={activeTab === 'admins'} 
+                  onClick={() => setActiveTab('admins')}
+                  style={{ cursor: 'pointer' }}
+                >
+                  <i className="fas fa-users-cog me-2"></i>
+                  Admin Management
+                </Nav.Link>
+              </Nav.Item>
+            )}
+          </Nav>
         </Container>
       </section>
 
@@ -153,79 +204,85 @@ const Admin = () => {
             </Alert>
           )}
 
-          <Row className="mb-4">
-            <Col lg={12} className="d-flex justify-content-between align-items-center">
-              <h3>Job Posts Management</h3>
-              <Button className="btn-gradient-primary" onClick={handleNewJob}>
-                <i className="fas fa-plus me-2"></i>
-                Add New Job
-              </Button>
-            </Col>
-          </Row>
+          {activeTab === 'jobs' && (
+            <>
+              <Row className="mb-4">
+                <Col lg={12} className="d-flex justify-content-between align-items-center">
+                  <h3>Job Posts Management</h3>
+                  <Button className="btn-gradient-primary" onClick={handleNewJob}>
+                    <i className="fas fa-plus me-2"></i>
+                    Add New Job
+                  </Button>
+                </Col>
+              </Row>
 
-          <Row>
-            <Col lg={12}>
-              <Card className="admin-card">
-                <Card.Body>
-                  {jobs.length > 0 ? (
-                    <Table responsive hover>
-                      <thead>
-                        <tr>
-                          <th>Title</th>
-                          <th>Department</th>
-                          <th>Location</th>
-                          <th>Type</th>
-                          <th>Created</th>
-                          <th>Actions</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        {jobs.map((job) => (
-                          <tr key={job.id}>
-                            <td><strong>{job.title}</strong></td>
-                            <td>{job.department}</td>
-                            <td>{job.location}</td>
-                            <td>
-                              <span className={`badge bg-${job.type === 'Full-time' ? 'primary' : 'secondary'}`}>
-                                {job.type}
-                              </span>
-                            </td>
-                            <td>{new Date(job.createdAt).toLocaleDateString()}</td>
-                            <td>
-                              <Button
-                                variant="outline-primary"
-                                size="sm"
-                                className="me-2"
-                                onClick={() => handleEdit(job)}
-                              >
-                                <i className="fas fa-edit"></i>
-                              </Button>
-                              <Button
-                                variant="outline-danger"
-                                size="sm"
-                                onClick={() => handleDelete(job.id)}
-                              >
-                                <i className="fas fa-trash"></i>
-                              </Button>
-                            </td>
-                          </tr>
-                        ))}
-                      </tbody>
-                    </Table>
-                  ) : (
-                    <div className="text-center py-5">
-                      <i className="fas fa-briefcase fa-3x text-muted mb-3"></i>
-                      <h4>No Job Posts</h4>
-                      <p className="text-muted">Create your first job post to get started.</p>
-                      <Button className="btn-gradient-primary" onClick={handleNewJob}>
-                        Add New Job
-                      </Button>
-                    </div>
-                  )}
-                </Card.Body>
-              </Card>
-            </Col>
-          </Row>
+              <Row>
+                <Col lg={12}>
+                  <Card className="admin-card">
+                    <Card.Body>
+                      {jobs.length > 0 ? (
+                        <Table responsive hover>
+                          <thead>
+                            <tr>
+                              <th>Title</th>
+                              <th>Department</th>
+                              <th>Location</th>
+                              <th>Type</th>
+                              <th>Created</th>
+                              <th>Actions</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            {jobs.map((job) => (
+                              <tr key={job.id}>
+                                <td><strong>{job.title}</strong></td>
+                                <td>{job.department}</td>
+                                <td>{job.location}</td>
+                                <td>
+                                  <span className={`badge bg-${job.type === 'Full-time' ? 'primary' : 'secondary'}`}>
+                                    {job.type}
+                                  </span>
+                                </td>
+                                <td>{new Date(job.createdAt).toLocaleDateString()}</td>
+                                <td>
+                                  <Button
+                                    variant="outline-primary"
+                                    size="sm"
+                                    className="me-2"
+                                    onClick={() => handleEdit(job)}
+                                  >
+                                    <i className="fas fa-edit"></i>
+                                  </Button>
+                                  <Button
+                                    variant="outline-danger"
+                                    size="sm"
+                                    onClick={() => handleDelete(job.id)}
+                                  >
+                                    <i className="fas fa-trash"></i>
+                                  </Button>
+                                </td>
+                              </tr>
+                            ))}
+                          </tbody>
+                        </Table>
+                      ) : (
+                        <div className="text-center py-5">
+                          <i className="fas fa-briefcase fa-3x text-muted mb-3"></i>
+                          <h4>No Job Posts</h4>
+                          <p className="text-muted">Create your first job post to get started.</p>
+                          <Button className="btn-gradient-primary" onClick={handleNewJob}>
+                            Add New Job
+                          </Button>
+                        </div>
+                      )}
+                    </Card.Body>
+                  </Card>
+                </Col>
+              </Row>
+            </>
+          )}
+
+          {activeTab === 'admins' && <AdminManagement />}
         </Container>
       </section>
 

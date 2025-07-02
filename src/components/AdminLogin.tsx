@@ -1,0 +1,118 @@
+
+import React, { useState } from 'react';
+import { Container, Row, Col, Card, Form, Button, Alert } from 'react-bootstrap';
+import { useAdminAuth } from '../contexts/AdminAuthContext';
+
+const AdminLogin = () => {
+  const [credentials, setCredentials] = useState({ username: '', password: '' });
+  const [error, setError] = useState('');
+  const [loading, setLoading] = useState(false);
+  const { login } = useAdminAuth();
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setCredentials({
+      ...credentials,
+      [e.target.name]: e.target.value
+    });
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setLoading(true);
+    setError('');
+
+    try {
+      const success = await login(credentials.username, credentials.password);
+      if (!success) {
+        setError('Invalid username or password');
+      }
+    } catch (err) {
+      setError('Login failed. Please try again.');
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  return (
+    <section className="min-vh-100 d-flex align-items-center" style={{marginTop: '80px'}}>
+      <Container>
+        <Row className="justify-content-center">
+          <Col lg={5} md={7}>
+            <Card className="shadow-lg border-0">
+              <Card.Body className="p-5">
+                <div className="text-center mb-4">
+                  <i className="fas fa-shield-alt fa-3x text-primary mb-3"></i>
+                  <h3 className="fw-bold">Admin Access</h3>
+                  <p className="text-muted">Please sign in to continue</p>
+                </div>
+
+                {error && (
+                  <Alert variant="danger" className="mb-4">
+                    <i className="fas fa-exclamation-triangle me-2"></i>
+                    {error}
+                  </Alert>
+                )}
+
+                <Form onSubmit={handleSubmit}>
+                  <Form.Group className="mb-3">
+                    <Form.Label>Username</Form.Label>
+                    <Form.Control
+                      type="text"
+                      name="username"
+                      value={credentials.username}
+                      onChange={handleInputChange}
+                      required
+                      placeholder="Enter your username"
+                      autoComplete="username"
+                    />
+                  </Form.Group>
+
+                  <Form.Group className="mb-4">
+                    <Form.Label>Password</Form.Label>
+                    <Form.Control
+                      type="password"
+                      name="password"
+                      value={credentials.password}
+                      onChange={handleInputChange}
+                      required
+                      placeholder="Enter your password"
+                      autoComplete="current-password"
+                    />
+                  </Form.Group>
+
+                  <Button
+                    type="submit"
+                    className="btn-gradient-primary w-100"
+                    disabled={loading}
+                  >
+                    {loading ? (
+                      <>
+                        <i className="fas fa-spinner fa-spin me-2"></i>
+                        Signing In...
+                      </>
+                    ) : (
+                      <>
+                        <i className="fas fa-sign-in-alt me-2"></i>
+                        Sign In
+                      </>
+                    )}
+                  </Button>
+                </Form>
+
+                <div className="text-center mt-4">
+                  <small className="text-muted">
+                    Demo Accounts:<br/>
+                    Root Admin: rootadmin / RootAdmin123!<br/>
+                    Admin: admin1 / Admin123!
+                  </small>
+                </div>
+              </Card.Body>
+            </Card>
+          </Col>
+        </Row>
+      </Container>
+    </section>
+  );
+};
+
+export default AdminLogin;
