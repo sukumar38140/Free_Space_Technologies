@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { Card, Table, Button, Modal, Form, Alert } from 'react-bootstrap';
 import { useAdminAuth } from '../contexts/AdminAuthContext';
@@ -34,10 +33,10 @@ const AdminManagement = () => {
     if (savedAdmins) {
       setAdmins(JSON.parse(savedAdmins));
     } else {
-      // Initialize with default accounts
+      // Initialize with default accounts including updated admin1
       const defaultAdmins = [
         { id: '1', username: 'rootadmin', role: 'root' as const, email: 'root@techcorp.com' },
-        { id: '2', username: 'admin1', role: 'admin' as const, email: 'admin1@techcorp.com' },
+        { id: '2', username: 'admin1', role: 'admin' as const, email: 'saatharlakumar@gmail.com' },
         { id: '3', username: 'admin2', role: 'admin' as const, email: 'admin2@techcorp.com' }
       ];
       setAdmins(defaultAdmins);
@@ -50,7 +49,7 @@ const AdminManagement = () => {
     setAdmins(updatedAdmins);
   };
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
     setFormData({
       ...formData,
       [e.target.name]: e.target.value

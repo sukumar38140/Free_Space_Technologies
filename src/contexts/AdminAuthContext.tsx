@@ -1,4 +1,3 @@
-
 import React, { createContext, useContext, useState, useEffect } from 'react';
 
 interface AdminUser {
@@ -30,9 +29,9 @@ const ADMIN_ACCOUNTS = [
   {
     id: '2',
     username: 'admin1',
-    password: 'Admin123!',
+    password: 'Kumar@12345',
     role: 'admin' as const,
-    email: 'admin1@techcorp.com'
+    email: 'saatharlakumar@gmail.com'
   },
   {
     id: '3',
