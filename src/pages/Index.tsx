@@ -21,22 +21,22 @@ const Index = () => {
                   and propel your business into the digital future.
                 </p>
                 <div className="d-flex gap-3 flex-wrap">
-                  <Button 
-                    as={Link} 
-                    to="/services" 
-                    className="btn-gradient-secondary"
-                    size="lg"
-                  >
-                    Our Services
-                  </Button>
-                  <Button 
-                    as={Link} 
-                    to="/contact" 
-                    variant="outline-light" 
-                    size="lg"
-                  >
-                    Get Started
-                  </Button>
+                  <Link to="/services">
+                    <Button 
+                      className="btn-gradient-secondary"
+                      size="lg"
+                    >
+                      Our Services
+                    </Button>
+                  </Link>
+                  <Link to="/contact">
+                    <Button 
+                      variant="outline-light" 
+                      size="lg"
+                    >
+                      Get Started
+                    </Button>
+                  </Link>
                 </div>
               </div>
             </Col>
@@ -137,14 +137,14 @@ const Index = () => {
           </Row>
           <Row className="text-center mt-4">
             <Col>
-              <Button 
-                as={Link} 
-                to="/services" 
-                className="btn-gradient-primary"
-                size="lg"
-              >
-                View All Services
-              </Button>
+              <Link to="/services">
+                <Button 
+                  className="btn-gradient-primary"
+                  size="lg"
+                >
+                  View All Services
+                </Button>
+              </Link>
             </Col>
           </Row>
         </Container>
@@ -179,14 +179,14 @@ const Index = () => {
                     Dedicated project management
                   </li>
                 </ul>
-                <Button 
-                  as={Link} 
-                  to="/about" 
-                  variant="outline-light" 
-                  size="lg"
-                >
-                  Learn More About Us
-                </Button>
+                <Link to="/about">
+                  <Button 
+                    variant="outline-light" 
+                    size="lg"
+                  >
+                    Learn More About Us
+                  </Button>
+                </Link>
               </div>
             </Col>
             <Col lg={6}>
@@ -213,22 +213,22 @@ const Index = () => {
                   Let's discuss how we can help you achieve your digital transformation goals.
                 </p>
                 <div className="d-flex gap-3 justify-content-center flex-wrap">
-                  <Button 
-                    as={Link} 
-                    to="/contact" 
-                    className="btn-gradient-primary"
-                    size="lg"
-                  >
-                    Start Your Project
-                  </Button>
-                  <Button 
-                    as={Link} 
-                    to="/career" 
-                    className="btn-gradient-secondary"
-                    size="lg"
-                  >
-                    Join Our Team
-                  </Button>
+                  <Link to="/contact">
+                    <Button 
+                      className="btn-gradient-primary"
+                      size="lg"
+                    >
+                      Start Your Project
+                    </Button>
+                  </Link>
+                  <Link to="/career">
+                    <Button 
+                      className="btn-gradient-secondary"
+                      size="lg"
+                    >
+                      Join Our Team
+                    </Button>
+                  </Link>
                 </div>
               </div>
             </Col>

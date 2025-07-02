@@ -168,14 +168,14 @@ const Services = () => {
                   Let's discuss your project requirements and create a custom solution for your business.
                 </p>
                 <div className="d-flex gap-3 justify-content-center flex-wrap">
-                  <Button 
-                    as={Link} 
-                    to="/contact" 
-                    className="btn-gradient-secondary"
-                    size="lg"
-                  >
-                    Get Free Consultation
-                  </Button>
+                  <Link to="/contact">
+                    <Button 
+                      className="btn-gradient-secondary"
+                      size="lg"
+                    >
+                      Get Free Consultation
+                    </Button>
+                  </Link>
                   <Button 
                     variant="outline-light" 
                     size="lg"
