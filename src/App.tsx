@@ -16,6 +16,7 @@ import About from "./pages/About";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
 import TermsOfService from "./pages/TermsOfService";
 import Admin from "./pages/Admin";
+import LearnMore from "./pages/LearnMore";
 import NotFound from "./pages/NotFound";
 
 // Components
@@ -24,6 +25,7 @@ import Footer from "./components/Footer";
 
 // Context
 import { AdminAuthProvider } from "./contexts/AdminAuthContext";
+import { AuthProvider } from "./contexts/AuthContext";
 
 const queryClient = new QueryClient();
 
@@ -32,27 +34,30 @@ const App = () => (
     <TooltipProvider>
       <Toaster />
       <Sonner />
-      <AdminAuthProvider>
-        <BrowserRouter>
-          <div className="app-container">
-            <Navbar />
-            <main className="main-content">
-              <Routes>
-                <Route path="/" element={<Index />} />
-                <Route path="/services" element={<Services />} />
-                <Route path="/career" element={<Career />} />
-                <Route path="/contact" element={<Contact />} />
-                <Route path="/about" element={<About />} />
-                <Route path="/privacy-policy" element={<PrivacyPolicy />} />
-                <Route path="/terms-of-service" element={<TermsOfService />} />
-                <Route path="/myAdminPage" element={<Admin />} />
-                <Route path="*" element={<NotFound />} />
-              </Routes>
-            </main>
-            <Footer />
-          </div>
-        </BrowserRouter>
-      </AdminAuthProvider>
+      <AuthProvider>
+        <AdminAuthProvider>
+          <BrowserRouter>
+            <div className="app-container">
+              <Navbar />
+              <main className="main-content">
+                <Routes>
+                  <Route path="/" element={<Index />} />
+                  <Route path="/services" element={<Services />} />
+                  <Route path="/career" element={<Career />} />
+                  <Route path="/contact" element={<Contact />} />
+                  <Route path="/about" element={<About />} />
+                  <Route path="/learn-more" element={<LearnMore />} />
+                  <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+                  <Route path="/terms-of-service" element={<TermsOfService />} />
+                  <Route path="/myAdminPage" element={<Admin />} />
+                  <Route path="*" element={<NotFound />} />
+                </Routes>
+              </main>
+              <Footer />
+            </div>
+          </BrowserRouter>
+        </AdminAuthProvider>
+      </AuthProvider>
     </TooltipProvider>
   </QueryClientProvider>
 );

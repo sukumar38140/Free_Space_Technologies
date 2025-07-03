@@ -1,11 +1,16 @@
 
 import React, { useState, useEffect } from 'react';
-import { Navbar, Nav, Container } from 'react-bootstrap';
+import { Navbar, Nav, Container, Button } from 'react-bootstrap';
 import { Link, useLocation } from 'react-router-dom';
+import { useAuth } from '../contexts/AuthContext';
+import AuthModal from './AuthModal';
+import ProfileDropdown from './ProfileDropdown';
 
 const CustomNavbar = () => {
   const [scrolled, setScrolled] = useState(false);
+  const [showAuthModal, setShowAuthModal] = useState(false);
   const location = useLocation();
+  const { isAuthenticated } = useAuth();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -20,59 +25,91 @@ const CustomNavbar = () => {
   const isActive = (path: string) => location.pathname === path;
 
   return (
-    <Navbar 
-      expand="lg" 
-      fixed="top" 
-      className={`custom-navbar ${scrolled ? 'scrolled' : ''}`}
-    >
-      <Container>
-        <Navbar.Brand as={Link} to="/" className="navbar-brand">
-          Free Space Technologies
-        </Navbar.Brand>
-        
-        <Navbar.Toggle aria-controls="basic-navbar-nav" />
-        
-        <Navbar.Collapse id="basic-navbar-nav">
-          <Nav className="ms-auto">
-            <Nav.Link 
-              as={Link} 
-              to="/" 
-              className={isActive('/') ? 'active' : ''}
-            >
-              Home
-            </Nav.Link>
-            <Nav.Link 
-              as={Link} 
-              to="/services" 
-              className={isActive('/services') ? 'active' : ''}
-            >
-              Services
-            </Nav.Link>
-            <Nav.Link 
-              as={Link} 
-              to="/about" 
-              className={isActive('/about') ? 'active' : ''}
-            >
-              About Us
-            </Nav.Link>
-            <Nav.Link 
-              as={Link} 
-              to="/career" 
-              className={isActive('/career') ? 'active' : ''}
-            >
-              Career
-            </Nav.Link>
-            <Nav.Link 
-              as={Link} 
-              to="/contact" 
-              className={isActive('/contact') ? 'active' : ''}
-            >
-              Contact
-            </Nav.Link>
-          </Nav>
-        </Navbar.Collapse>
-      </Container>
-    </Navbar>
+    <>
+      <Navbar 
+        expand="lg" 
+        fixed="top" 
+        className={`custom-navbar ${scrolled ? 'scrolled' : ''}`}
+      >
+        <Container>
+          <Navbar.Brand as={Link} to="/" className="navbar-brand">
+            Free Space Technologies
+          </Navbar.Brand>
+          
+          <Navbar.Toggle aria-controls="basic-navbar-nav" />
+          
+          <Navbar.Collapse id="basic-navbar-nav">
+            <Nav className="ms-auto">
+              <Nav.Link 
+                as={Link} 
+                to="/" 
+                className={isActive('/') ? 'active' : ''}
+              >
+                Home
+              </Nav.Link>
+              <Nav.Link 
+                as={Link} 
+                to="/services" 
+                className={isActive('/services') ? 'active' : ''}
+              >
+                Services
+              </Nav.Link>
+              <Nav.Link 
+                as={Link} 
+                to="/about" 
+                className={isActive('/about') ? 'active' : ''}
+              >
+                About Us
+              </Nav.Link>
+              <Nav.Link 
+                as={Link} 
+                to="/career" 
+                className={isActive('/career') ? 'active' : ''}
+              >
+                Career
+              </Nav.Link>
+              <Nav.Link 
+                as={Link} 
+                to="/contact" 
+                className={isActive('/contact') ? 'active' : ''}
+              >
+                Contact
+              </Nav.Link>
+              
+              {/* Authentication Section */}
+              {isAuthenticated ? (
+                <Nav.Item className="ms-3">
+                  <ProfileDropdown />
+                </Nav.Item>
+              ) : (
+                <Nav.Item className="ms-3">
+                  <Button 
+                    variant="outline-primary" 
+                    size="sm" 
+                    className="me-2"
+                    onClick={() => setShowAuthModal(true)}
+                  >
+                    Sign In
+                  </Button>
+                  <Button 
+                    variant="primary" 
+                    size="sm"
+                    onClick={() => setShowAuthModal(true)}
+                  >
+                    Sign Up
+                  </Button>
+                </Nav.Item>
+              )}
+            </Nav>
+          </Navbar.Collapse>
+        </Container>
+      </Navbar>
+
+      <AuthModal 
+        show={showAuthModal} 
+        onHide={() => setShowAuthModal(false)} 
+      />
+    </>
   );
 };
 

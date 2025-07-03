@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from 'react';
 import { Container, Row, Col, Card, Form, Button, Table, Modal, Alert, Nav } from 'react-bootstrap';
 import { useAdminAuth } from '../contexts/AdminAuthContext';
@@ -24,6 +25,7 @@ const Admin = () => {
   const [editingJob, setEditingJob] = useState<JobPost | null>(null);
   const [showAlert, setShowAlert] = useState(false);
   const [alertMessage, setAlertMessage] = useState('');
+  const [learnMoreContent, setLearnMoreContent] = useState('');
   const [formData, setFormData] = useState({
     title: '',
     department: '',
@@ -36,6 +38,7 @@ const Admin = () => {
   useEffect(() => {
     if (isAuthenticated) {
       loadJobs();
+      loadLearnMoreContent();
     }
   }, [isAuthenticated]);
 
@@ -51,9 +54,23 @@ const Admin = () => {
     }
   };
 
+  const loadLearnMoreContent = () => {
+    const savedContent = localStorage.getItem('learnMoreContent');
+    if (savedContent) {
+      setLearnMoreContent(savedContent);
+    }
+  };
+
   const saveJobs = (updatedJobs: JobPost[]) => {
     localStorage.setItem('careerPosts', JSON.stringify(updatedJobs));
     setJobs(updatedJobs);
+  };
+
+  const saveLearnMoreContent = () => {
+    localStorage.setItem('learnMoreContent', learnMoreContent);
+    setAlertMessage('Learn More content updated successfully!');
+    setShowAlert(true);
+    setTimeout(() => setShowAlert(false), 3000);
   };
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
@@ -189,6 +206,16 @@ const Admin = () => {
                 Applications
               </Nav.Link>
             </Nav.Item>
+            <Nav.Item>
+              <Nav.Link 
+                active={activeTab === 'content'} 
+                onClick={() => setActiveTab('content')}
+                style={{ cursor: 'pointer' }}
+              >
+                <i className="fas fa-edit me-2"></i>
+                Learn More Content
+              </Nav.Link>
+            </Nav.Item>
             {isRootAdmin && (
               <Nav.Item>
                 <Nav.Link 
@@ -286,6 +313,49 @@ const Admin = () => {
                           </Button>
                         </div>
                       )}
+                    </Card.Body>
+                  </Card>
+                </Col>
+              </Row>
+            </>
+          )}
+
+          {activeTab === 'content' && (
+            <>
+              <Row className="mb-4">
+                <Col lg={12}>
+                  <h3>Learn More Content Management</h3>
+                  <p className="text-muted">Manage the content that appears on the "Learn More" page</p>
+                </Col>
+              </Row>
+
+              <Row>
+                <Col lg={12}>
+                  <Card className="admin-card">
+                    <Card.Body>
+                      <Form>
+                        <Form.Group className="mb-3">
+                          <Form.Label>Learn More Content</Form.Label>
+                          <Form.Control
+                            as="textarea"
+                            rows={15}
+                            value={learnMoreContent}
+                            onChange={(e) => setLearnMoreContent(e.target.value)}
+                            placeholder="Enter the content that will be displayed on the Learn More page..."
+                            style={{ fontSize: '14px' }}
+                          />
+                          <Form.Text className="text-muted">
+                            This content will be displayed when users click the "Learn More" button.
+                          </Form.Text>
+                        </Form.Group>
+                        <Button 
+                          className="btn-gradient-primary"
+                          onClick={saveLearnMoreContent}
+                        >
+                          <i className="fas fa-save me-2"></i>
+                          Save Content
+                        </Button>
+                      </Form>
                     </Card.Body>
                   </Card>
                 </Col>

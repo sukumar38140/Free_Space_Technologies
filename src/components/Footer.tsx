@@ -80,11 +80,11 @@ const Footer = () => {
               <h5>Contact Info</h5>
               <div className="mb-2">
                 <i className="fas fa-map-marker-alt me-2"></i>
-                123 Innovation Drive, Tech Valley, TV 12345
+                Ntr Circle, Madanapalle-517325, AP
               </div>
               <div className="mb-2">
                 <i className="fas fa-phone me-2"></i>
-                +1 (555) 123-4567
+                +91 8978943122
               </div>
               <div className="mb-2">
                 <i className="fas fa-envelope me-2"></i>
