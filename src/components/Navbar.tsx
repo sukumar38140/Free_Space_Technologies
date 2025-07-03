@@ -27,7 +27,7 @@ const CustomNavbar = () => {
     >
       <Container>
         <Navbar.Brand as={Link} to="/" className="navbar-brand">
-          TechCorp Solutions
+          Free Space Technologies
         </Navbar.Brand>
         
         <Navbar.Toggle aria-controls="basic-navbar-nav" />

@@ -3,6 +3,7 @@ import { Container, Row, Col, Card, Form, Button, Table, Modal, Alert, Nav } fro
 import { useAdminAuth } from '../contexts/AdminAuthContext';
 import AdminLogin from '../components/AdminLogin';
 import AdminManagement from '../components/AdminManagement';
+import ApplicationManagement from '../components/ApplicationManagement';
 
 interface JobPost {
   id: string;
@@ -178,6 +179,16 @@ const Admin = () => {
                 Job Posts
               </Nav.Link>
             </Nav.Item>
+            <Nav.Item>
+              <Nav.Link 
+                active={activeTab === 'applications'} 
+                onClick={() => setActiveTab('applications')}
+                style={{ cursor: 'pointer' }}
+              >
+                <i className="fas fa-file-alt me-2"></i>
+                Applications
+              </Nav.Link>
+            </Nav.Item>
             {isRootAdmin && (
               <Nav.Item>
                 <Nav.Link 
@@ -282,6 +293,7 @@ const Admin = () => {
             </>
           )}
 
+          {activeTab === 'applications' && <ApplicationManagement />}
           {activeTab === 'admins' && <AdminManagement />}
         </Container>
       </section>
@@ -305,7 +317,7 @@ const Admin = () => {
                     value={formData.title}
                     onChange={handleInputChange}
                     required
-                    placeholder="e.g., Senior Developer"
+                    placeholder="e.g., AI/ML Engineer"
                   />
                 </Form.Group>
               </Col>
@@ -318,7 +330,7 @@ const Admin = () => {
                     value={formData.department}
                     onChange={handleInputChange}
                     required
-                    placeholder="e.g., Engineering"
+                    placeholder="e.g., Artificial Intelligence"
                   />
                 </Form.Group>
               </Col>
@@ -334,7 +346,7 @@ const Admin = () => {
                     value={formData.location}
                     onChange={handleInputChange}
                     required
-                    placeholder="e.g., Remote, New York, NY"
+                    placeholder="e.g., Remote, Hybrid, On-site"
                   />
                 </Form.Group>
               </Col>

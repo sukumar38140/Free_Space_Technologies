@@ -13,12 +13,12 @@ const Index = () => {
             <Col lg={6} className="hero-content">
               <div className="animate-fade-left">
                 <h1 className="display-3 fw-bold text-white mb-4">
-                  Transform Your Business with 
-                  <span className="d-block">Cutting-Edge Technology</span>
+                  Pioneering the Future with 
+                  <span className="d-block">Intelligent Technologies</span>
                 </h1>
                 <p className="lead text-white-50 mb-4">
-                  We deliver innovative solutions that drive growth, enhance efficiency, 
-                  and propel your business into the digital future.
+                  We specialize in AI agents, IoT solutions, robotics, and machine learning 
+                  to create intelligent systems that transform industries and shape tomorrow.
                 </p>
                 <div className="d-flex gap-3 flex-wrap">
                   <Link to="/services">
@@ -26,7 +26,7 @@ const Index = () => {
                       className="btn-gradient-secondary"
                       size="lg"
                     >
-                      Our Services
+                      Explore Our Tech
                     </Button>
                   </Link>
                   <Link to="/contact">
@@ -34,7 +34,7 @@ const Index = () => {
                       variant="outline-light" 
                       size="lg"
                     >
-                      Get Started
+                      Start Innovation
                     </Button>
                   </Link>
                 </div>
@@ -43,8 +43,8 @@ const Index = () => {
             <Col lg={6} className="text-center">
               <div className="animate-fade-right animate-float">
                 <img 
-                  src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=600&h=400&fit=crop"
-                  alt="Technology Solutions"
+                  src="https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=600&h=400&fit=crop"
+                  alt="AI Robotics Technology"
                   className="img-fluid rounded-4 shadow-lg"
                 />
               </div>
@@ -59,30 +59,30 @@ const Index = () => {
           <Row className="text-center">
             <Col lg={3} md={6} className="mb-4">
               <div className="animate-fade-up">
-                <div className="stats-counter">500+</div>
-                <h5>Projects Completed</h5>
-                <p className="text-muted">Successfully delivered projects worldwide</p>
+                <div className="stats-counter">200+</div>
+                <h5>AI Models Deployed</h5>
+                <p className="text-muted">Intelligent systems powering businesses</p>
               </div>
             </Col>
             <Col lg={3} md={6} className="mb-4">
               <div className="animate-fade-up" style={{animationDelay: '0.1s'}}>
-                <div className="stats-counter">50+</div>
-                <h5>Expert Team</h5>
-                <p className="text-muted">Skilled professionals at your service</p>
+                <div className="stats-counter">150+</div>
+                <h5>IoT Devices Connected</h5>
+                <p className="text-muted">Smart sensors and monitoring systems</p>
               </div>
             </Col>
             <Col lg={3} md={6} className="mb-4">
               <div className="animate-fade-up" style={{animationDelay: '0.2s'}}>
                 <div className="stats-counter">24/7</div>
-                <h5>Support</h5>
-                <p className="text-muted">Round-the-clock customer assistance</p>
+                <h5>AI Monitoring</h5>
+                <p className="text-muted">Continuous intelligent system support</p>
               </div>
             </Col>
             <Col lg={3} md={6} className="mb-4">
               <div className="animate-fade-up" style={{animationDelay: '0.3s'}}>
                 <div className="stats-counter">99%</div>
-                <h5>Satisfaction</h5>
-                <p className="text-muted">Client satisfaction rate</p>
+                <h5>System Reliability</h5>
+                <p className="text-muted">Robust and dependable solutions</p>
               </div>
             </Col>
           </Row>
@@ -94,9 +94,9 @@ const Index = () => {
         <Container>
           <Row>
             <Col lg={12} className="text-center mb-5">
-              <h2 className="section-title animate-fade-up">Our Core Services</h2>
+              <h2 className="section-title animate-fade-up">Our Core Expertise</h2>
               <p className="section-subtitle animate-fade-up">
-                Comprehensive solutions tailored to your business needs
+                Advanced technologies tailored for intelligent automation
               </p>
             </Col>
           </Row>
@@ -104,33 +104,33 @@ const Index = () => {
             <Col lg={4} md={6} className="mb-4">
               <Card className="custom-card animate-fade-up">
                 <div className="card-icon">
-                  <i className="fas fa-code"></i>
+                  <i className="fas fa-robot"></i>
                 </div>
                 <Card.Body className="text-center">
-                  <h4>Web Development</h4>
-                  <p>Custom web applications built with modern technologies and best practices.</p>
+                  <h4>AI Agents</h4>
+                  <p>Intelligent automation systems that learn, adapt, and optimize business processes.</p>
                 </Card.Body>
               </Card>
             </Col>
             <Col lg={4} md={6} className="mb-4">
               <Card className="custom-card animate-fade-up" style={{animationDelay: '0.1s'}}>
                 <div className="card-icon">
-                  <i className="fas fa-mobile-alt"></i>
+                  <i className="fas fa-wifi"></i>
                 </div>
                 <Card.Body className="text-center">
-                  <h4>Mobile Apps</h4>
-                  <p>Native and cross-platform mobile applications for iOS and Android.</p>
+                  <h4>IoT Solutions</h4>
+                  <p>Connected ecosystems with smart sensors and real-time data analytics.</p>
                 </Card.Body>
               </Card>
             </Col>
             <Col lg={4} md={6} className="mb-4">
               <Card className="custom-card animate-fade-up" style={{animationDelay: '0.2s'}}>
                 <div className="card-icon">
-                  <i className="fas fa-cloud"></i>
+                  <i className="fas fa-cogs"></i>
                 </div>
                 <Card.Body className="text-center">
-                  <h4>Cloud Solutions</h4>
-                  <p>Scalable cloud infrastructure and migration services for modern businesses.</p>
+                  <h4>Robotics</h4>
+                  <p>Advanced robotics systems for industrial automation and intelligent manufacturing.</p>
                 </Card.Body>
               </Card>
             </Col>
@@ -142,7 +142,7 @@ const Index = () => {
                   className="btn-gradient-primary"
                   size="lg"
                 >
-                  View All Services
+                  Explore All Technologies
                 </Button>
               </Link>
             </Col>
@@ -156,27 +156,27 @@ const Index = () => {
           <Row className="align-items-center">
             <Col lg={6} className="mb-4">
               <div className="animate-fade-left">
-                <h2 className="display-5 fw-bold mb-4">Why Choose TechCorp?</h2>
+                <h2 className="display-5 fw-bold mb-4">Why Choose Free Space Technologies?</h2>
                 <p className="lead mb-4">
-                  We combine technical expertise with business acumen to deliver 
-                  solutions that drive real results.
+                  We combine deep technical expertise with innovative thinking to deliver 
+                  intelligent solutions that transform industries.
                 </p>
                 <ul className="list-unstyled">
                   <li className="mb-3">
                     <i className="fas fa-check-circle me-3"></i>
-                    Proven track record of success
+                    Cutting-edge AI and ML expertise
                   </li>
                   <li className="mb-3">
                     <i className="fas fa-check-circle me-3"></i>
-                    Cutting-edge technology stack
+                    End-to-end IoT solutions
                   </li>
                   <li className="mb-3">
                     <i className="fas fa-check-circle me-3"></i>
-                    Agile development methodology
+                    Advanced robotics integration
                   </li>
                   <li className="mb-3">
                     <i className="fas fa-check-circle me-3"></i>
-                    Dedicated project management
+                    Custom intelligent systems
                   </li>
                 </ul>
                 <Link to="/about">
@@ -184,7 +184,7 @@ const Index = () => {
                     variant="outline-light" 
                     size="lg"
                   >
-                    Learn More About Us
+                    Discover Our Innovation
                   </Button>
                 </Link>
               </div>
@@ -192,8 +192,8 @@ const Index = () => {
             <Col lg={6}>
               <div className="animate-fade-right">
                 <img 
-                  src="https://images.unsplash.com/photo-1605810230434-7631ac76ec81?w=600&h=400&fit=crop"
-                  alt="Team Collaboration"
+                  src="https://images.unsplash.com/photo-1518770660439-4636190af475?w=600&h=400&fit=crop"
+                  alt="IoT Circuit Board Technology"
                   className="img-fluid rounded-4 shadow-lg"
                 />
               </div>
@@ -208,9 +208,9 @@ const Index = () => {
           <Row>
             <Col lg={12} className="text-center">
               <div className="animate-fade-up">
-                <h2 className="display-5 fw-bold mb-4">Ready to Transform Your Business?</h2>
+                <h2 className="display-5 fw-bold mb-4">Ready to Build the Future?</h2>
                 <p className="lead mb-4">
-                  Let's discuss how we can help you achieve your digital transformation goals.
+                  Join us in creating intelligent systems that push the boundaries of what's possible.
                 </p>
                 <div className="d-flex gap-3 justify-content-center flex-wrap">
                   <Link to="/contact">
@@ -218,7 +218,7 @@ const Index = () => {
                       className="btn-gradient-primary"
                       size="lg"
                     >
-                      Start Your Project
+                      Start Your Innovation
                     </Button>
                   </Link>
                   <Link to="/career">

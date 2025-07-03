@@ -33,11 +33,11 @@ const AdminManagement = () => {
     if (savedAdmins) {
       setAdmins(JSON.parse(savedAdmins));
     } else {
-      // Initialize with default accounts including updated admin1
+      // Initialize with default accounts including updated company emails
       const defaultAdmins = [
-        { id: '1', username: 'rootadmin', role: 'root' as const, email: 'root@techcorp.com' },
+        { id: '1', username: 'rootadmin', role: 'root' as const, email: 'root@freespacetechnologies.com' },
         { id: '2', username: 'admin1', role: 'admin' as const, email: 'saatharlakumar@gmail.com' },
-        { id: '3', username: 'admin2', role: 'admin' as const, email: 'admin2@techcorp.com' }
+        { id: '3', username: 'admin2', role: 'admin' as const, email: 'admin2@freespacetechnologies.com' }
       ];
       setAdmins(defaultAdmins);
       localStorage.setItem('adminAccounts', JSON.stringify(defaultAdmins));

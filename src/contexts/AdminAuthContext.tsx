@@ -1,3 +1,4 @@
+
 import React, { createContext, useContext, useState, useEffect } from 'react';
 
 interface AdminUser {
@@ -24,7 +25,7 @@ const ADMIN_ACCOUNTS = [
     username: 'rootadmin',
     password: 'RootAdmin123!',
     role: 'root' as const,
-    email: 'root@techcorp.com'
+    email: 'root@freespacetechnologies.com'
   },
   {
     id: '2',
@@ -38,7 +39,7 @@ const ADMIN_ACCOUNTS = [
     username: 'admin2',
     password: 'Admin456!',
     role: 'admin' as const,
-    email: 'admin2@techcorp.com'
+    email: 'admin2@freespacetechnologies.com'
   }
 ];
 

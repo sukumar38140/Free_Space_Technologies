@@ -6,46 +6,46 @@ import { Link } from 'react-router-dom';
 const Services = () => {
   const services = [
     {
+      title: 'AI Agents & Automation',
+      icon: 'fas fa-robot',
+      description: 'Intelligent AI agents that automate complex business processes and enhance decision-making capabilities.',
+      features: ['Natural Language Processing', 'Intelligent Automation', 'Decision Support Systems', 'Process Optimization'],
+      specialization: 'AI & Machine Learning'
+    },
+    {
+      title: 'IoT Solutions',
+      icon: 'fas fa-wifi',
+      description: 'Connected IoT ecosystems that enable smart monitoring, control, and data-driven insights.',
+      features: ['Smart Sensors', 'Real-time Monitoring', 'Edge Computing', 'Data Analytics'],
+      specialization: 'Internet of Things'
+    },
+    {
+      title: 'Robotics & Automation',
+      icon: 'fas fa-cogs',
+      description: 'Advanced robotics solutions for industrial automation and intelligent manufacturing systems.',
+      features: ['Industrial Robots', 'Autonomous Systems', 'Computer Vision', 'Motion Control'],
+      specialization: 'Robotics Engineering'
+    },
+    {
+      title: 'Machine Learning Models',
+      icon: 'fas fa-brain',
+      description: 'Custom machine learning models for predictive analytics, pattern recognition, and intelligent insights.',
+      features: ['Predictive Analytics', 'Deep Learning', 'Computer Vision', 'Natural Language Processing'],
+      specialization: 'Machine Learning'
+    },
+    {
       title: 'Web Development',
       icon: 'fas fa-code',
-      description: 'Custom web applications built with modern frameworks like React, Angular, and Vue.js.',
-      features: ['Responsive Design', 'SEO Optimized', 'Performance Focused', 'Security First'],
-      price: 'Starting from $2,500'
+      description: 'Modern web applications with responsive design and cutting-edge technologies.',
+      features: ['React & Modern Frameworks', 'Progressive Web Apps', 'Real-time Applications', 'API Development'],
+      specialization: 'Web Technologies'
     },
     {
-      title: 'Mobile App Development',
-      icon: 'fas fa-mobile-alt',
-      description: 'Native and cross-platform mobile applications for iOS and Android platforms.',
-      features: ['Native Performance', 'Cross-Platform', 'App Store Optimization', 'Push Notifications'],
-      price: 'Starting from $5,000'
-    },
-    {
-      title: 'Cloud Solutions',
-      icon: 'fas fa-cloud',
-      description: 'Scalable cloud infrastructure, migration services, and cloud-native applications.',
-      features: ['AWS/Azure/GCP', 'Auto Scaling', 'Cost Optimization', '24/7 Monitoring'],
-      price: 'Starting from $1,500/month'
-    },
-    {
-      title: 'Digital Marketing',
-      icon: 'fas fa-chart-line',
-      description: 'Comprehensive digital marketing strategies to boost your online presence.',
-      features: ['SEO/SEM', 'Social Media', 'Content Marketing', 'Analytics'],
-      price: 'Starting from $1,200/month'
-    },
-    {
-      title: 'E-commerce Solutions',
-      icon: 'fas fa-shopping-cart',
-      description: 'Complete e-commerce platforms with payment integration and inventory management.',
-      features: ['Payment Gateway', 'Inventory Management', 'Order Tracking', 'Multi-vendor Support'],
-      price: 'Starting from $3,500'
-    },
-    {
-      title: 'IT Consulting',
-      icon: 'fas fa-users',
-      description: 'Strategic IT consulting to align technology with your business objectives.',
-      features: ['Technology Assessment', 'Digital Strategy', 'Process Optimization', 'Training'],
-      price: 'Starting from $150/hour'
+      title: 'Smart Systems Integration',
+      icon: 'fas fa-network-wired',
+      description: 'Seamless integration of AI, IoT, and robotics into unified intelligent systems.',
+      features: ['System Architecture', 'Cloud Integration', 'Data Pipeline', 'Real-time Processing'],
+      specialization: 'Systems Integration'
     }
   ];
 
@@ -57,10 +57,10 @@ const Services = () => {
           <Row className="align-items-center min-vh-50">
             <Col lg={8} className="mx-auto text-center">
               <div className="animate-fade-up">
-                <h1 className="display-4 fw-bold mb-4">Our Services</h1>
+                <h1 className="display-4 fw-bold mb-4">Our Expertise</h1>
                 <p className="lead">
-                  Comprehensive technology solutions designed to accelerate your business growth 
-                  and digital transformation journey.
+                  Pioneering solutions in AI, IoT, robotics, and machine learning. 
+                  We transform ideas into intelligent systems that shape the future.
                 </p>
               </div>
             </Col>
@@ -92,9 +92,9 @@ const Services = () => {
                     </ul>
                     
                     <div className="mt-auto">
-                      <div className="h5 text-primary mb-3">{service.price}</div>
+                      <div className="h6 text-primary mb-3">{service.specialization}</div>
                       <Button className="btn-gradient-primary w-100">
-                        Get Quote
+                        Learn More
                       </Button>
                     </div>
                   </Card.Body>
@@ -105,14 +105,14 @@ const Services = () => {
         </Container>
       </section>
 
-      {/* Process Section */}
+      {/* Technology Stack */}
       <section className="section-padding bg-light">
         <Container>
           <Row>
             <Col lg={12} className="text-center mb-5">
-              <h2 className="section-title animate-fade-up">Our Process</h2>
+              <h2 className="section-title animate-fade-up">Our Technology Stack</h2>
               <p className="section-subtitle animate-fade-up">
-                A proven methodology that ensures project success
+                Cutting-edge technologies powering our innovative solutions
               </p>
             </Col>
           </Row>
@@ -120,37 +120,37 @@ const Services = () => {
             <Col lg={3} md={6} className="mb-4">
               <div className="text-center animate-fade-up">
                 <div className="card-icon mx-auto mb-3">
-                  <i className="fas fa-search"></i>
+                  <i className="fas fa-microchip"></i>
                 </div>
-                <h5>Discovery</h5>
-                <p>We analyze your requirements and understand your business goals.</p>
+                <h5>AI & ML</h5>
+                <p>TensorFlow, PyTorch, OpenAI, Hugging Face</p>
               </div>
             </Col>
             <Col lg={3} md={6} className="mb-4">
               <div className="text-center animate-fade-up" style={{animationDelay: '0.1s'}}>
                 <div className="card-icon mx-auto mb-3">
-                  <i className="fas fa-lightbulb"></i>
+                  <i className="fas fa-satellite-dish"></i>
                 </div>
-                <h5>Strategy</h5>
-                <p>We create a comprehensive strategy and project roadmap.</p>
+                <h5>IoT Platforms</h5>
+                <p>Arduino, Raspberry Pi, AWS IoT, Azure IoT</p>
               </div>
             </Col>
             <Col lg={3} md={6} className="mb-4">
               <div className="text-center animate-fade-up" style={{animationDelay: '0.2s'}}>
                 <div className="card-icon mx-auto mb-3">
-                  <i className="fas fa-cogs"></i>
+                  <i className="fas fa-wrench"></i>
                 </div>
-                <h5>Development</h5>
-                <p>Our expert team brings your vision to life with cutting-edge technology.</p>
+                <h5>Robotics</h5>
+                <p>ROS, OpenCV, MATLAB, Simulink</p>
               </div>
             </Col>
             <Col lg={3} md={6} className="mb-4">
               <div className="text-center animate-fade-up" style={{animationDelay: '0.3s'}}>
                 <div className="card-icon mx-auto mb-3">
-                  <i className="fas fa-rocket"></i>
+                  <i className="fas fa-laptop-code"></i>
                 </div>
-                <h5>Launch</h5>
-                <p>We deploy your solution and provide ongoing support and maintenance.</p>
+                <h5>Development</h5>
+                <p>React, Node.js, Python, Docker</p>
               </div>
             </Col>
           </Row>
@@ -163,9 +163,9 @@ const Services = () => {
           <Row>
             <Col lg={8} className="mx-auto text-center">
               <div className="animate-fade-up">
-                <h2 className="display-5 fw-bold mb-4">Ready to Get Started?</h2>
+                <h2 className="display-5 fw-bold mb-4">Ready to Innovate?</h2>
                 <p className="lead mb-4">
-                  Let's discuss your project requirements and create a custom solution for your business.
+                  Let's collaborate to build intelligent solutions that push the boundaries of technology.
                 </p>
                 <div className="d-flex gap-3 justify-content-center flex-wrap">
                   <Link to="/contact">
@@ -173,14 +173,14 @@ const Services = () => {
                       className="btn-gradient-secondary"
                       size="lg"
                     >
-                      Get Free Consultation
+                      Start Your Project
                     </Button>
                   </Link>
                   <Button 
                     variant="outline-light" 
                     size="lg"
                   >
-                    Download Portfolio
+                    View Portfolio
                   </Button>
                 </div>
               </div>

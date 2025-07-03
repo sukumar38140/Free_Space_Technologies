@@ -10,10 +10,10 @@ const Footer = () => {
         <Row>
           <Col lg={4} md={6} className="mb-4">
             <div className="footer-section">
-              <h5>TechCorp Solutions</h5>
+              <h5>Free Space Technologies</h5>
               <p className="mb-3">
-                Leading the future of technology with innovative solutions 
-                and exceptional service. Your success is our mission.
+                Pioneering the future with AI-powered solutions, intelligent automation, 
+                and cutting-edge robotics. Innovation beyond boundaries.
               </p>
               <div className="social-links">
                 <a href="#" className="footer-link me-3">
@@ -54,22 +54,22 @@ const Footer = () => {
           
           <Col lg={3} md={6} className="mb-4">
             <div className="footer-section">
-              <h5>Services</h5>
+              <h5>Our Expertise</h5>
               <ul className="list-unstyled">
                 <li className="mb-2">
+                  <a href="#" className="footer-link">AI Agents</a>
+                </li>
+                <li className="mb-2">
+                  <a href="#" className="footer-link">IoT Solutions</a>
+                </li>
+                <li className="mb-2">
+                  <a href="#" className="footer-link">Robotics</a>
+                </li>
+                <li className="mb-2">
+                  <a href="#" className="footer-link">Machine Learning</a>
+                </li>
+                <li className="mb-2">
                   <a href="#" className="footer-link">Web Development</a>
-                </li>
-                <li className="mb-2">
-                  <a href="#" className="footer-link">Mobile Apps</a>
-                </li>
-                <li className="mb-2">
-                  <a href="#" className="footer-link">Cloud Solutions</a>
-                </li>
-                <li className="mb-2">
-                  <a href="#" className="footer-link">Digital Marketing</a>
-                </li>
-                <li className="mb-2">
-                  <a href="#" className="footer-link">Consulting</a>
                 </li>
               </ul>
             </div>
@@ -80,7 +80,7 @@ const Footer = () => {
               <h5>Contact Info</h5>
               <div className="mb-2">
                 <i className="fas fa-map-marker-alt me-2"></i>
-                123 Tech Street, Digital City, DC 12345
+                123 Innovation Drive, Tech Valley, TV 12345
               </div>
               <div className="mb-2">
                 <i className="fas fa-phone me-2"></i>
@@ -88,7 +88,7 @@ const Footer = () => {
               </div>
               <div className="mb-2">
                 <i className="fas fa-envelope me-2"></i>
-                info@techcorp.com
+                info@freespacetechnologies.com
               </div>
             </div>
           </Col>
@@ -99,7 +99,7 @@ const Footer = () => {
         <Row>
           <Col md={8}>
             <p className="mb-0">
-              &copy; 2024 TechCorp Solutions. All rights reserved.
+              &copy; 2024 Free Space Technologies. All rights reserved.
             </p>
           </Col>
           <Col md={4} className="text-end">
