@@ -84,19 +84,11 @@ const CustomNavbar = () => {
               ) : (
                 <Nav.Item className="ms-3">
                   <Button 
-                    variant="outline-primary" 
-                    size="sm" 
-                    className="me-2"
-                    onClick={() => setShowAuthModal(true)}
-                  >
-                    Sign In
-                  </Button>
-                  <Button 
                     variant="primary" 
                     size="sm"
                     onClick={() => setShowAuthModal(true)}
                   >
-                    Sign Up
+                    Account
                   </Button>
                 </Nav.Item>
               )}
