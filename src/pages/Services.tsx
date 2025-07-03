@@ -6,46 +6,46 @@ import { Link } from 'react-router-dom';
 const Services = () => {
   const services = [
     {
-      title: 'AI Agents & Automation',
-      icon: 'fas fa-robot',
-      description: 'Intelligent AI agents that automate complex business processes and enhance decision-making capabilities.',
-      features: ['Natural Language Processing', 'Intelligent Automation', 'Decision Support Systems', 'Process Optimization'],
-      specialization: 'AI & Machine Learning'
-    },
-    {
-      title: 'IoT Solutions',
-      icon: 'fas fa-wifi',
-      description: 'Connected IoT ecosystems that enable smart monitoring, control, and data-driven insights.',
-      features: ['Smart Sensors', 'Real-time Monitoring', 'Edge Computing', 'Data Analytics'],
-      specialization: 'Internet of Things'
-    },
-    {
-      title: 'Robotics & Automation',
-      icon: 'fas fa-cogs',
-      description: 'Advanced robotics solutions for industrial automation and intelligent manufacturing systems.',
-      features: ['Industrial Robots', 'Autonomous Systems', 'Computer Vision', 'Motion Control'],
-      specialization: 'Robotics Engineering'
-    },
-    {
-      title: 'Machine Learning Models',
-      icon: 'fas fa-brain',
-      description: 'Custom machine learning models for predictive analytics, pattern recognition, and intelligent insights.',
-      features: ['Predictive Analytics', 'Deep Learning', 'Computer Vision', 'Natural Language Processing'],
-      specialization: 'Machine Learning'
-    },
-    {
       title: 'Web Development',
       icon: 'fas fa-code',
-      description: 'Modern web applications with responsive design and cutting-edge technologies.',
-      features: ['React & Modern Frameworks', 'Progressive Web Apps', 'Real-time Applications', 'API Development'],
-      specialization: 'Web Technologies'
+      description: 'Custom web applications and websites built with modern frameworks and best practices.',
+      features: ['Responsive Design', 'Progressive Web Apps', 'E-commerce Solutions', 'Content Management'],
+      specialization: 'Frontend & Backend'
     },
     {
-      title: 'Smart Systems Integration',
-      icon: 'fas fa-network-wired',
-      description: 'Seamless integration of AI, IoT, and robotics into unified intelligent systems.',
-      features: ['System Architecture', 'Cloud Integration', 'Data Pipeline', 'Real-time Processing'],
-      specialization: 'Systems Integration'
+      title: 'Mobile Development',
+      icon: 'fas fa-mobile-alt',
+      description: 'Native and cross-platform mobile applications for iOS and Android platforms.',
+      features: ['Native iOS/Android', 'React Native', 'Flutter Development', 'App Store Deployment'],
+      specialization: 'Mobile Applications'
+    },
+    {
+      title: 'Cloud Solutions',
+      icon: 'fas fa-cloud',
+      description: 'Scalable cloud infrastructure, migration services, and cloud-native application development.',
+      features: ['AWS/Azure/GCP', 'Cloud Migration', 'DevOps Services', 'Microservices Architecture'],
+      specialization: 'Cloud Infrastructure'
+    },
+    {
+      title: 'Digital Transformation',
+      icon: 'fas fa-exchange-alt',
+      description: 'Complete digital transformation services to modernize your business processes and systems.',
+      features: ['Process Automation', 'Legacy System Modernization', 'Workflow Optimization', 'Digital Strategy'],
+      specialization: 'Business Transformation'
+    },
+    {
+      title: 'API Development',
+      icon: 'fas fa-plug',
+      description: 'RESTful APIs, GraphQL, and microservices architecture for seamless system integration.',
+      features: ['REST APIs', 'GraphQL', 'Third-party Integrations', 'API Documentation'],
+      specialization: 'Backend Services'
+    },
+    {
+      title: 'Database Solutions',
+      icon: 'fas fa-database',
+      description: 'Database design, optimization, and management for reliable data storage and retrieval.',
+      features: ['SQL/NoSQL Databases', 'Data Migration', 'Performance Optimization', 'Backup Solutions'],
+      specialization: 'Data Management'
     }
   ];
 
@@ -57,10 +57,10 @@ const Services = () => {
           <Row className="align-items-center min-vh-50">
             <Col lg={8} className="mx-auto text-center">
               <div className="animate-fade-up">
-                <h1 className="display-4 fw-bold mb-4">Our Expertise</h1>
+                <h1 className="display-4 fw-bold mb-4">Our Services</h1>
                 <p className="lead">
-                  Pioneering solutions in AI, IoT, robotics, and machine learning. 
-                  We transform ideas into intelligent systems that shape the future.
+                  Comprehensive technology solutions designed to accelerate your business growth 
+                  and digital transformation journey.
                 </p>
               </div>
             </Col>
@@ -110,9 +110,9 @@ const Services = () => {
         <Container>
           <Row>
             <Col lg={12} className="text-center mb-5">
-              <h2 className="section-title animate-fade-up">Our Technology Stack</h2>
+              <h2 className="section-title animate-fade-up">Technologies We Use</h2>
               <p className="section-subtitle animate-fade-up">
-                Cutting-edge technologies powering our innovative solutions
+                Modern tools and frameworks that power exceptional solutions
               </p>
             </Col>
           </Row>
@@ -120,37 +120,37 @@ const Services = () => {
             <Col lg={3} md={6} className="mb-4">
               <div className="text-center animate-fade-up">
                 <div className="card-icon mx-auto mb-3">
-                  <i className="fas fa-microchip"></i>
+                  <i className="fab fa-react"></i>
                 </div>
-                <h5>AI & ML</h5>
-                <p>TensorFlow, PyTorch, OpenAI, Hugging Face</p>
+                <h5>Frontend</h5>
+                <p>React, Vue.js, Angular, TypeScript</p>
               </div>
             </Col>
             <Col lg={3} md={6} className="mb-4">
               <div className="text-center animate-fade-up" style={{animationDelay: '0.1s'}}>
                 <div className="card-icon mx-auto mb-3">
-                  <i className="fas fa-satellite-dish"></i>
+                  <i className="fas fa-server"></i>
                 </div>
-                <h5>IoT Platforms</h5>
-                <p>Arduino, Raspberry Pi, AWS IoT, Azure IoT</p>
+                <h5>Backend</h5>
+                <p>Node.js, Python, Java, .NET</p>
               </div>
             </Col>
             <Col lg={3} md={6} className="mb-4">
               <div className="text-center animate-fade-up" style={{animationDelay: '0.2s'}}>
                 <div className="card-icon mx-auto mb-3">
-                  <i className="fas fa-wrench"></i>
+                  <i className="fas fa-database"></i>
                 </div>
-                <h5>Robotics</h5>
-                <p>ROS, OpenCV, MATLAB, Simulink</p>
+                <h5>Database</h5>
+                <p>PostgreSQL, MongoDB, MySQL, Redis</p>
               </div>
             </Col>
             <Col lg={3} md={6} className="mb-4">
               <div className="text-center animate-fade-up" style={{animationDelay: '0.3s'}}>
                 <div className="card-icon mx-auto mb-3">
-                  <i className="fas fa-laptop-code"></i>
+                  <i className="fab fa-aws"></i>
                 </div>
-                <h5>Development</h5>
-                <p>React, Node.js, Python, Docker</p>
+                <h5>Cloud</h5>
+                <p>AWS, Azure, Google Cloud, Docker</p>
               </div>
             </Col>
           </Row>
@@ -163,9 +163,9 @@ const Services = () => {
           <Row>
             <Col lg={8} className="mx-auto text-center">
               <div className="animate-fade-up">
-                <h2 className="display-5 fw-bold mb-4">Ready to Innovate?</h2>
+                <h2 className="display-5 fw-bold mb-4">Ready to Start Your Project?</h2>
                 <p className="lead mb-4">
-                  Let's collaborate to build intelligent solutions that push the boundaries of technology.
+                  Let's discuss your requirements and create a solution that drives results.
                 </p>
                 <div className="d-flex gap-3 justify-content-center flex-wrap">
                   <Link to="/contact">
@@ -173,7 +173,7 @@ const Services = () => {
                       className="btn-gradient-secondary"
                       size="lg"
                     >
-                      Start Your Project
+                      Get Quote
                     </Button>
                   </Link>
                   <Button 

@@ -12,8 +12,8 @@ const PrivacyPolicy = () => {
               <div className="animate-fade-up">
                 <h1 className="display-4 fw-bold mb-4">Privacy Policy</h1>
                 <p className="lead">
-                  Your privacy is important to us. This policy outlines how we collect, 
-                  use, and protect your personal information.
+                  Your privacy matters to us. Learn how we collect, use, and protect 
+                  your personal information when you use our services.
                 </p>
               </div>
             </Col>
@@ -27,75 +27,81 @@ const PrivacyPolicy = () => {
             <Col lg={8} className="mx-auto">
               <div className="animate-fade-up">
                 <p className="text-muted mb-4">
-                  <strong>Last updated:</strong> {new Date().toLocaleDateString()}
+                  <strong>Effective Date:</strong> {new Date().toLocaleDateString()}
                 </p>
 
-                <h3>1. Information We Collect</h3>
-                <p>We collect information you provide directly to us, such as when you:</p>
+                <h3>1. Information Collection</h3>
+                <p>We collect information that you provide to us when you:</p>
                 <ul>
-                  <li>Fill out forms on our website</li>
-                  <li>Contact us via email or phone</li>
-                  <li>Subscribe to our newsletters</li>
-                  <li>Apply for job positions</li>
+                  <li>Complete contact forms or request quotes</li>
+                  <li>Subscribe to our newsletters or updates</li>
+                  <li>Apply for job opportunities</li>
+                  <li>Communicate with us via email or phone</li>
+                  <li>Use our website and services</li>
                 </ul>
 
-                <h3>2. How We Use Your Information</h3>
-                <p>We use the information we collect to:</p>
+                <h3>2. Use of Information</h3>
+                <p>We use your information to:</p>
                 <ul>
-                  <li>Provide and improve our services</li>
-                  <li>Respond to your inquiries and requests</li>
-                  <li>Send you marketing communications (with your consent)</li>
-                  <li>Process job applications</li>
-                  <li>Comply with legal obligations</li>
+                  <li>Respond to your inquiries and provide requested services</li>
+                  <li>Send you relevant updates and communications</li>
+                  <li>Improve our website and service offerings</li>
+                  <li>Process job applications and recruitment</li>
+                  <li>Comply with legal requirements</li>
                 </ul>
 
-                <h3>3. Information Sharing</h3>
+                <h3>3. Information Protection</h3>
                 <p>
-                  We do not sell, trade, or otherwise transfer your personal information to third parties 
-                  without your consent, except as described in this policy or as required by law.
+                  We implement industry-standard security measures to protect your personal 
+                  information from unauthorized access, use, or disclosure. This includes 
+                  encryption, secure servers, and regular security audits.
                 </p>
 
-                <h3>4. Data Security</h3>
+                <h3>4. Information Sharing</h3>
                 <p>
-                  We implement appropriate technical and organizational measures to protect your personal 
-                  information against unauthorized access, alteration, disclosure, or destruction.
+                  We do not sell, rent, or share your personal information with third parties 
+                  for marketing purposes. We may share information only when required by law 
+                  or with trusted service providers who assist in our operations.
                 </p>
 
-                <h3>5. Cookies and Tracking</h3>
+                <h3>5. Cookies and Analytics</h3>
                 <p>
-                  Our website uses cookies to enhance your browsing experience. You can control cookie 
-                  preferences through your browser settings.
+                  Our website uses cookies to improve user experience and analytics tools 
+                  to understand how visitors use our site. You can control cookie settings 
+                  through your browser preferences.
                 </p>
 
-                <h3>6. Your Rights</h3>
+                <h3>6. Your Privacy Rights</h3>
                 <p>You have the right to:</p>
                 <ul>
-                  <li>Access your personal information</li>
-                  <li>Correct inaccurate information</li>
+                  <li>Request access to your personal information</li>
+                  <li>Correct any inaccurate information</li>
                   <li>Request deletion of your information</li>
-                  <li>Opt-out of marketing communications</li>
+                  <li>Unsubscribe from marketing communications</li>
+                  <li>Object to certain uses of your information</li>
                 </ul>
 
-                <h3>7. Children's Privacy</h3>
+                <h3>7. Data Retention</h3>
                 <p>
-                  Our services are not intended for children under 13. We do not knowingly collect 
-                  personal information from children under 13.
+                  We retain your personal information only as long as necessary to fulfill 
+                  the purposes outlined in this policy or as required by law.
                 </p>
 
-                <h3>8. Changes to This Policy</h3>
+                <h3>8. Updates to This Policy</h3>
                 <p>
-                  We may update this privacy policy from time to time. We will notify you of any 
-                  significant changes by posting the new policy on our website.
+                  We may update this privacy policy periodically. Any changes will be posted 
+                  on this page with an updated effective date.
                 </p>
 
-                <h3>9. Contact Us</h3>
+                <h3>9. Contact Information</h3>
                 <p>
-                  If you have questions about this privacy policy, please contact us at:
+                  If you have questions about this privacy policy or our data practices, 
+                  please contact us:
                 </p>
                 <p>
-                  <strong>Email:</strong> privacy@techcorp.com<br />
-                  <strong>Phone:</strong> +1 (555) 123-4567<br />
-                  <strong>Address:</strong> 123 Tech Street, Digital City, DC 12345
+                  <strong>Email:</strong> privacy@freespacetec.com<br />
+                  <strong>Phone:</strong> +1 (415) 555-0123<br />
+                  <strong>Address:</strong> 456 Innovation Drive, Tech Hub Plaza, Suite 200, San Francisco, CA 94105
                 </p>
               </div>
             </Col>

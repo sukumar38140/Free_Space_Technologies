@@ -20,41 +20,39 @@ const Career = () => {
   const [selectedJob, setSelectedJob] = useState<JobPost | null>(null);
 
   useEffect(() => {
-    // Load jobs from localStorage
     const savedJobs = localStorage.getItem('careerPosts');
     if (savedJobs) {
       setJobs(JSON.parse(savedJobs));
     } else {
-      // Default AI/Tech focused jobs
       const defaultJobs: JobPost[] = [
         {
           id: '1',
-          title: 'AI/ML Engineer',
-          department: 'Artificial Intelligence',
+          title: 'Senior Full-Stack Developer',
+          department: 'Engineering',
           location: 'Remote',
           type: 'Full-time',
-          description: 'Join our AI team to develop cutting-edge machine learning models and intelligent systems. You will work on projects involving computer vision, NLP, and predictive analytics.',
-          requirements: 'Master\'s degree in Computer Science, AI, or related field. 3+ years of experience with Python, TensorFlow/PyTorch, and ML algorithms. Experience with cloud platforms (AWS/Azure/GCP) preferred.',
+          description: 'Join our development team to build cutting-edge web applications using modern frameworks. Work on challenging projects that impact thousands of users.',
+          requirements: 'Bachelor\'s degree in Computer Science or related field. 5+ years of experience with React, Node.js, and TypeScript. Experience with cloud platforms and agile development.',
           createdAt: new Date().toISOString()
         },
         {
           id: '2',
-          title: 'IoT Systems Developer',
-          department: 'Internet of Things',
+          title: 'UI/UX Designer',
+          department: 'Design',
           location: 'Hybrid',
           type: 'Full-time',
-          description: 'Design and develop IoT solutions that connect physical devices to intelligent systems. Work with sensors, edge computing, and real-time data processing.',
-          requirements: 'Bachelor\'s degree in Engineering or Computer Science. 4+ years of experience with IoT platforms, embedded systems, and wireless protocols. Knowledge of Arduino, Raspberry Pi, and cloud IoT services.',
+          description: 'Create intuitive and engaging user experiences for web and mobile applications. Collaborate with product teams to design solutions that delight users.',
+          requirements: 'Bachelor\'s degree in Design or related field. 3+ years of experience with Figma, Adobe Creative Suite, and user research. Portfolio demonstrating strong design skills.',
           createdAt: new Date().toISOString()
         },
         {
           id: '3',
-          title: 'Robotics Engineer',
-          department: 'Robotics',
+          title: 'Cloud Solutions Architect',
+          department: 'Infrastructure',
           location: 'On-site',
           type: 'Full-time',
-          description: 'Develop autonomous robotics systems for industrial and commercial applications. Work with computer vision, motion planning, and control systems.',
-          requirements: 'Master\'s degree in Robotics, Mechanical Engineering, or related field. 5+ years of experience with ROS, computer vision, and robotics hardware. Strong background in control theory and kinematics.',
+          description: 'Design and implement scalable cloud infrastructure solutions. Lead cloud migration projects and ensure optimal performance and security.',
+          requirements: 'Master\'s degree in Engineering or Computer Science. 6+ years of experience with AWS/Azure/GCP. Strong background in DevOps, containers, and microservices.',
           createdAt: new Date().toISOString()
         }
       ];
@@ -91,10 +89,10 @@ const Career = () => {
           <Row className="align-items-center">
             <Col lg={8} className="mx-auto text-center">
               <div className="animate-fade-up">
-                <h1 className="display-4 fw-bold mb-4">Join Our Innovation Team</h1>
+                <h1 className="display-4 fw-bold mb-4">Join Our Team</h1>
                 <p className="lead">
-                  Shape the future of AI, IoT, and robotics with us. Build intelligent systems 
-                  that transform industries and push the boundaries of technology.
+                  Build the future of technology with us. We're looking for passionate 
+                  individuals who want to make a real impact in the digital world.
                 </p>
               </div>
             </Col>
@@ -107,9 +105,9 @@ const Career = () => {
         <Container>
           <Row>
             <Col lg={12} className="text-center mb-5">
-              <h2 className="section-title animate-fade-up">Why Work With Free Space Technologies?</h2>
+              <h2 className="section-title animate-fade-up">Why Choose Free Space Technologies?</h2>
               <p className="section-subtitle animate-fade-up">
-                Be part of a team that's pioneering the future
+                Join a company that values growth, innovation, and work-life balance
               </p>
             </Col>
           </Row>
@@ -117,33 +115,33 @@ const Career = () => {
             <Col lg={4} md={6} className="mb-4">
               <Card className="custom-card text-center animate-fade-up">
                 <div className="card-icon">
-                  <i className="fas fa-rocket"></i>
+                  <i className="fas fa-graduation-cap"></i>
                 </div>
                 <Card.Body>
-                  <h5>Cutting-Edge Projects</h5>
-                  <p>Work on revolutionary AI, IoT, and robotics projects that shape tomorrow's world.</p>
+                  <h5>Professional Growth</h5>
+                  <p>Continuous learning opportunities, mentorship programs, and skill development initiatives.</p>
                 </Card.Body>
               </Card>
             </Col>
             <Col lg={4} md={6} className="mb-4">
               <Card className="custom-card text-center animate-fade-up" style={{animationDelay: '0.1s'}}>
                 <div className="card-icon">
-                  <i className="fas fa-brain"></i>
+                  <i className="fas fa-balance-scale"></i>
                 </div>
                 <Card.Body>
-                  <h5>Continuous Learning</h5>
-                  <p>Access to latest technologies, research, and professional development opportunities.</p>
+                  <h5>Work-Life Balance</h5>
+                  <p>Flexible working hours, remote work options, and comprehensive health benefits.</p>
                 </Card.Body>
               </Card>
             </Col>
             <Col lg={4} md={6} className="mb-4">
               <Card className="custom-card text-center animate-fade-up" style={{animationDelay: '0.2s'}}>
                 <div className="card-icon">
-                  <i className="fas fa-users"></i>
+                  <i className="fas fa-lightbulb"></i>
                 </div>
                 <Card.Body>
-                  <h5>Expert Team</h5>
-                  <p>Collaborate with leading experts in AI, machine learning, and advanced robotics.</p>
+                  <h5>Innovation Culture</h5>
+                  <p>Work on cutting-edge projects with the latest technologies and creative freedom.</p>
                 </Card.Body>
               </Card>
             </Col>
@@ -156,9 +154,9 @@ const Career = () => {
         <Container>
           <Row>
             <Col lg={12} className="text-center mb-5">
-              <h2 className="section-title animate-fade-up">Open Positions</h2>
+              <h2 className="section-title animate-fade-up">Current Openings</h2>
               <p className="section-subtitle animate-fade-up">
-                Join us in building the future of intelligent technology
+                Discover exciting opportunities to grow your career with us
               </p>
             </Col>
           </Row>
@@ -204,8 +202,8 @@ const Career = () => {
             ) : (
               <Col lg={12} className="text-center">
                 <div className="animate-fade-up">
-                  <h4>No Open Positions</h4>
-                  <p>We don't have any open positions at the moment, but we're always looking for talented individuals. Feel free to send us your resume!</p>
+                  <h4>No Current Openings</h4>
+                  <p>We don't have any open positions right now, but we're always interested in meeting talented professionals. Send us your resume!</p>
                 </div>
               </Col>
             )}
@@ -219,13 +217,13 @@ const Career = () => {
           <Row>
             <Col lg={8} className="mx-auto text-center">
               <div className="animate-fade-up">
-                <h2 className="display-5 fw-bold mb-4">Don't See a Perfect Match?</h2>
+                <h2 className="display-5 fw-bold mb-4">Don't See the Right Fit?</h2>
                 <p className="lead mb-4">
-                  We're always interested in hearing from talented individuals passionate about 
-                  AI, IoT, robotics, and emerging technologies.
+                  We're always looking for talented individuals who share our passion 
+                  for technology and innovation. Send us your resume and let's talk!
                 </p>
                 <Button className="btn-gradient-secondary" size="lg">
-                  Send Your Resume
+                  Submit Your Resume
                 </Button>
               </div>
             </Col>

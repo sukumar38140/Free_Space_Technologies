@@ -22,7 +22,6 @@ const Contact = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Simulate form submission
     console.log('Form submitted:', formData);
     setShowAlert(true);
     setTimeout(() => setShowAlert(false), 5000);
@@ -44,10 +43,10 @@ const Contact = () => {
           <Row>
             <Col lg={8} className="mx-auto text-center">
               <div className="animate-fade-up">
-                <h1 className="display-4 fw-bold mb-4">Get In Touch</h1>
+                <h1 className="display-4 fw-bold mb-4">Contact Us</h1>
                 <p className="lead">
-                  Ready to start your project? Have questions about our services? 
-                  We'd love to hear from you. Let's discuss how we can help bring your vision to life.
+                  Ready to transform your business? Let's discuss your project requirements 
+                  and explore how we can help you achieve your digital transformation goals.
                 </p>
               </div>
             </Col>
@@ -62,12 +61,12 @@ const Contact = () => {
             <Col lg={8} className="mb-5">
               <Card className="custom-card animate-fade-left">
                 <Card.Body>
-                  <h3 className="mb-4">Send Us a Message</h3>
+                  <h3 className="mb-4">Let's Start a Conversation</h3>
                   
                   {showAlert && (
                     <Alert variant="success" className="mb-4">
                       <i className="fas fa-check-circle me-2"></i>
-                      Thank you for your message! We'll get back to you within 24 hours.
+                      Thank you for reaching out! We'll respond to your inquiry within 24 hours.
                     </Alert>
                   )}
                   
@@ -82,7 +81,7 @@ const Contact = () => {
                             value={formData.name}
                             onChange={handleChange}
                             required
-                            placeholder="Enter your full name"
+                            placeholder="Your full name"
                           />
                         </Form.Group>
                       </Col>
@@ -95,7 +94,7 @@ const Contact = () => {
                             value={formData.email}
                             onChange={handleChange}
                             required
-                            placeholder="Enter your email"
+                            placeholder="your.email@company.com"
                           />
                         </Form.Group>
                       </Col>
@@ -104,13 +103,13 @@ const Contact = () => {
                     <Row>
                       <Col md={6}>
                         <Form.Group className="mb-3">
-                          <Form.Label>Company</Form.Label>
+                          <Form.Label>Company Name</Form.Label>
                           <Form.Control
                             type="text"
                             name="company"
                             value={formData.company}
                             onChange={handleChange}
-                            placeholder="Enter your company name"
+                            placeholder="Your company name"
                           />
                         </Form.Group>
                       </Col>
@@ -122,26 +121,26 @@ const Contact = () => {
                             name="phone"
                             value={formData.phone}
                             onChange={handleChange}
-                            placeholder="Enter your phone number"
+                            placeholder="+1 (555) 123-4567"
                           />
                         </Form.Group>
                       </Col>
                     </Row>
                     
                     <Form.Group className="mb-3">
-                      <Form.Label>Subject *</Form.Label>
+                      <Form.Label>Project Type *</Form.Label>
                       <Form.Control
                         type="text"
                         name="subject"
                         value={formData.subject}
                         onChange={handleChange}
                         required
-                        placeholder="What's this about?"
+                        placeholder="Web Development, Mobile App, Cloud Migration, etc."
                       />
                     </Form.Group>
                     
                     <Form.Group className="mb-4">
-                      <Form.Label>Message *</Form.Label>
+                      <Form.Label>Project Details *</Form.Label>
                       <Form.Control
                         as="textarea"
                         rows={5}
@@ -149,7 +148,7 @@ const Contact = () => {
                         value={formData.message}
                         onChange={handleChange}
                         required
-                        placeholder="Tell us about your project or inquiry..."
+                        placeholder="Please describe your project requirements, timeline, and any specific features you need..."
                       />
                     </Form.Group>
                     
@@ -171,9 +170,9 @@ const Contact = () => {
                     </div>
                     <h5>Visit Our Office</h5>
                     <p className="mb-0">
-                      123 Tech Street<br />
-                      Digital City, DC 12345<br />
-                      United States
+                      456 Innovation Drive<br />
+                      Tech Hub Plaza, Suite 200<br />
+                      San Francisco, CA 94105
                     </p>
                   </Card.Body>
                 </Card>
@@ -185,9 +184,9 @@ const Contact = () => {
                     </div>
                     <h5>Call Us</h5>
                     <p className="mb-2">
-                      <strong>Main:</strong> +1 (555) 123-4567<br />
-                      <strong>Sales:</strong> +1 (555) 123-4568<br />
-                      <strong>Support:</strong> +1 (555) 123-4569
+                      <strong>Main:</strong> +1 (415) 555-0123<br />
+                      <strong>Sales:</strong> +1 (415) 555-0124<br />
+                      <strong>Support:</strong> +1 (415) 555-0125
                     </p>
                   </Card.Body>
                 </Card>
@@ -199,9 +198,9 @@ const Contact = () => {
                     </div>
                     <h5>Email Us</h5>
                     <p className="mb-0">
-                      <strong>General:</strong> info@techcorp.com<br />
-                      <strong>Sales:</strong> sales@techcorp.com<br />
-                      <strong>Support:</strong> support@techcorp.com
+                      <strong>General:</strong> hello@freespacetec.com<br />
+                      <strong>Sales:</strong> sales@freespacetec.com<br />
+                      <strong>Support:</strong> support@freespacetec.com
                     </p>
                   </Card.Body>
                 </Card>
@@ -213,8 +212,8 @@ const Contact = () => {
                     </div>
                     <h5>Business Hours</h5>
                     <p className="mb-0">
-                      <strong>Mon - Fri:</strong> 9:00 AM - 6:00 PM<br />
-                      <strong>Saturday:</strong> 10:00 AM - 4:00 PM<br />
+                      <strong>Mon - Fri:</strong> 8:00 AM - 7:00 PM<br />
+                      <strong>Saturday:</strong> 9:00 AM - 5:00 PM<br />
                       <strong>Sunday:</strong> Closed
                     </p>
                   </Card.Body>
@@ -230,9 +229,9 @@ const Contact = () => {
         <Container>
           <Row>
             <Col lg={12} className="text-center mb-5">
-              <h2 className="section-title animate-fade-up">Find Us</h2>
+              <h2 className="section-title animate-fade-up">Our Location</h2>
               <p className="section-subtitle animate-fade-up">
-                Located in the heart of the tech district
+                Located in the heart of San Francisco's tech district
               </p>
             </Col>
           </Row>
@@ -245,8 +244,8 @@ const Contact = () => {
                 >
                   <div className="text-center">
                     <i className="fas fa-map-marked-alt fa-3x text-primary mb-3"></i>
-                    <h4>Interactive Map</h4>
-                    <p className="text-muted">Map integration would go here</p>
+                    <h4>Find Us Here</h4>
+                    <p className="text-muted">Easy access via public transportation and parking available</p>
                   </div>
                 </div>
               </div>
