@@ -1,10 +1,10 @@
-
 import React, { useState, useEffect } from 'react';
 import { Container, Row, Col, Card, Form, Button, Table, Modal, Alert, Nav } from 'react-bootstrap';
 import { useAdminAuth } from '../contexts/AdminAuthContext';
 import AdminLogin from '../components/AdminLogin';
 import AdminManagement from '../components/AdminManagement';
 import ApplicationManagement from '../components/ApplicationManagement';
+import PageContentManagement from '../components/PageContentManagement';
 
 interface JobPost {
   id: string;
@@ -216,6 +216,16 @@ const Admin = () => {
                 Learn More Content
               </Nav.Link>
             </Nav.Item>
+            <Nav.Item>
+              <Nav.Link 
+                active={activeTab === 'pages'} 
+                onClick={() => setActiveTab('pages')}
+                style={{ cursor: 'pointer' }}
+              >
+                <i className="fas fa-file-code me-2"></i>
+                Page Content
+              </Nav.Link>
+            </Nav.Item>
             {isRootAdmin && (
               <Nav.Item>
                 <Nav.Link 
@@ -360,6 +370,18 @@ const Admin = () => {
                   </Card>
                 </Col>
               </Row>
+            </>
+          )}
+
+          {activeTab === 'pages' && (
+            <>
+              <Row className="mb-4">
+                <Col lg={12}>
+                  <h3>Page Content Management</h3>
+                  <p className="text-muted">Manage the content of different pages on your website</p>
+                </Col>
+              </Row>
+              <PageContentManagement />
             </>
           )}
 
