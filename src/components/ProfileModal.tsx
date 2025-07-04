@@ -1,7 +1,7 @@
-
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { Modal, Form, Button, Nav, Alert, Row, Col } from 'react-bootstrap';
 import { useAuth } from '../contexts/AuthContext';
+import { Plus } from 'lucide-react';
 
 interface ProfileModalProps {
   show: boolean;
@@ -23,6 +23,7 @@ const ProfileModal: React.FC<ProfileModalProps> = ({ show, onHide }) => {
   const [message, setMessage] = useState('');
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
+  const fileInputRef = useRef<HTMLInputElement>(null);
 
   const handleProfileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setProfileData({
@@ -40,6 +41,44 @@ const ProfileModal: React.FC<ProfileModalProps> = ({ show, onHide }) => {
     });
     setMessage('');
     setError('');
+  };
+
+  const handleImageSelect = () => {
+    fileInputRef.current?.click();
+  };
+
+  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (file) {
+      // Check if the file is an image
+      if (!file.type.startsWith('image/')) {
+        setError('Please select only image files (PNG, JPG, JPEG, GIF, etc.)');
+        return;
+      }
+
+      // Check file size (optional - limit to 5MB)
+      if (file.size > 5 * 1024 * 1024) {
+        setError('Image size should be less than 5MB');
+        return;
+      }
+
+      // Create a temporary URL for the image
+      const imageUrl = URL.createObjectURL(file);
+      setProfileData({
+        ...profileData,
+        profileImage: imageUrl
+      });
+      setError('');
+    }
+  };
+
+  const getInitials = (name: string) => {
+    return name
+      .split(' ')
+      .map(word => word.charAt(0))
+      .join('')
+      .toUpperCase()
+      .slice(0, 2);
   };
 
   const handleProfileSubmit = async (e: React.FormEvent) => {
@@ -140,6 +179,67 @@ const ProfileModal: React.FC<ProfileModalProps> = ({ show, onHide }) => {
         {activeTab === 'profile' ? (
           <Form onSubmit={handleProfileSubmit}>
             <Row>
+              <Col md={12} className="text-center mb-4">
+                <div className="position-relative d-inline-block">
+                  <div 
+                    className="profile-avatar d-flex align-items-center justify-content-center position-relative"
+                    style={{
+                      width: '100px',
+                      height: '100px',
+                      borderRadius: '50%',
+                      backgroundColor: '#007bff',
+                      color: 'white',
+                      fontWeight: 'bold',
+                      fontSize: '24px',
+                      border: '3px solid #e9ecef'
+                    }}
+                  >
+                    {profileData.profileImage ? (
+                      <img 
+                        src={profileData.profileImage} 
+                        alt="Profile"
+                        style={{
+                          width: '100%',
+                          height: '100%',
+                          borderRadius: '50%',
+                          objectFit: 'cover'
+                        }}
+                      />
+                    ) : (
+                      getInitials(profileData.name || 'U')
+                    )}
+                  </div>
+                  <button
+                    type="button"
+                    onClick={handleImageSelect}
+                    className="btn btn-primary btn-sm position-absolute"
+                    style={{
+                      bottom: '5px',
+                      right: '5px',
+                      borderRadius: '50%',
+                      width: '30px',
+                      height: '30px',
+                      padding: '0',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center'
+                    }}
+                  >
+                    <Plus size={16} />
+                  </button>
+                </div>
+                <input
+                  ref={fileInputRef}
+                  type="file"
+                  accept="image/*"
+                  onChange={handleFileChange}
+                  style={{ display: 'none' }}
+                />
+                <p className="mt-2 text-muted small">Click the + button to upload a profile picture</p>
+              </Col>
+            </Row>
+
+            <Row>
               <Col md={12}>
                 <Form.Group className="mb-3">
                   <Form.Label>Full Name</Form.Label>
@@ -164,7 +264,7 @@ const ProfileModal: React.FC<ProfileModalProps> = ({ show, onHide }) => {
                     name="profileImage"
                     value={profileData.profileImage}
                     onChange={handleProfileChange}
-                    placeholder="Enter image URL"
+                    placeholder="Enter image URL or upload using the + button above"
                   />
                 </Form.Group>
               </Col>
