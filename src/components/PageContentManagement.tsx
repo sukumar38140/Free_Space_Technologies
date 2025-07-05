@@ -1,10 +1,46 @@
-
 import React, { useState, useEffect } from 'react';
 import { Container, Row, Col, Card, Form, Button, Alert, Nav, Modal } from 'react-bootstrap';
 
 interface PageContent {
   title: string;
   description: string;
+  subtitle?: string;
+  
+  heroTitle?: string;
+  heroSubtitle?: string;
+  heroDescription?: string;
+  learnMoreText?: string;
+  servicesTitle?: string;
+  servicesDescription?: string;
+  whyChooseTitle?: string;
+  whyChooseDescription?: string;
+  readyToStartTitle?: string;
+  readyToStartDescription?: string;
+  
+  journeyTitle?: string;
+  journeySubtitle?: string;
+  journeyDescription?: string;
+  valuesTitle?: string;
+  valuesSubtitle?: string;
+  teamTitle?: string;
+  teamSubtitle?: string;
+  statsTitle?: string;
+  
+  expertiseTitle?: string;
+  expertiseDescription?: string;
+  processTitle?: string;
+  processDescription?: string;
+  
+  careerHeroTitle?: string;
+  careerHeroDescription?: string;
+  joinTeamTitle?: string;
+  joinTeamDescription?: string;
+  
+  contactTitle?: string;
+  contactDescription?: string;
+  getInTouchTitle?: string;
+  locationTitle?: string;
+  
   content: string;
 }
 
@@ -30,13 +66,64 @@ const PageContentManagement = () => {
   const [alertMessage, setAlertMessage] = useState('');
   const [showTeamModal, setShowTeamModal] = useState(false);
   const [editingMember, setEditingMember] = useState<TeamMember | null>(null);
+  const [isEditing, setIsEditing] = useState(false);
   
   const [pageContent, setPageContent] = useState<PageContentData>({
-    home: { title: '', description: '', content: '' },
-    about: { title: '', description: '', content: '' },
-    services: { title: '', description: '', content: '' },
-    career: { title: '', description: '', content: '' },
-    contact: { title: '', description: '', content: '' }
+    home: {
+      title: 'Free Space Technologies',
+      description: 'Leading technology solutions for modern businesses',
+      heroTitle: 'Transform Your Business with Cutting-Edge Technology',
+      heroSubtitle: 'Innovative Solutions for the Digital Age',
+      heroDescription: 'We empower businesses to thrive in the digital landscape through custom software development, cloud solutions, and strategic technology consulting.',
+      learnMoreText: 'Discover Our Story',
+      servicesTitle: 'Our Core Services',
+      servicesDescription: 'Comprehensive technology solutions tailored to your business needs',
+      whyChooseTitle: 'Why Choose Free Space Technologies?',
+      whyChooseDescription: 'We combine technical expertise with business acumen to deliver solutions that drive real results',
+      readyToStartTitle: 'Ready to Start Your Digital Transformation?',
+      readyToStartDescription: 'Let\'s discuss how we can help accelerate your business growth through technology.',
+      content: ''
+    },
+    about: {
+      title: 'About Free Space Technologies',
+      description: 'We are a dynamic technology company committed to helping businesses thrive in the digital age through innovative solutions and expert guidance.',
+      journeyTitle: 'Our Journey',
+      journeySubtitle: 'Building tomorrow\'s solutions today',
+      journeyDescription: 'Established in 2018, Free Space Technologies emerged from a simple vision: to bridge the gap between complex technology and practical business solutions.',
+      valuesTitle: 'Our Core Values',
+      valuesSubtitle: 'The principles that drive our success',
+      teamTitle: 'Meet Our Leadership',
+      teamSubtitle: 'The experienced professionals guiding our vision',
+      statsTitle: 'Our Impact',
+      content: ''
+    },
+    services: {
+      title: 'Our Services',
+      description: 'Comprehensive technology solutions designed to accelerate your business growth',
+      expertiseTitle: 'Our Expertise',
+      expertiseDescription: 'We specialize in delivering cutting-edge technology solutions across multiple domains',
+      processTitle: 'Our Process',
+      processDescription: 'A proven methodology that ensures successful project delivery',
+      content: ''
+    },
+    career: {
+      title: 'Join Our Team',
+      description: 'Build your career with Free Space Technologies',
+      careerHeroTitle: 'Shape the Future of Technology',
+      careerHeroDescription: 'Join our dynamic team of innovators and help us build solutions that make a difference.',
+      joinTeamTitle: 'Why Join Free Space Technologies?',
+      joinTeamDescription: 'We offer more than just a job – we provide a platform for growth, innovation, and meaningful impact.',
+      content: ''
+    },
+    contact: {
+      title: 'Contact Us',
+      description: 'Get in touch with our team of experts',
+      contactTitle: 'Let\'s Start a Conversation',
+      contactDescription: 'Ready to transform your business? We\'d love to hear about your project and discuss how we can help.',
+      getInTouchTitle: 'Get in Touch',
+      locationTitle: 'Our Location',
+      content: ''
+    }
   });
 
   const [teamMembers, setTeamMembers] = useState<TeamData>({
@@ -85,7 +172,11 @@ const PageContentManagement = () => {
   const loadPageContent = () => {
     const savedContent = localStorage.getItem('pageContent');
     if (savedContent) {
-      setPageContent(JSON.parse(savedContent));
+      const parsed = JSON.parse(savedContent);
+      setPageContent(prev => ({
+        ...prev,
+        ...parsed
+      }));
     }
   };
 
@@ -101,6 +192,7 @@ const PageContentManagement = () => {
     localStorage.setItem('pageContent', JSON.stringify(updatedContent));
     setAlertMessage(`${page.charAt(0).toUpperCase() + page.slice(1)} page content saved successfully!`);
     setShowAlert(true);
+    setIsEditing(false);
     setTimeout(() => setShowAlert(false), 3000);
   };
 
@@ -162,6 +254,517 @@ const PageContentManagement = () => {
     setMemberForm({ name: '', position: '', image: '', bio: '' });
   };
 
+  const toggleEditing = () => {
+    setIsEditing(!isEditing);
+  };
+
+  const renderHomePageForm = () => (
+    <Form>
+      <Row>
+        <Col md={6}>
+          <Form.Group className="mb-3">
+            <Form.Label>Main Title</Form.Label>
+            <Form.Control
+              type="text"
+              value={pageContent.home?.title || ''}
+              onChange={(e) => handleContentChange('home', 'title', e.target.value)}
+              disabled={!isEditing}
+            />
+          </Form.Group>
+        </Col>
+        <Col md={6}>
+          <Form.Group className="mb-3">
+            <Form.Label>Main Description</Form.Label>
+            <Form.Control
+              type="text"
+              value={pageContent.home?.description || ''}
+              onChange={(e) => handleContentChange('home', 'description', e.target.value)}
+              disabled={!isEditing}
+            />
+          </Form.Group>
+        </Col>
+      </Row>
+
+      <Row>
+        <Col md={6}>
+          <Form.Group className="mb-3">
+            <Form.Label>Hero Title</Form.Label>
+            <Form.Control
+              type="text"
+              value={pageContent.home?.heroTitle || ''}
+              onChange={(e) => handleContentChange('home', 'heroTitle', e.target.value)}
+              disabled={!isEditing}
+            />
+          </Form.Group>
+        </Col>
+        <Col md={6}>
+          <Form.Group className="mb-3">
+            <Form.Label>Hero Subtitle</Form.Label>
+            <Form.Control
+              type="text"
+              value={pageContent.home?.heroSubtitle || ''}
+              onChange={(e) => handleContentChange('home', 'heroSubtitle', e.target.value)}
+              disabled={!isEditing}
+            />
+          </Form.Group>
+        </Col>
+      </Row>
+
+      <Form.Group className="mb-3">
+        <Form.Label>Hero Description</Form.Label>
+        <Form.Control
+          as="textarea"
+          rows={3}
+          value={pageContent.home?.heroDescription || ''}
+          onChange={(e) => handleContentChange('home', 'heroDescription', e.target.value)}
+          disabled={!isEditing}
+        />
+      </Form.Group>
+
+      <Row>
+        <Col md={6}>
+          <Form.Group className="mb-3">
+            <Form.Label>Learn More Button Text</Form.Label>
+            <Form.Control
+              type="text"
+              value={pageContent.home?.learnMoreText || ''}
+              onChange={(e) => handleContentChange('home', 'learnMoreText', e.target.value)}
+              disabled={!isEditing}
+            />
+          </Form.Group>
+        </Col>
+        <Col md={6}>
+          <Form.Group className="mb-3">
+            <Form.Label>Services Section Title</Form.Label>
+            <Form.Control
+              type="text"
+              value={pageContent.home?.servicesTitle || ''}
+              onChange={(e) => handleContentChange('home', 'servicesTitle', e.target.value)}
+              disabled={!isEditing}
+            />
+          </Form.Group>
+        </Col>
+      </Row>
+
+      <Form.Group className="mb-3">
+        <Form.Label>Services Section Description</Form.Label>
+        <Form.Control
+          as="textarea"
+          rows={2}
+          value={pageContent.home?.servicesDescription || ''}
+          onChange={(e) => handleContentChange('home', 'servicesDescription', e.target.value)}
+          disabled={!isEditing}
+        />
+      </Form.Group>
+
+      <Row>
+        <Col md={6}>
+          <Form.Group className="mb-3">
+            <Form.Label>Why Choose Us Title</Form.Label>
+            <Form.Control
+              type="text"
+              value={pageContent.home?.whyChooseTitle || ''}
+              onChange={(e) => handleContentChange('home', 'whyChooseTitle', e.target.value)}
+              disabled={!isEditing}
+            />
+          </Form.Group>
+        </Col>
+        <Col md={6}>
+          <Form.Group className="mb-3">
+            <Form.Label>Ready to Start Title</Form.Label>
+            <Form.Control
+              type="text"
+              value={pageContent.home?.readyToStartTitle || ''}
+              onChange={(e) => handleContentChange('home', 'readyToStartTitle', e.target.value)}
+              disabled={!isEditing}
+            />
+          </Form.Group>
+        </Col>
+      </Row>
+
+      <Form.Group className="mb-3">
+        <Form.Label>Why Choose Us Description</Form.Label>
+        <Form.Control
+          as="textarea"
+          rows={2}
+          value={pageContent.home?.whyChooseDescription || ''}
+          onChange={(e) => handleContentChange('home', 'whyChooseDescription', e.target.value)}
+          disabled={!isEditing}
+        />
+      </Form.Group>
+
+      <Form.Group className="mb-3">
+        <Form.Label>Ready to Start Description</Form.Label>
+        <Form.Control
+          as="textarea"
+          rows={2}
+          value={pageContent.home?.readyToStartDescription || ''}
+          onChange={(e) => handleContentChange('home', 'readyToStartDescription', e.target.value)}
+          disabled={!isEditing}
+        />
+      </Form.Group>
+    </Form>
+  );
+
+  const renderAboutPageForm = () => (
+    <Form>
+      <Row>
+        <Col md={6}>
+          <Form.Group className="mb-3">
+            <Form.Label>Page Title</Form.Label>
+            <Form.Control
+              type="text"
+              value={pageContent.about?.title || ''}
+              onChange={(e) => handleContentChange('about', 'title', e.target.value)}
+              disabled={!isEditing}
+            />
+          </Form.Group>
+        </Col>
+        <Col md={6}>
+          <Form.Group className="mb-3">
+            <Form.Label>Page Description</Form.Label>
+            <Form.Control
+              type="text"
+              value={pageContent.about?.description || ''}
+              onChange={(e) => handleContentChange('about', 'description', e.target.value)}
+              disabled={!isEditing}
+            />
+          </Form.Group>
+        </Col>
+      </Row>
+
+      <Row>
+        <Col md={6}>
+          <Form.Group className="mb-3">
+            <Form.Label>Journey Section Title</Form.Label>
+            <Form.Control
+              type="text"
+              value={pageContent.about?.journeyTitle || ''}
+              onChange={(e) => handleContentChange('about', 'journeyTitle', e.target.value)}
+              disabled={!isEditing}
+            />
+          </Form.Group>
+        </Col>
+        <Col md={6}>
+          <Form.Group className="mb-3">
+            <Form.Label>Journey Section Subtitle</Form.Label>
+            <Form.Control
+              type="text"
+              value={pageContent.about?.journeySubtitle || ''}
+              onChange={(e) => handleContentChange('about', 'journeySubtitle', e.target.value)}
+              disabled={!isEditing}
+            />
+          </Form.Group>
+        </Col>
+      </Row>
+
+      <Form.Group className="mb-3">
+        <Form.Label>Journey Description</Form.Label>
+        <Form.Control
+          as="textarea"
+          rows={4}
+          value={pageContent.about?.journeyDescription || ''}
+          onChange={(e) => handleContentChange('about', 'journeyDescription', e.target.value)}
+          disabled={!isEditing}
+        />
+      </Form.Group>
+
+      <Row>
+        <Col md={6}>
+          <Form.Group className="mb-3">
+            <Form.Label>Values Section Title</Form.Label>
+            <Form.Control
+              type="text"
+              value={pageContent.about?.valuesTitle || ''}
+              onChange={(e) => handleContentChange('about', 'valuesTitle', e.target.value)}
+              disabled={!isEditing}
+            />
+          </Form.Group>
+        </Col>
+        <Col md={6}>
+          <Form.Group className="mb-3">
+            <Form.Label>Values Section Subtitle</Form.Label>
+            <Form.Control
+              type="text"
+              value={pageContent.about?.valuesSubtitle || ''}
+              onChange={(e) => handleContentChange('about', 'valuesSubtitle', e.target.value)}
+              disabled={!isEditing}
+            />
+          </Form.Group>
+        </Col>
+      </Row>
+
+      <Row>
+        <Col md={6}>
+          <Form.Group className="mb-3">
+            <Form.Label>Team Section Title</Form.Label>
+            <Form.Control
+              type="text"
+              value={pageContent.about?.teamTitle || ''}
+              onChange={(e) => handleContentChange('about', 'teamTitle', e.target.value)}
+              disabled={!isEditing}
+            />
+          </Form.Group>
+        </Col>
+        <Col md={6}>
+          <Form.Group className="mb-3">
+            <Form.Label>Team Section Subtitle</Form.Label>
+            <Form.Control
+              type="text"
+              value={pageContent.about?.teamSubtitle || ''}
+              onChange={(e) => handleContentChange('about', 'teamSubtitle', e.target.value)}
+              disabled={!isEditing}
+            />
+          </Form.Group>
+        </Col>
+      </Row>
+    </Form>
+  );
+
+  const renderServicesPageForm = () => (
+    <Form>
+      <Row>
+        <Col md={6}>
+          <Form.Group className="mb-3">
+            <Form.Label>Page Title</Form.Label>
+            <Form.Control
+              type="text"
+              value={pageContent.services?.title || ''}
+              onChange={(e) => handleContentChange('services', 'title', e.target.value)}
+              disabled={!isEditing}
+            />
+          </Form.Group>
+        </Col>
+        <Col md={6}>
+          <Form.Group className="mb-3">
+            <Form.Label>Page Description</Form.Label>
+            <Form.Control
+              type="text"
+              value={pageContent.services?.description || ''}
+              onChange={(e) => handleContentChange('services', 'description', e.target.value)}
+              disabled={!isEditing}
+            />
+          </Form.Group>
+        </Col>
+      </Row>
+
+      <Row>
+        <Col md={6}>
+          <Form.Group className="mb-3">
+            <Form.Label>Expertise Section Title</Form.Label>
+            <Form.Control
+              type="text"
+              value={pageContent.services?.expertiseTitle || ''}
+              onChange={(e) => handleContentChange('services', 'expertiseTitle', e.target.value)}
+              disabled={!isEditing}
+            />
+          </Form.Group>
+        </Col>
+        <Col md={6}>
+          <Form.Group className="mb-3">
+            <Form.Label>Process Section Title</Form.Label>
+            <Form.Control
+              type="text"
+              value={pageContent.services?.processTitle || ''}
+              onChange={(e) => handleContentChange('services', 'processTitle', e.target.value)}
+              disabled={!isEditing}
+            />
+          </Form.Group>
+        </Col>
+      </Row>
+
+      <Form.Group className="mb-3">
+        <Form.Label>Expertise Description</Form.Label>
+        <Form.Control
+          as="textarea"
+          rows={3}
+          value={pageContent.services?.expertiseDescription || ''}
+          onChange={(e) => handleContentChange('services', 'expertiseDescription', e.target.value)}
+          disabled={!isEditing}
+        />
+      </Form.Group>
+
+      <Form.Group className="mb-3">
+        <Form.Label>Process Description</Form.Label>
+        <Form.Control
+          as="textarea"
+          rows={3}
+          value={pageContent.services?.processDescription || ''}
+          onChange={(e) => handleContentChange('services', 'processDescription', e.target.value)}
+          disabled={!isEditing}
+        />
+      </Form.Group>
+    </Form>
+  );
+
+  const renderCareerPageForm = () => (
+    <Form>
+      <Row>
+        <Col md={6}>
+          <Form.Group className="mb-3">
+            <Form.Label>Page Title</Form.Label>
+            <Form.Control
+              type="text"
+              value={pageContent.career?.title || ''}
+              onChange={(e) => handleContentChange('career', 'title', e.target.value)}
+              disabled={!isEditing}
+            />
+          </Form.Group>
+        </Col>
+        <Col md={6}>
+          <Form.Group className="mb-3">
+            <Form.Label>Page Description</Form.Label>
+            <Form.Control
+              type="text"
+              value={pageContent.career?.description || ''}
+              onChange={(e) => handleContentChange('career', 'description', e.target.value)}
+              disabled={!isEditing}
+            />
+          </Form.Group>
+        </Col>
+      </Row>
+
+      <Row>
+        <Col md={6}>
+          <Form.Group className="mb-3">
+            <Form.Label>Hero Title</Form.Label>
+            <Form.Control
+              type="text"
+              value={pageContent.career?.careerHeroTitle || ''}
+              onChange={(e) => handleContentChange('career', 'careerHeroTitle', e.target.value)}
+              disabled={!isEditing}
+            />
+          </Form.Group>
+        </Col>
+        <Col md={6}>
+          <Form.Group className="mb-3">
+            <Form.Label>Join Team Title</Form.Label>
+            <Form.Control
+              type="text"
+              value={pageContent.career?.joinTeamTitle || ''}
+              onChange={(e) => handleContentChange('career', 'joinTeamTitle', e.target.value)}
+              disabled={!isEditing}
+            />
+          </Form.Group>
+        </Col>
+      </Row>
+
+      <Form.Group className="mb-3">
+        <Form.Label>Hero Description</Form.Label>
+        <Form.Control
+          as="textarea"
+          rows={3}
+          value={pageContent.career?.careerHeroDescription || ''}
+          onChange={(e) => handleContentChange('career', 'careerHeroDescription', e.target.value)}
+          disabled={!isEditing}
+        />
+      </Form.Group>
+
+      <Form.Group className="mb-3">
+        <Form.Label>Join Team Description</Form.Label>
+        <Form.Control
+          as="textarea"
+          rows={3}
+          value={pageContent.career?.joinTeamDescription || ''}
+          onChange={(e) => handleContentChange('career', 'joinTeamDescription', e.target.value)}
+          disabled={!isEditing}
+        />
+      </Form.Group>
+    </Form>
+  );
+
+  const renderContactPageForm = () => (
+    <Form>
+      <Row>
+        <Col md={6}>
+          <Form.Group className="mb-3">
+            <Form.Label>Page Title</Form.Label>
+            <Form.Control
+              type="text"
+              value={pageContent.contact?.title || ''}
+              onChange={(e) => handleContentChange('contact', 'title', e.target.value)}
+              disabled={!isEditing}
+            />
+          </Form.Group>
+        </Col>
+        <Col md={6}>
+          <Form.Group className="mb-3">
+            <Form.Label>Page Description</Form.Label>
+            <Form.Control
+              type="text"
+              value={pageContent.contact?.description || ''}
+              onChange={(e) => handleContentChange('contact', 'description', e.target.value)}
+              disabled={!isEditing}
+            />
+          </Form.Group>
+        </Col>
+      </Row>
+
+      <Row>
+        <Col md={6}>
+          <Form.Group className="mb-3">
+            <Form.Label>Contact Section Title</Form.Label>
+            <Form.Control
+              type="text"
+              value={pageContent.contact?.contactTitle || ''}
+              onChange={(e) => handleContentChange('contact', 'contactTitle', e.target.value)}
+              disabled={!isEditing}
+            />
+          </Form.Group>
+        </Col>
+        <Col md={6}>
+          <Form.Group className="mb-3">
+            <Form.Label>Get In Touch Title</Form.Label>
+            <Form.Control
+              type="text"
+              value={pageContent.contact?.getInTouchTitle || ''}
+              onChange={(e) => handleContentChange('contact', 'getInTouchTitle', e.target.value)}
+              disabled={!isEditing}
+            />
+          </Form.Group>
+        </Col>
+      </Row>
+
+      <Form.Group className="mb-3">
+        <Form.Label>Contact Description</Form.Label>
+        <Form.Control
+          as="textarea"
+          rows={3}
+          value={pageContent.contact?.contactDescription || ''}
+          onChange={(e) => handleContentChange('contact', 'contactDescription', e.target.value)}
+          disabled={!isEditing}
+        />
+      </Form.Group>
+
+      <Form.Group className="mb-3">
+        <Form.Label>Location Title</Form.Label>
+        <Form.Control
+          type="text"
+          value={pageContent.contact?.locationTitle || ''}
+          onChange={(e) => handleContentChange('contact', 'locationTitle', e.target.value)}
+          disabled={!isEditing}
+        />
+      </Form.Group>
+    </Form>
+  );
+
+  const renderPageForm = () => {
+    switch (activeTab) {
+      case 'home':
+        return renderHomePageForm();
+      case 'about':
+        return renderAboutPageForm();
+      case 'services':
+        return renderServicesPageForm();
+      case 'career':
+        return renderCareerPageForm();
+      case 'contact':
+        return renderContactPageForm();
+      default:
+        return null;
+    }
+  };
+
   const pages = [
     { key: 'home', label: 'Home Page' },
     { key: 'about', label: 'About Page' },
@@ -184,7 +787,10 @@ const PageContentManagement = () => {
           <Nav.Item key={page.key}>
             <Nav.Link 
               active={activeTab === page.key}
-              onClick={() => setActiveTab(page.key)}
+              onClick={() => {
+                setActiveTab(page.key);
+                setIsEditing(false);
+              }}
               style={{ cursor: 'pointer' }}
             >
               {page.label}
@@ -194,7 +800,10 @@ const PageContentManagement = () => {
         <Nav.Item>
           <Nav.Link 
             active={activeTab === 'team'}
-            onClick={() => setActiveTab('team')}
+            onClick={() => {
+              setActiveTab('team');
+              setIsEditing(false);
+            }}
             style={{ cursor: 'pointer' }}
           >
             Team Members
@@ -206,57 +815,43 @@ const PageContentManagement = () => {
         <Row>
           <Col lg={12}>
             <Card className="admin-card">
-              <Card.Header>
+              <Card.Header className="d-flex justify-content-between align-items-center">
                 <h5 className="mb-0">
                   <i className="fas fa-edit me-2"></i>
-                  Edit {pages.find(p => p.key === activeTab)?.label} Content
+                  {pages.find(p => p.key === activeTab)?.label} Content
                 </h5>
+                <div>
+                  {!isEditing ? (
+                    <Button 
+                      variant="outline-primary"
+                      onClick={toggleEditing}
+                    >
+                      <i className="fas fa-edit me-2"></i>
+                      Edit
+                    </Button>
+                  ) : (
+                    <>
+                      <Button 
+                        variant="outline-secondary"
+                        className="me-2"
+                        onClick={toggleEditing}
+                      >
+                        <i className="fas fa-times me-2"></i>
+                        Cancel
+                      </Button>
+                      <Button 
+                        className="btn-gradient-primary"
+                        onClick={() => savePageContent(activeTab)}
+                      >
+                        <i className="fas fa-save me-2"></i>
+                        Save Changes
+                      </Button>
+                    </>
+                  )}
+                </div>
               </Card.Header>
               <Card.Body>
-                <Form>
-                  <Form.Group className="mb-3">
-                    <Form.Label>Page Title</Form.Label>
-                    <Form.Control
-                      type="text"
-                      value={pageContent[activeTab]?.title || ''}
-                      onChange={(e) => handleContentChange(activeTab, 'title', e.target.value)}
-                      placeholder="Enter page title..."
-                    />
-                  </Form.Group>
-
-                  <Form.Group className="mb-3">
-                    <Form.Label>Page Description</Form.Label>
-                    <Form.Control
-                      as="textarea"
-                      rows={3}
-                      value={pageContent[activeTab]?.description || ''}
-                      onChange={(e) => handleContentChange(activeTab, 'description', e.target.value)}
-                      placeholder="Enter page description..."
-                    />
-                  </Form.Group>
-
-                  <Form.Group className="mb-3">
-                    <Form.Label>Main Content</Form.Label>
-                    <Form.Control
-                      as="textarea"
-                      rows={10}
-                      value={pageContent[activeTab]?.content || ''}
-                      onChange={(e) => handleContentChange(activeTab, 'content', e.target.value)}
-                      placeholder="Enter main page content..."
-                    />
-                    <Form.Text className="text-muted">
-                      This content will be displayed as the main body of the page.
-                    </Form.Text>
-                  </Form.Group>
-
-                  <Button 
-                    className="btn-gradient-primary"
-                    onClick={() => savePageContent(activeTab)}
-                  >
-                    <i className="fas fa-save me-2"></i>
-                    Save {pages.find(p => p.key === activeTab)?.label} Content
-                  </Button>
-                </Form>
+                {renderPageForm()}
               </Card.Body>
             </Card>
           </Col>
