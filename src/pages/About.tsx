@@ -1,61 +1,34 @@
 
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { Container, Row, Col, Card } from 'react-bootstrap';
 
-interface TeamMember {
-  id: string;
-  name: string;
-  position: string;
-  image: string;
-  bio: string;
-}
-
 const About = () => {
-  const [team, setTeam] = useState<TeamMember[]>([]);
-
-  // Default team data as fallback
-  const defaultTeam = [
+  const team = [
     {
-      id: 'ceo',
       name: 'Alex Thompson',
       position: 'CEO & Founder',
       image: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=300&h=300&fit=crop&crop=face',
       bio: 'Visionary leader with 12+ years in technology consulting and business development.'
     },
     {
-      id: 'cto',
       name: 'Maria Rodriguez',
       position: 'CTO',
       image: 'https://images.unsplash.com/photo-1494790108755-2616b612b786?w=300&h=300&fit=crop&crop=face',
       bio: 'Technical expert specializing in scalable architecture and emerging technologies.'
     },
     {
-      id: 'lead_dev',
       name: 'David Chen',
       position: 'Lead Developer',
       image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=300&h=300&fit=crop&crop=face',
       bio: 'Full-stack developer passionate about clean code and innovative solutions.'
     },
     {
-      id: 'design_director',
       name: 'Sophie Williams',
       position: 'Design Director',
       image: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=300&h=300&fit=crop&crop=face',
       bio: 'Creative designer focused on user experience and modern interface design.'
     }
   ];
-
-  useEffect(() => {
-    // Load team members from localStorage
-    const savedTeam = localStorage.getItem('teamMembers');
-    if (savedTeam) {
-      const teamData = JSON.parse(savedTeam);
-      setTeam(Object.values(teamData));
-    } else {
-      // Use default team data if no saved data exists
-      setTeam(defaultTeam);
-    }
-  }, []);
 
   const values = [
     {
@@ -184,7 +157,7 @@ const About = () => {
           </Row>
           <Row>
             {team.map((member, index) => (
-              <Col lg={3} md={6} key={member.id} className="mb-4">
+              <Col lg={3} md={6} key={index} className="mb-4">
                 <div className="team-card animate-fade-up" style={{animationDelay: `${index * 0.1}s`}}>
                   <img 
                     src={member.image} 
