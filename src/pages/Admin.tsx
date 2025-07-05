@@ -5,6 +5,7 @@ import AdminLogin from '../components/AdminLogin';
 import AdminManagement from '../components/AdminManagement';
 import ApplicationManagement from '../components/ApplicationManagement';
 import PageContentManagement from '../components/PageContentManagement';
+import TextContentManager from '../components/TextContentManager';
 
 interface JobPost {
   id: string;
@@ -226,6 +227,16 @@ const Admin = () => {
                 Page Content
               </Nav.Link>
             </Nav.Item>
+            <Nav.Item>
+              <Nav.Link 
+                active={activeTab === 'text'} 
+                onClick={() => setActiveTab('text')}
+                style={{ cursor: 'pointer' }}
+              >
+                <i className="fas fa-font me-2"></i>
+                Text Content
+              </Nav.Link>
+            </Nav.Item>
             {isRootAdmin && (
               <Nav.Item>
                 <Nav.Link 
@@ -382,6 +393,18 @@ const Admin = () => {
                 </Col>
               </Row>
               <PageContentManagement />
+            </>
+          )}
+
+          {activeTab === 'text' && (
+            <>
+              <Row className="mb-4">
+                <Col lg={12}>
+                  <h3>Text Content Management</h3>
+                  <p className="text-muted">Edit all text content across your website pages</p>
+                </Col>
+              </Row>
+              <TextContentManager />
             </>
           )}
 
