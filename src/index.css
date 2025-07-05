@@ -1,3 +1,4 @@
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -39,20 +40,19 @@ All colors MUST be HSL.
     --radius: 0.5rem;
 
     --sidebar-background: 0 0% 98%;
-
     --sidebar-foreground: 240 5.3% 26.1%;
-
     --sidebar-primary: 240 5.9% 10%;
-
     --sidebar-primary-foreground: 0 0% 98%;
-
     --sidebar-accent: 240 4.8% 95.9%;
-
     --sidebar-accent-foreground: 240 5.9% 10%;
-
     --sidebar-border: 220 13% 91%;
-
     --sidebar-ring: 217.2 91.2% 59.8%;
+
+    /* New animated theme variables */
+    --animate-gradient: linear-gradient(-45deg, #667eea, #764ba2, #f093fb, #f5576c);
+    --glass-bg: rgba(255, 255, 255, 0.15);
+    --glass-border: rgba(255, 255, 255, 0.2);
+    --neon-glow: 0 0 20px rgba(102, 126, 234, 0.5);
   }
 
   .dark {
@@ -91,6 +91,12 @@ All colors MUST be HSL.
     --sidebar-accent-foreground: 240 4.8% 95.9%;
     --sidebar-border: 240 3.7% 15.9%;
     --sidebar-ring: 217.2 91.2% 59.8%;
+
+    /* Dark theme animated variables */
+    --animate-gradient: linear-gradient(-45deg, #2c3e50, #3498db, #8e44ad, #e74c3c);
+    --glass-bg: rgba(0, 0, 0, 0.15);
+    --glass-border: rgba(255, 255, 255, 0.1);
+    --neon-glow: 0 0 20px rgba(52, 152, 219, 0.5);
   }
 }
 
@@ -101,5 +107,33 @@ All colors MUST be HSL.
 
   body {
     @apply bg-background text-foreground;
+    background: var(--animate-gradient);
+    background-size: 400% 400%;
+    animation: gradientShift 15s ease infinite;
+  }
+}
+
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Glass morphism utilities */
+@layer utilities {
+  .glass-effect {
+    background: var(--glass-bg);
+    backdrop-filter: blur(20px);
+    border: 1px solid var(--glass-border);
+  }
+
+  .neon-glow {
+    box-shadow: var(--neon-glow);
+  }
+
+  .animate-gradient-shift {
+    background: var(--animate-gradient);
+    background-size: 400% 400%;
+    animation: gradientShift 15s ease infinite;
   }
 }

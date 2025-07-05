@@ -4,8 +4,7 @@ import { useAdminAuth } from '../contexts/AdminAuthContext';
 import AdminLogin from '../components/AdminLogin';
 import AdminManagement from '../components/AdminManagement';
 import ApplicationManagement from '../components/ApplicationManagement';
-import PageContentManagement from '../components/PageContentManagement';
-import TextContentManager from '../components/TextContentManager';
+import ContentManager from '../components/ContentManager';
 
 interface JobPost {
   id: string;
@@ -165,16 +164,18 @@ const Admin = () => {
 
   return (
     <>
+      <div className="particle-bg"></div>
+      
       {/* Admin Header */}
-      <section className="admin-header" style={{marginTop: '80px'}}>
+      <section className="admin-header animate-slide-top" style={{marginTop: '80px'}}>
         <Container>
           <Row>
             <Col lg={12} className="d-flex justify-content-between align-items-center">
               <div className="text-center">
-                <h1 className="display-4 fw-bold mb-3">Admin Dashboard</h1>
-                <p className="lead">Welcome, {currentUser?.username} ({currentUser?.role})</p>
+                <h1 className="display-4 fw-bold mb-3 animate-glow">Admin Dashboard</h1>
+                <p className="lead animate-fade-in">Welcome, {currentUser?.username} ({currentUser?.role})</p>
               </div>
-              <Button variant="outline-secondary" onClick={handleLogout}>
+              <Button variant="outline-light" onClick={handleLogout} className="hover-scale">
                 <i className="fas fa-sign-out-alt me-2"></i>
                 Logout
               </Button>
@@ -184,13 +185,14 @@ const Admin = () => {
       </section>
 
       {/* Admin Navigation */}
-      <section className="py-3 bg-light">
+      <section className="py-3 bg-light animate-slide-bottom">
         <Container>
-          <Nav variant="tabs">
+          <Nav variant="tabs" className="glass-card p-3">
             <Nav.Item>
               <Nav.Link 
                 active={activeTab === 'jobs'} 
                 onClick={() => setActiveTab('jobs')}
+                className="hover-scale"
                 style={{ cursor: 'pointer' }}
               >
                 <i className="fas fa-briefcase me-2"></i>
@@ -201,6 +203,7 @@ const Admin = () => {
               <Nav.Link 
                 active={activeTab === 'applications'} 
                 onClick={() => setActiveTab('applications')}
+                className="hover-scale"
                 style={{ cursor: 'pointer' }}
               >
                 <i className="fas fa-file-alt me-2"></i>
@@ -211,6 +214,7 @@ const Admin = () => {
               <Nav.Link 
                 active={activeTab === 'content'} 
                 onClick={() => setActiveTab('content')}
+                className="hover-scale"
                 style={{ cursor: 'pointer' }}
               >
                 <i className="fas fa-edit me-2"></i>
@@ -219,22 +223,13 @@ const Admin = () => {
             </Nav.Item>
             <Nav.Item>
               <Nav.Link 
-                active={activeTab === 'pages'} 
-                onClick={() => setActiveTab('pages')}
+                active={activeTab === 'unified-content'} 
+                onClick={() => setActiveTab('unified-content')}
+                className="hover-scale"
                 style={{ cursor: 'pointer' }}
               >
-                <i className="fas fa-file-code me-2"></i>
-                Page Content
-              </Nav.Link>
-            </Nav.Item>
-            <Nav.Item>
-              <Nav.Link 
-                active={activeTab === 'text'} 
-                onClick={() => setActiveTab('text')}
-                style={{ cursor: 'pointer' }}
-              >
-                <i className="fas fa-font me-2"></i>
-                Text Content
+                <i className="fas fa-layer-group me-2"></i>
+                Content Management
               </Nav.Link>
             </Nav.Item>
             {isRootAdmin && (
@@ -242,6 +237,7 @@ const Admin = () => {
                 <Nav.Link 
                   active={activeTab === 'admins'} 
                   onClick={() => setActiveTab('admins')}
+                  className="hover-scale"
                   style={{ cursor: 'pointer' }}
                 >
                   <i className="fas fa-users-cog me-2"></i>
@@ -257,14 +253,14 @@ const Admin = () => {
       <section className="py-5">
         <Container>
           {showAlert && (
-            <Alert variant="success" className="mb-4">
+            <Alert variant="success" className="mb-4 animate-fade-in glass-card">
               <i className="fas fa-check-circle me-2"></i>
               {alertMessage}
             </Alert>
           )}
 
           {activeTab === 'jobs' && (
-            <>
+            <div className="animate-fade-up">
               <Row className="mb-4">
                 <Col lg={12} className="d-flex justify-content-between align-items-center">
                   <h3>Job Posts Management</h3>
@@ -338,11 +334,11 @@ const Admin = () => {
                   </Card>
                 </Col>
               </Row>
-            </>
+            </div>
           )}
 
           {activeTab === 'content' && (
-            <>
+            <div className="animate-fade-up">
               <Row className="mb-4">
                 <Col lg={12}>
                   <h3>Learn More Content Management</h3>
@@ -381,35 +377,26 @@ const Admin = () => {
                   </Card>
                 </Col>
               </Row>
-            </>
+            </div>
           )}
 
-          {activeTab === 'pages' && (
-            <>
-              <Row className="mb-4">
-                <Col lg={12}>
-                  <h3>Page Content Management</h3>
-                  <p className="text-muted">Manage the content of different pages on your website</p>
-                </Col>
-              </Row>
-              <PageContentManagement />
-            </>
+          {activeTab === 'unified-content' && (
+            <div className="animate-fade-up">
+              <ContentManager />
+            </div>
           )}
 
-          {activeTab === 'text' && (
-            <>
-              <Row className="mb-4">
-                <Col lg={12}>
-                  <h3>Text Content Management</h3>
-                  <p className="text-muted">Edit all text content across your website pages</p>
-                </Col>
-              </Row>
-              <TextContentManager />
-            </>
+          {activeTab === 'applications' && (
+            <div className="animate-fade-up">
+              <ApplicationManagement />
+            </div>
           )}
-
-          {activeTab === 'applications' && <ApplicationManagement />}
-          {activeTab === 'admins' && <AdminManagement />}
+          
+          {activeTab === 'admins' && (
+            <div className="animate-fade-up">
+              <AdminManagement />
+            </div>
+          )}
         </Container>
       </section>
 
