@@ -164,18 +164,16 @@ const Admin = () => {
 
   return (
     <>
-      <div className="particle-bg"></div>
-      
       {/* Admin Header */}
-      <section className="admin-header animate-slide-top" style={{marginTop: '80px'}}>
+      <section className="section-padding" style={{marginTop: '80px', background: 'hsl(var(--background))'}}>
         <Container>
           <Row>
             <Col lg={12} className="d-flex justify-content-between align-items-center">
-              <div className="text-center">
-                <h1 className="display-4 fw-bold mb-3 animate-glow">Admin Dashboard</h1>
-                <p className="lead animate-fade-in">Welcome, {currentUser?.username} ({currentUser?.role})</p>
+              <div>
+                <h1 className="display-2 mb-3">Admin Dashboard</h1>
+                <p className="lead">Welcome, {currentUser?.username} ({currentUser?.role})</p>
               </div>
-              <Button variant="outline-light" onClick={handleLogout} className="hover-scale">
+              <Button variant="outline-secondary" onClick={handleLogout} className="btn-clean-secondary">
                 <i className="fas fa-sign-out-alt me-2"></i>
                 Logout
               </Button>
@@ -185,14 +183,14 @@ const Admin = () => {
       </section>
 
       {/* Admin Navigation */}
-      <section className="py-3 bg-light animate-slide-bottom">
+      <section className="py-4" style={{background: 'hsl(var(--muted) / 0.3)', borderTop: '1px solid hsl(var(--border))', borderBottom: '1px solid hsl(var(--border))'}}>
         <Container>
-          <Nav variant="tabs" className="glass-card p-3">
+          <Nav variant="tabs" className="professional-card p-3">
             <Nav.Item>
               <Nav.Link 
                 active={activeTab === 'jobs'} 
                 onClick={() => setActiveTab('jobs')}
-                className="hover-scale"
+                className="nav-link-clean"
                 style={{ cursor: 'pointer' }}
               >
                 <i className="fas fa-briefcase me-2"></i>
@@ -203,7 +201,7 @@ const Admin = () => {
               <Nav.Link 
                 active={activeTab === 'applications'} 
                 onClick={() => setActiveTab('applications')}
-                className="hover-scale"
+                className="nav-link-clean"
                 style={{ cursor: 'pointer' }}
               >
                 <i className="fas fa-file-alt me-2"></i>
@@ -214,7 +212,7 @@ const Admin = () => {
               <Nav.Link 
                 active={activeTab === 'content'} 
                 onClick={() => setActiveTab('content')}
-                className="hover-scale"
+                className="nav-link-clean"
                 style={{ cursor: 'pointer' }}
               >
                 <i className="fas fa-edit me-2"></i>
@@ -225,7 +223,7 @@ const Admin = () => {
               <Nav.Link 
                 active={activeTab === 'unified-content'} 
                 onClick={() => setActiveTab('unified-content')}
-                className="hover-scale"
+                className="nav-link-clean"
                 style={{ cursor: 'pointer' }}
               >
                 <i className="fas fa-layer-group me-2"></i>
@@ -237,7 +235,7 @@ const Admin = () => {
                 <Nav.Link 
                   active={activeTab === 'admins'} 
                   onClick={() => setActiveTab('admins')}
-                  className="hover-scale"
+                  className="nav-link-clean"
                   style={{ cursor: 'pointer' }}
                 >
                   <i className="fas fa-users-cog me-2"></i>
@@ -250,10 +248,10 @@ const Admin = () => {
       </section>
 
       {/* Admin Content */}
-      <section className="py-5">
+      <section className="section-padding" style={{background: 'hsl(var(--background))'}}>
         <Container>
           {showAlert && (
-            <Alert variant="success" className="mb-4 animate-fade-in glass-card">
+            <Alert variant="success" className="mb-4 animate-fade-in">
               <i className="fas fa-check-circle me-2"></i>
               {alertMessage}
             </Alert>
@@ -264,7 +262,7 @@ const Admin = () => {
               <Row className="mb-4">
                 <Col lg={12} className="d-flex justify-content-between align-items-center">
                   <h3>Job Posts Management</h3>
-                  <Button className="btn-gradient-primary" onClick={handleNewJob}>
+                  <Button className="btn-clean-primary" onClick={handleNewJob}>
                     <i className="fas fa-plus me-2"></i>
                     Add New Job
                   </Button>
@@ -273,7 +271,7 @@ const Admin = () => {
 
               <Row>
                 <Col lg={12}>
-                  <Card className="admin-card">
+                  <Card className="professional-card">
                     <Card.Body>
                       {jobs.length > 0 ? (
                         <Table responsive hover>
@@ -325,7 +323,7 @@ const Admin = () => {
                           <i className="fas fa-briefcase fa-3x text-muted mb-3"></i>
                           <h4>No Job Posts</h4>
                           <p className="text-muted">Create your first job post to get started.</p>
-                          <Button className="btn-gradient-primary" onClick={handleNewJob}>
+                          <Button className="btn-clean-primary" onClick={handleNewJob}>
                             Add New Job
                           </Button>
                         </div>
@@ -348,7 +346,7 @@ const Admin = () => {
 
               <Row>
                 <Col lg={12}>
-                  <Card className="admin-card">
+                  <Card className="professional-card">
                     <Card.Body>
                       <Form>
                         <Form.Group className="mb-3">
@@ -359,6 +357,7 @@ const Admin = () => {
                             value={learnMoreContent}
                             onChange={(e) => setLearnMoreContent(e.target.value)}
                             placeholder="Enter the content that will be displayed on the Learn More page..."
+                            className="form-control-clean"
                             style={{ fontSize: '14px' }}
                           />
                           <Form.Text className="text-muted">
@@ -366,7 +365,7 @@ const Admin = () => {
                           </Form.Text>
                         </Form.Group>
                         <Button 
-                          className="btn-gradient-primary"
+                          className="btn-clean-primary"
                           onClick={saveLearnMoreContent}
                         >
                           <i className="fas fa-save me-2"></i>
@@ -420,6 +419,7 @@ const Admin = () => {
                     onChange={handleInputChange}
                     required
                     placeholder="e.g., AI/ML Engineer"
+                    className="form-control-clean"
                   />
                 </Form.Group>
               </Col>
@@ -433,6 +433,7 @@ const Admin = () => {
                     onChange={handleInputChange}
                     required
                     placeholder="e.g., Artificial Intelligence"
+                    className="form-control-clean"
                   />
                 </Form.Group>
               </Col>
@@ -449,6 +450,7 @@ const Admin = () => {
                     onChange={handleInputChange}
                     required
                     placeholder="e.g., Remote, Hybrid, On-site"
+                    className="form-control-clean"
                   />
                 </Form.Group>
               </Col>
@@ -460,6 +462,7 @@ const Admin = () => {
                     value={formData.type}
                     onChange={handleInputChange}
                     required
+                    className="form-control-clean"
                   >
                     <option value="Full-time">Full-time</option>
                     <option value="Part-time">Part-time</option>
@@ -480,6 +483,7 @@ const Admin = () => {
                 onChange={handleInputChange}
                 required
                 placeholder="Describe the role and responsibilities..."
+                className="form-control-clean"
               />
             </Form.Group>
 
@@ -493,14 +497,15 @@ const Admin = () => {
                 onChange={handleInputChange}
                 required
                 placeholder="List the required qualifications and skills..."
+                className="form-control-clean"
               />
             </Form.Group>
           </Modal.Body>
           <Modal.Footer>
-            <Button variant="secondary" onClick={handleCloseModal}>
+            <Button variant="secondary" onClick={handleCloseModal} className="btn-clean-secondary">
               Cancel
             </Button>
-            <Button type="submit" className="btn-gradient-primary">
+            <Button type="submit" className="btn-clean-primary">
               {editingJob ? 'Update Job' : 'Create Job'}
             </Button>
           </Modal.Footer>
