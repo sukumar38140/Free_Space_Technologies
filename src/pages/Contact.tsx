@@ -38,12 +38,12 @@ const Contact = () => {
   return (
     <>
       {/* Hero Section */}
-      <section className="bg-primary-gradient text-white py-5" style={{marginTop: '80px'}}>
+      <section className="hero-section" style={{marginTop: '80px'}}>
         <Container>
           <Row>
             <Col lg={8} className="mx-auto text-center">
               <div className="animate-fade-up">
-                <h1 className="display-4 fw-bold mb-4">Contact Us</h1>
+                <h1 className="display-2 mb-4">Get In Touch</h1>
                 <p className="lead">
                   Ready to transform your business? Let's discuss your project requirements 
                   and explore how we can help you achieve your digital transformation goals.
@@ -59,7 +59,7 @@ const Contact = () => {
         <Container>
           <Row>
             <Col lg={8} className="mb-5">
-              <Card className="custom-card animate-fade-left">
+              <Card className="professional-card animate-fade-up">
                 <Card.Body>
                   <h3 className="mb-4">Let's Start a Conversation</h3>
                   
@@ -82,6 +82,7 @@ const Contact = () => {
                             onChange={handleChange}
                             required
                             placeholder="Your full name"
+                            className="form-control-clean"
                           />
                         </Form.Group>
                       </Col>
@@ -95,6 +96,7 @@ const Contact = () => {
                             onChange={handleChange}
                             required
                             placeholder="your.email@company.com"
+                            className="form-control-clean"
                           />
                         </Form.Group>
                       </Col>
@@ -110,6 +112,7 @@ const Contact = () => {
                             value={formData.company}
                             onChange={handleChange}
                             placeholder="Your company name"
+                            className="form-control-clean"
                           />
                         </Form.Group>
                       </Col>
@@ -121,7 +124,8 @@ const Contact = () => {
                             name="phone"
                             value={formData.phone}
                             onChange={handleChange}
-                            placeholder="+1 (555) 123-4567"
+                            placeholder="+91 8978943122"
+                            className="form-control-clean"
                           />
                         </Form.Group>
                       </Col>
@@ -135,7 +139,8 @@ const Contact = () => {
                         value={formData.subject}
                         onChange={handleChange}
                         required
-                        placeholder="Web Development, Mobile App, Cloud Migration, etc."
+                        placeholder="Web Development, Mobile App, AI Solutions, etc."
+                        className="form-control-clean"
                       />
                     </Form.Group>
                     
@@ -149,10 +154,11 @@ const Contact = () => {
                         onChange={handleChange}
                         required
                         placeholder="Please describe your project requirements, timeline, and any specific features you need..."
+                        className="form-control-clean"
                       />
                     </Form.Group>
                     
-                    <Button type="submit" className="btn-gradient-primary" size="lg">
+                    <Button type="submit" className="btn-clean-primary" size="lg">
                       <i className="fas fa-paper-plane me-2"></i>
                       Send Message
                     </Button>
@@ -162,58 +168,58 @@ const Contact = () => {
             </Col>
             
             <Col lg={4}>
-              <div className="animate-fade-right">
-                <Card className="custom-card mb-4">
+              <div className="animate-fade-up animate-delay-100">
+                <Card className="professional-card mb-4">
                   <Card.Body className="text-center">
-                    <div className="card-icon">
+                    <div className="service-icon mb-3">
                       <i className="fas fa-map-marker-alt"></i>
                     </div>
                     <h5>Visit Our Office</h5>
-                    <p className="mb-0">
-                      456 Innovation Drive<br />
-                      Tech Hub Plaza, Suite 200<br />
-                      San Francisco, CA 94105
+                    <p className="mb-0 text-muted">
+                      Ntr Circle<br />
+                      Madanapalle-517325<br />
+                      Andhra Pradesh, India
                     </p>
                   </Card.Body>
                 </Card>
                 
-                <Card className="custom-card mb-4">
+                <Card className="professional-card mb-4">
                   <Card.Body className="text-center">
-                    <div className="card-icon">
+                    <div className="service-icon mb-3">
                       <i className="fas fa-phone"></i>
                     </div>
                     <h5>Call Us</h5>
-                    <p className="mb-2">
-                      <strong>Main:</strong> +1 (415) 555-0123<br />
-                      <strong>Sales:</strong> +1 (415) 555-0124<br />
-                      <strong>Support:</strong> +1 (415) 555-0125
+                    <p className="mb-0 text-muted">
+                      <strong>Phone:</strong> +91 8978943122<br />
+                      <strong>Available:</strong> Mon - Sat<br />
+                      <strong>Time:</strong> 9:00 AM - 6:00 PM
                     </p>
                   </Card.Body>
                 </Card>
                 
-                <Card className="custom-card mb-4">
+                <Card className="professional-card mb-4">
                   <Card.Body className="text-center">
-                    <div className="card-icon">
+                    <div className="service-icon mb-3">
                       <i className="fas fa-envelope"></i>
                     </div>
                     <h5>Email Us</h5>
-                    <p className="mb-0">
-                      <strong>General:</strong> hello@freespacetec.com<br />
-                      <strong>Sales:</strong> sales@freespacetec.com<br />
-                      <strong>Support:</strong> support@freespacetec.com
+                    <p className="mb-0 text-muted">
+                      <strong>General:</strong> info@freespacetechnologies.com<br />
+                      <strong>Projects:</strong> projects@freespacetechnologies.com<br />
+                      <strong>Support:</strong> support@freespacetechnologies.com
                     </p>
                   </Card.Body>
                 </Card>
                 
-                <Card className="custom-card">
+                <Card className="professional-card">
                   <Card.Body className="text-center">
-                    <div className="card-icon">
+                    <div className="service-icon mb-3">
                       <i className="fas fa-clock"></i>
                     </div>
                     <h5>Business Hours</h5>
-                    <p className="mb-0">
-                      <strong>Mon - Fri:</strong> 8:00 AM - 7:00 PM<br />
-                      <strong>Saturday:</strong> 9:00 AM - 5:00 PM<br />
+                    <p className="mb-0 text-muted">
+                      <strong>Mon - Fri:</strong> 9:00 AM - 6:00 PM<br />
+                      <strong>Saturday:</strong> 10:00 AM - 4:00 PM<br />
                       <strong>Sunday:</strong> Closed
                     </p>
                   </Card.Body>
@@ -225,27 +231,28 @@ const Contact = () => {
       </section>
 
       {/* Map Section */}
-      <section className="section-padding bg-light">
+      <section className="section-padding" style={{background: 'hsl(var(--muted) / 0.3)'}}>
         <Container>
           <Row>
             <Col lg={12} className="text-center mb-5">
               <h2 className="section-title animate-fade-up">Our Location</h2>
-              <p className="section-subtitle animate-fade-up">
-                Located in the heart of San Francisco's tech district
+              <p className="text-muted animate-fade-up animate-delay-100">
+                Located in the heart of Madanapalle, Andhra Pradesh
               </p>
             </Col>
           </Row>
           <Row>
             <Col lg={12}>
-              <div className="animate-fade-up">
+              <div className="animate-fade-up animate-delay-200">
                 <div 
-                  className="bg-secondary rounded-4 d-flex align-items-center justify-content-center"
-                  style={{height: '400px'}}
+                  className="professional-card d-flex align-items-center justify-content-center"
+                  style={{height: '400px', background: 'hsl(var(--muted) / 0.5)'}}
                 >
                   <div className="text-center">
-                    <i className="fas fa-map-marked-alt fa-3x text-primary mb-3"></i>
+                    <i className="fas fa-map-marked-alt fa-3x mb-3" style={{color: 'hsl(var(--primary))'}}></i>
                     <h4>Find Us Here</h4>
-                    <p className="text-muted">Easy access via public transportation and parking available</p>
+                    <p className="text-muted mb-0">Ntr Circle, Madanapalle-517325, Andhra Pradesh</p>
+                    <p className="text-muted">Easy access via public transportation</p>
                   </div>
                 </div>
               </div>

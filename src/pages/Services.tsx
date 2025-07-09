@@ -8,6 +8,7 @@ const Services = () => {
     {
       title: 'Web Development',
       icon: 'fas fa-code',
+      image: 'https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?w=600&h=400&fit=crop',
       description: 'Custom web applications and websites built with modern frameworks and best practices.',
       features: ['Responsive Design', 'Progressive Web Apps', 'E-commerce Solutions', 'Content Management'],
       specialization: 'Frontend & Backend'
@@ -15,49 +16,54 @@ const Services = () => {
     {
       title: 'Mobile Development',
       icon: 'fas fa-mobile-alt',
+      image: 'https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=600&h=400&fit=crop',
       description: 'Native and cross-platform mobile applications for iOS and Android platforms.',
       features: ['Native iOS/Android', 'React Native', 'Flutter Development', 'App Store Deployment'],
       specialization: 'Mobile Applications'
     },
     {
+      title: 'AI & Machine Learning',
+      icon: 'fas fa-brain',
+      image: 'https://images.unsplash.com/photo-1518770660439-4636190af475?w=600&h=400&fit=crop',
+      description: 'Intelligent solutions powered by artificial intelligence and machine learning algorithms.',
+      features: ['AI Agents', 'Predictive Analytics', 'Natural Language Processing', 'Computer Vision'],
+      specialization: 'Artificial Intelligence'
+    },
+    {
       title: 'Cloud Solutions',
       icon: 'fas fa-cloud',
+      image: 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=600&h=400&fit=crop',
       description: 'Scalable cloud infrastructure, migration services, and cloud-native application development.',
       features: ['AWS/Azure/GCP', 'Cloud Migration', 'DevOps Services', 'Microservices Architecture'],
       specialization: 'Cloud Infrastructure'
     },
     {
-      title: 'Digital Transformation',
-      icon: 'fas fa-exchange-alt',
-      description: 'Complete digital transformation services to modernize your business processes and systems.',
-      features: ['Process Automation', 'Legacy System Modernization', 'Workflow Optimization', 'Digital Strategy'],
-      specialization: 'Business Transformation'
+      title: 'IoT Solutions',
+      icon: 'fas fa-microchip',
+      image: 'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=600&h=400&fit=crop',
+      description: 'Internet of Things solutions connecting devices and enabling smart automation.',
+      features: ['Smart Devices', 'Sensor Integration', 'Real-time Monitoring', 'Automation Systems'],
+      specialization: 'Internet of Things'
     },
     {
-      title: 'API Development',
-      icon: 'fas fa-plug',
-      description: 'RESTful APIs, GraphQL, and microservices architecture for seamless system integration.',
-      features: ['REST APIs', 'GraphQL', 'Third-party Integrations', 'API Documentation'],
-      specialization: 'Backend Services'
-    },
-    {
-      title: 'Database Solutions',
-      icon: 'fas fa-database',
-      description: 'Database design, optimization, and management for reliable data storage and retrieval.',
-      features: ['SQL/NoSQL Databases', 'Data Migration', 'Performance Optimization', 'Backup Solutions'],
-      specialization: 'Data Management'
+      title: 'Robotics',
+      icon: 'fas fa-robot',
+      image: 'https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=600&h=400&fit=crop',
+      description: 'Advanced robotics solutions for automation, manufacturing, and service applications.',
+      features: ['Industrial Automation', 'Service Robots', 'Process Optimization', 'AI Integration'],
+      specialization: 'Robotics & Automation'
     }
   ];
 
   return (
     <>
       {/* Hero Section */}
-      <section className="bg-primary-gradient text-white py-5" style={{marginTop: '80px'}}>
+      <section className="hero-section" style={{marginTop: '80px'}}>
         <Container>
           <Row className="align-items-center min-vh-50">
             <Col lg={8} className="mx-auto text-center">
               <div className="animate-fade-up">
-                <h1 className="display-4 fw-bold mb-4">Our Services</h1>
+                <h1 className="display-2 mb-4">Our Services</h1>
                 <p className="lead">
                   Comprehensive technology solutions designed to accelerate your business growth 
                   and digital transformation journey.
@@ -73,27 +79,49 @@ const Services = () => {
         <Container>
           <Row>
             {services.map((service, index) => (
-              <Col lg={4} md={6} key={index} className="mb-4">
-                <Card className="custom-card h-100 animate-fade-up" style={{animationDelay: `${index * 0.1}s`}}>
-                  <div className="card-icon">
-                    <i className={service.icon}></i>
+              <Col lg={4} md={6} key={index} className="mb-5">
+                <Card className="professional-card h-100 animate-fade-up card-hover" style={{animationDelay: `${index * 0.1}s`, overflow: 'hidden'}}>
+                  <div className="position-relative" style={{height: '200px', overflow: 'hidden'}}>
+                    <img 
+                      src={service.image} 
+                      alt={service.title}
+                      className="w-100 h-100"
+                      style={{
+                        objectFit: 'cover',
+                        transition: 'transform 0.3s ease',
+                      }}
+                      onMouseEnter={(e) => {
+                        e.currentTarget.style.transform = 'scale(1.05)';
+                      }}
+                      onMouseLeave={(e) => {
+                        e.currentTarget.style.transform = 'scale(1)';
+                      }}
+                    />
+                    <div className="position-absolute top-0 start-0 w-100 h-100" style={{
+                      background: 'linear-gradient(45deg, hsl(var(--primary) / 0.8), hsl(var(--primary) / 0.4))',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center'
+                    }}>
+                      <i className={`${service.icon} fa-3x text-white`}></i>
+                    </div>
                   </div>
-                  <Card.Body className="text-center d-flex flex-column">
+                  <Card.Body className="d-flex flex-column">
                     <h4 className="mb-3">{service.title}</h4>
-                    <p className="mb-4">{service.description}</p>
+                    <p className="mb-4 text-muted">{service.description}</p>
                     
                     <ul className="list-unstyled mb-4">
                       {service.features.map((feature, idx) => (
                         <li key={idx} className="mb-2">
-                          <i className="fas fa-check text-success me-2"></i>
+                          <i className="fas fa-check me-2" style={{color: 'hsl(var(--primary))'}}></i>
                           {feature}
                         </li>
                       ))}
                     </ul>
                     
                     <div className="mt-auto">
-                      <div className="h6 text-primary mb-3">{service.specialization}</div>
-                      <Button className="btn-gradient-primary w-100">
+                      <div className="h6 mb-3" style={{color: 'hsl(var(--primary))'}}>{service.specialization}</div>
+                      <Button className="btn-clean-primary w-100">
                         Learn More
                       </Button>
                     </div>
@@ -106,12 +134,12 @@ const Services = () => {
       </section>
 
       {/* Technology Stack */}
-      <section className="section-padding bg-light">
+      <section className="section-padding" style={{background: 'hsl(var(--muted) / 0.3)'}}>
         <Container>
           <Row>
             <Col lg={12} className="text-center mb-5">
-              <h2 className="section-title animate-fade-up">Technologies We Use</h2>
-              <p className="section-subtitle animate-fade-up">
+              <h2 className="display-3 mb-4 animate-fade-up">Technologies We Use</h2>
+              <p className="lead animate-fade-up animate-delay-100">
                 Modern tools and frameworks that power exceptional solutions
               </p>
             </Col>
@@ -119,38 +147,38 @@ const Services = () => {
           <Row>
             <Col lg={3} md={6} className="mb-4">
               <div className="text-center animate-fade-up">
-                <div className="card-icon mx-auto mb-3">
+                <div className="service-icon mx-auto mb-3">
                   <i className="fab fa-react"></i>
                 </div>
                 <h5>Frontend</h5>
-                <p>React, Vue.js, Angular, TypeScript</p>
+                <p className="text-muted">React, Vue.js, Angular, TypeScript</p>
               </div>
             </Col>
             <Col lg={3} md={6} className="mb-4">
               <div className="text-center animate-fade-up" style={{animationDelay: '0.1s'}}>
-                <div className="card-icon mx-auto mb-3">
+                <div className="service-icon mx-auto mb-3">
                   <i className="fas fa-server"></i>
                 </div>
                 <h5>Backend</h5>
-                <p>Node.js, Python, Java, .NET</p>
+                <p className="text-muted">Node.js, Python, Java, .NET</p>
               </div>
             </Col>
             <Col lg={3} md={6} className="mb-4">
               <div className="text-center animate-fade-up" style={{animationDelay: '0.2s'}}>
-                <div className="card-icon mx-auto mb-3">
+                <div className="service-icon mx-auto mb-3">
                   <i className="fas fa-database"></i>
                 </div>
                 <h5>Database</h5>
-                <p>PostgreSQL, MongoDB, MySQL, Redis</p>
+                <p className="text-muted">PostgreSQL, MongoDB, MySQL, Redis</p>
               </div>
             </Col>
             <Col lg={3} md={6} className="mb-4">
               <div className="text-center animate-fade-up" style={{animationDelay: '0.3s'}}>
-                <div className="card-icon mx-auto mb-3">
+                <div className="service-icon mx-auto mb-3">
                   <i className="fab fa-aws"></i>
                 </div>
                 <h5>Cloud</h5>
-                <p>AWS, Azure, Google Cloud, Docker</p>
+                <p className="text-muted">AWS, Azure, Google Cloud, Docker</p>
               </div>
             </Col>
           </Row>
@@ -158,19 +186,19 @@ const Services = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="section-padding bg-dark-gradient text-white">
+      <section className="section-padding" style={{background: 'hsl(var(--foreground))', color: 'hsl(var(--background))'}}>
         <Container>
           <Row>
             <Col lg={8} className="mx-auto text-center">
               <div className="animate-fade-up">
-                <h2 className="display-5 fw-bold mb-4">Ready to Start Your Project?</h2>
+                <h2 className="display-4 mb-4">Ready to Start Your Project?</h2>
                 <p className="lead mb-4">
                   Let's discuss your requirements and create a solution that drives results.
                 </p>
                 <div className="d-flex gap-3 justify-content-center flex-wrap">
                   <Link to="/contact">
                     <Button 
-                      className="btn-gradient-secondary"
+                      className="btn-clean-secondary"
                       size="lg"
                     >
                       Get Quote
@@ -179,6 +207,7 @@ const Services = () => {
                   <Button 
                     variant="outline-light" 
                     size="lg"
+                    className="btn-clean-secondary"
                   >
                     View Portfolio
                   </Button>

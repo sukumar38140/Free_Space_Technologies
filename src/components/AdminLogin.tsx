@@ -25,6 +25,9 @@ const AdminLogin = () => {
       const success = await login(credentials.username, credentials.password);
       if (!success) {
         setError('Invalid username or password');
+      } else {
+        // Redirect to admin page after successful login
+        window.location.href = '/myAdminPage';
       }
     } catch (err) {
       setError('Login failed. Please try again.');
@@ -34,14 +37,16 @@ const AdminLogin = () => {
   };
 
   return (
-    <section className="min-vh-100 d-flex align-items-center" style={{marginTop: '80px'}}>
+    <section className="min-vh-100 d-flex align-items-center" style={{marginTop: '80px', background: 'hsl(var(--background))'}}>
       <Container>
         <Row className="justify-content-center">
           <Col lg={5} md={7}>
-            <Card className="shadow-lg border-0">
+            <Card className="professional-card shadow-lg">
               <Card.Body className="p-5">
                 <div className="text-center mb-4">
-                  <i className="fas fa-shield-alt fa-3x text-primary mb-3"></i>
+                  <div className="service-icon mx-auto mb-3">
+                    <i className="fas fa-shield-alt"></i>
+                  </div>
                   <h3 className="fw-bold">Admin Access</h3>
                   <p className="text-muted">Please sign in to continue</p>
                 </div>
@@ -64,6 +69,7 @@ const AdminLogin = () => {
                       required
                       placeholder="Enter your username"
                       autoComplete="username"
+                      className="form-control-clean"
                     />
                   </Form.Group>
 
@@ -77,12 +83,13 @@ const AdminLogin = () => {
                       required
                       placeholder="Enter your password"
                       autoComplete="current-password"
+                      className="form-control-clean"
                     />
                   </Form.Group>
 
                   <Button
                     type="submit"
-                    className="btn-gradient-primary w-100"
+                    className="btn-clean-primary w-100"
                     disabled={loading}
                   >
                     {loading ? (
@@ -101,9 +108,10 @@ const AdminLogin = () => {
 
                 <div className="text-center mt-4">
                   <small className="text-muted">
-                    Demo Accounts:<br/>
-                    Root Admin: rootadmin / RootAdmin123!<br/>
-                    Admin: admin1 / Admin123!
+                    Team Access Information:<br/>
+                    Kumar Saatharla - Founder & CEO<br/>
+                    Hemanth Kumar Pattem - Team Manager<br/>
+                    Pujitha Golla - Co-Founder & AI-Specialist
                   </small>
                 </div>
               </Card.Body>

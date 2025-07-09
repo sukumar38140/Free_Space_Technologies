@@ -45,13 +45,11 @@ const Footer = () => {
             
             <Col lg={3} md={6} className="mb-4">
               <div>
-                <h5 className="footer-title">Our Expertise</h5>
+                <h5 className="footer-title">Our Team</h5>
                 <div>
-                  <a href="#" className="footer-link">AI Agents</a>
-                  <a href="#" className="footer-link">IoT Solutions</a>
-                  <a href="#" className="footer-link">Robotics</a>
-                  <a href="#" className="footer-link">Machine Learning</a>
-                  <a href="#" className="footer-link">Web Development</a>
+                  <div className="footer-link">Kumar Saatharla - Founder & CEO</div>
+                  <div className="footer-link">Hemanth Kumar Pattem - Team Manager</div>
+                  <div className="footer-link">Pujitha Golla - Co-Founder & AI-Specialist</div>
                 </div>
               </div>
             </Col>
