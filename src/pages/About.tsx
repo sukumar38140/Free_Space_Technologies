@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { Container, Row, Col, Card } from 'react-bootstrap';
 
@@ -13,35 +12,28 @@ interface TeamMember {
 const About = () => {
   const [team, setTeam] = useState<TeamMember[]>([]);
 
-  // Default team data as fallback
+  // Updated team data with correct Free Space Technologies team
   const defaultTeam = [
     {
       id: 'ceo',
-      name: 'Alex Thompson',
-      position: 'CEO & Founder',
+      name: 'Kumar Saatharla',
+      position: 'Founder & CEO',
       image: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=300&h=300&fit=crop&crop=face',
-      bio: 'Visionary leader with 12+ years in technology consulting and business development.'
+      bio: 'Visionary leader with expertise in technology consulting and business development.'
     },
     {
-      id: 'cto',
-      name: 'Maria Rodriguez',
-      position: 'CTO',
-      image: 'https://images.unsplash.com/photo-1494790108755-2616b612b786?w=300&h=300&fit=crop&crop=face',
-      bio: 'Technical expert specializing in scalable architecture and emerging technologies.'
-    },
-    {
-      id: 'lead_dev',
-      name: 'David Chen',
-      position: 'Lead Developer',
+      id: 'manager',
+      name: 'Hemanth Kumar Pattem',
+      position: 'Team Manager',
       image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=300&h=300&fit=crop&crop=face',
-      bio: 'Full-stack developer passionate about clean code and innovative solutions.'
+      bio: 'Experienced manager specializing in team coordination and project management.'
     },
     {
-      id: 'design_director',
-      name: 'Sophie Williams',
-      position: 'Design Director',
-      image: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=300&h=300&fit=crop&crop=face',
-      bio: 'Creative designer focused on user experience and modern interface design.'
+      id: 'ai_specialist',
+      name: 'Pujitha Golla',
+      position: 'Co-Founder & AI-Specialist',
+      image: 'https://images.unsplash.com/photo-1494790108755-2616b612b786?w=300&h=300&fit=crop&crop=face',
+      bio: 'AI expert and co-founder passionate about artificial intelligence and innovative solutions.'
     }
   ];
 
@@ -184,7 +176,7 @@ const About = () => {
           </Row>
           <Row>
             {team.map((member, index) => (
-              <Col lg={3} md={6} key={member.id} className="mb-4">
+              <Col lg={4} md={6} key={member.id} className="mb-4">
                 <div className="team-card animate-fade-up" style={{animationDelay: `${index * 0.1}s`}}>
                   <img 
                     src={member.image} 

@@ -30,6 +30,7 @@ const CustomNavbar = () => {
         expand="lg" 
         fixed="top" 
         className={`custom-navbar ${scrolled ? 'scrolled' : ''}`}
+        style={{ backgroundColor: 'white' }}
       >
         <Container>
           <Navbar.Brand as={Link} to="/" className="navbar-brand">
