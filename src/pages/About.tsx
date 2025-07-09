@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from 'react';
 import { Container, Row, Col, Card } from 'react-bootstrap';
 
@@ -32,7 +33,7 @@ const About = () => {
       id: 'ai_specialist',
       name: 'Pujitha Golla',
       position: 'Co-Founder & AI-Specialist',
-      image: 'https://images.unsplash.com/photo-1494790108755-2616b612b786?w=300&h=300&fit=crop&crop=face',
+      image: 'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=300&h=300&fit=crop&crop=face',
       bio: 'AI expert and co-founder passionate about artificial intelligence and innovative solutions.'
     }
   ];
