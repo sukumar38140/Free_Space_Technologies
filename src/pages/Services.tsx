@@ -105,9 +105,14 @@ const Services = () => {
                     }}>
                       <i className={`${service.icon} fa-3x text-white`}></i>
                     </div>
+                    <div className="position-absolute bottom-0 start-0 w-100 p-3" style={{
+                      background: 'linear-gradient(transparent, rgba(0,0,0,0.7))',
+                      color: 'white'
+                    }}>
+                      <h5 className="mb-0 text-white">{service.title}</h5>
+                    </div>
                   </div>
                   <Card.Body className="d-flex flex-column">
-                    <h4 className="mb-3">{service.title}</h4>
                     <p className="mb-4 text-muted">{service.description}</p>
                     
                     <ul className="list-unstyled mb-4">
@@ -120,10 +125,7 @@ const Services = () => {
                     </ul>
                     
                     <div className="mt-auto">
-                      <div className="h6 mb-3" style={{color: 'hsl(var(--primary))'}}>{service.specialization}</div>
-                      <Button className="btn-clean-primary w-100">
-                        Learn More
-                      </Button>
+                      <div className="h6 mb-0" style={{color: 'hsl(var(--primary))'}}>{service.specialization}</div>
                     </div>
                   </Card.Body>
                 </Card>
