@@ -30,7 +30,7 @@ const Footer = () => {
               </div>
             </Col>
             
-            <Col lg={3} md={6} className="mb-4">
+            <Col lg={2} md={6} className="mb-4">
               <div>
                 <h5 className="footer-title">Quick Links</h5>
                 <div>
@@ -43,7 +43,18 @@ const Footer = () => {
               </div>
             </Col>
             
-            <Col lg={5} md={6} className="mb-4">
+            <Col lg={3} md={6} className="mb-4">
+              <div>
+                <h5 className="footer-title">Our Team</h5>
+                <div>
+                  <div className="footer-link">Kumar Saatharla - Founder & CEO</div>
+                  <div className="footer-link">Hemanth Kumar Pattem - Team Manager</div>
+                  <div className="footer-link">Pujitha Golla - Co-Founder & AI-Specialist</div>
+                </div>
+              </div>
+            </Col>
+            
+            <Col lg={3} md={6} className="mb-4">
               <div>
                 <h5 className="footer-title">Contact Info</h5>
                 <div className="text-muted">
