@@ -110,15 +110,15 @@ CREATE TABLE projects (
 INSERT INTO job_posts (title, department, location, type, description, requirements) VALUES
 ('Senior Full Stack Developer', 'Engineering', 'Remote', 'Full-time', 
  'We are looking for an experienced Full Stack Developer to join our growing team. You will be responsible for developing and maintaining web applications using modern technologies.',
- 'Bachelor\'s degree in Computer Science or related field. 5+ years of experience with React, Node.js, and database technologies. Strong problem-solving skills and ability to work in a fast-paced environment.'),
+ 'Bachelor's degree in Computer Science or related field. 5+ years of experience with React, Node.js, and database technologies. Strong problem-solving skills and ability to work in a fast-paced environment.'),
 
 ('UX/UI Designer', 'Design', 'New York, NY', 'Full-time',
  'Join our design team to create beautiful and intuitive user experiences. You will work closely with developers and product managers to bring designs to life.',
- 'Bachelor\'s degree in Design or related field. 3+ years of experience in UX/UI design. Proficiency in Figma, Adobe Creative Suite. Strong portfolio demonstrating design thinking and user-centered design principles.'),
+ 'Bachelor's degree in Design or related field. 3+ years of experience in UX/UI design. Proficiency in Figma, Adobe Creative Suite. Strong portfolio demonstrating design thinking and user-centered design principles.'),
 
 ('DevOps Engineer', 'Infrastructure', 'San Francisco, CA', 'Full-time',
  'We need a DevOps Engineer to help us scale our infrastructure and improve our deployment processes. You will work with cloud technologies and automation tools.',
- 'Bachelor\'s degree in Computer Science or related field. 4+ years of experience with AWS/Azure, Docker, Kubernetes. Experience with CI/CD pipelines and infrastructure as code.');
+ 'Bachelor's degree in Computer Science or related field. 4+ years of experience with AWS/Azure, Docker, Kubernetes. Experience with CI/CD pipelines and infrastructure as code.');
 
 -- Sample services
 INSERT INTO services (title, description, icon, price_starting, features, is_featured, display_order) VALUES
@@ -140,9 +140,11 @@ INSERT INTO services (title, description, icon, price_starting, features, is_fea
 ('IT Consulting', 'Strategic IT consulting to align technology with your business objectives.', 'fas fa-users', 'Starting from $150/hour',
  JSON_ARRAY('Technology Assessment', 'Digital Strategy', 'Process Optimization', 'Training'), FALSE, 6);
 
--- Create default admin user (password should be hashed in production)
+-- Insert new admin users (password_hash should be generated securely in production)
 INSERT INTO admin_users (username, email, password_hash, role) VALUES
-('admin', 'admin@techcorp.com', '$2b$10$example_hashed_password', 'admin');
+('24691F0071', 'hemanth@freespacetechnologies.com', '$2b$10$HashedPasswordForHemanth12345', 'admin'),
+('24691F00A8', 'kumar@freespacetechnologies.com', '$2b$10$HashedPasswordForKumar12345', 'admin'),
+('24691F00C3', 'pujitha@freespacetechnologies.com', '$2b$10$HashedPasswordForPujitha12345', 'admin');
 
 -- Create indexes for better performance
 CREATE INDEX idx_job_posts_active ON job_posts(is_active, created_at);

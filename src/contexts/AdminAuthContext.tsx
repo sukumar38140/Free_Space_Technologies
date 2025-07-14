@@ -28,18 +28,25 @@ const ADMIN_ACCOUNTS = [
     email: 'root@freespacetechnologies.com'
   },
   {
-    id: '2',
-    username: 'admin1',
-    password: 'Kumar@12345',
+    id: '24691F0071',
+    username: '24691F0071',
+    password: 'Hemanth@12345',
     role: 'admin' as const,
-    email: 'saatharlakumar@gmail.com'
+    email: 'hemanth@freespacetechnologies.com' // Placeholder email
   },
   {
-    id: '3',
-    username: 'admin2',
-    password: 'Admin456!',
+    id: '24691F00A8',
+    username: '24691F00A8',
+    password: 'Kumar@12345',
     role: 'admin' as const,
-    email: 'admin2@freespacetechnologies.com'
+    email: 'kumar@freespacetechnologies.com' // Placeholder email
+  },
+  {
+    id: '24691F00C3',
+    username: '24691F00C3',
+    password: 'Pujitha@12345',
+    role: 'admin' as const,
+    email: 'pujitha@freespacetechnologies.com' // Placeholder email
   }
 ];
 
