@@ -200,30 +200,30 @@ const About = () => {
           <Row className="text-center">
             <Col lg={3} md={6} className="mb-4">
               <div className="animate-fade-up">
-                <div className="stats-counter text-white">6+</div>
+                <div className="stats-counter text-black">6+</div>
                 <h5>Years of Excellence</h5>
-                <p>Delivering quality solutions since 2018</p>
+                <p className="text-black">Delivering quality solutions since 2018</p>
               </div>
             </Col>
             <Col lg={3} md={6} className="mb-4">
               <div className="animate-fade-up" style={{animationDelay: '0.1s'}}>
-                <div className="stats-counter text-white">350+</div>
+                <div className="stats-counter text-black">350+</div>
                 <h5>Projects Delivered</h5>
-                <p>Successful implementations across industries</p>
+                <p className="text-black">Successful implementations across industries</p>
               </div>
             </Col>
             <Col lg={3} md={6} className="mb-4">
               <div className="animate-fade-up" style={{animationDelay: '0.2s'}}>
-                <div className="stats-counter text-white">180+</div>
+                <div className="stats-counter text-black">180+</div>
                 <h5>Satisfied Clients</h5>
-                <p>Long-term partnerships worldwide</p>
+                <p className="text-black">Long-term partnerships worldwide</p>
               </div>
             </Col>
             <Col lg={3} md={6} className="mb-4">
               <div className="animate-fade-up" style={{animationDelay: '0.3s'}}>
-                <div className="stats-counter text-white">35+</div>
+                <div className="stats-counter text-black">35+</div>
                 <h5>Team Members</h5>
-                <p>Skilled professionals and growing</p>
+                <p className="text-black">Skilled professionals and growing</p>
               </div>
             </Col>
           </Row>

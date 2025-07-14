@@ -4,7 +4,86 @@ import { Container, Row, Col, Card, Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 
 const Services = () => {
-  const services = []; // Empty the services array to remove all service cards
+  const services = [
+    {
+      title: "Web Development",
+      description: "Crafting responsive and dynamic web applications tailored to your business needs.",
+      image: "https://images.unsplash.com/photo-1542831371-d21c19555627?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      icon: "fas fa-laptop-code",
+      features: [
+        "Custom web applications",
+        "E-commerce solutions",
+        "CMS integration",
+        "Responsive design"
+      ],
+      specialization: "React, Node.js, Next.js"
+    },
+    {
+      title: "Mobile App Development",
+      description: "Building intuitive and high-performance mobile applications for iOS and Android.",
+      image: "https://images.unsplash.com/photo-1607212040989-d922b79e273f?q=80&w=1935&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      icon: "fas fa-mobile-alt",
+      features: [
+        "Native iOS and Android apps",
+        "Cross-platform development",
+        "UI/UX design",
+        "App store deployment"
+      ],
+      specialization: "React Native, Flutter, Swift/Kotlin"
+    },
+    {
+      title: "Cloud Solutions",
+      description: "Leveraging cloud infrastructure to enhance scalability, security, and efficiency.",
+      image: "https://images.unsplash.com/photo-1593642532781-03e79ceac840?q=80&w=2069&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      icon: "fas fa-cloud",
+      features: [
+        "Cloud migration",
+        "Infrastructure as Code (IaC)",
+        "DevOps automation",
+        "Cloud security"
+      ],
+      specialization: "AWS, Azure, Google Cloud"
+    },
+    {
+      title: "UI/UX Design",
+      description: "Creating engaging and user-centric interfaces that deliver exceptional experiences.",
+      image: "https://images.unsplash.com/photo-1522204523234-87295a7025c8?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      icon: "fas fa-paint-brush",
+      features: [
+        "User research & analysis",
+        "Wireframing & prototyping",
+        "Visual design",
+        "Usability testing"
+      ],
+      specialization: "Figma, Sketch, Adobe XD"
+    },
+    {
+      title: "Digital Marketing",
+      description: "Driving online visibility and growth through strategic digital marketing campaigns.",
+      image: "https://images.unsplash.com/photo-1627843261621-e73715d2f6f5?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      icon: "fas fa-bullhorn",
+      features: [
+        "SEO optimization",
+        "Social media marketing",
+        "Content marketing",
+        "PPC campaigns"
+      ],
+      specialization: "Google Analytics, SEMrush, HubSpot"
+    },
+    {
+      title: "Data Analytics",
+      description: "Transforming raw data into actionable insights for informed business decisions.",
+      image: "https://images.unsplash.com/photo-1639737901765-a83d0cc15a31?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      icon: "fas fa-chart-line",
+      features: [
+        "Business intelligence",
+        "Predictive analytics",
+        "Data visualization",
+        "Big data solutions"
+      ],
+      specialization: "Python, R, Tableau, Power BI"
+    }
+  ];
 
   return (
     <>

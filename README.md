@@ -1,5 +1,5 @@
 
-# TechCorp Solutions - Modern Company Website
+# Free Space Technologies - Modern Company Website
 
 A comprehensive company website built with React, TypeScript, Bootstrap, and modern web technologies. Features a complete admin panel for content management and a responsive design that works across all devices.
 
@@ -50,7 +50,7 @@ A comprehensive company website built with React, TypeScript, Bootstrap, and mod
 1. **Clone the repository**
 ```bash
 git clone <repository-url>
-cd techcorp-solutions
+cd free-space-technologies
 ```
 
 2. **Install dependencies**
@@ -248,7 +248,7 @@ For support or questions:
 
 ---
 
-Built with ❤️ by TechCorp Solutions Team
+Built with ❤️ by Free Space Technologies Team
 ```
 
 ## 🚀 Quick Deploy Guide
