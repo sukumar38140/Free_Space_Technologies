@@ -4,56 +4,7 @@ import { Container, Row, Col, Card, Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 
 const Services = () => {
-  const services = [
-    {
-      title: 'Web Development',
-      icon: 'fas fa-code',
-      image: 'https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?w=600&h=400&fit=crop',
-      description: 'Custom web applications and websites built with modern frameworks and best practices.',
-      features: ['Responsive Design', 'Progressive Web Apps', 'E-commerce Solutions', 'Content Management'],
-      specialization: 'Frontend & Backend'
-    },
-    {
-      title: 'Mobile Development',
-      icon: 'fas fa-mobile-alt',
-      image: 'https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=600&h=400&fit=crop',
-      description: 'Native and cross-platform mobile applications for iOS and Android platforms.',
-      features: ['Native iOS/Android', 'React Native', 'Flutter Development', 'App Store Deployment'],
-      specialization: 'Mobile Applications'
-    },
-    {
-      title: 'AI & Machine Learning',
-      icon: 'fas fa-brain',
-      image: 'https://images.unsplash.com/photo-1518770660439-4636190af475?w=600&h=400&fit=crop',
-      description: 'Intelligent solutions powered by artificial intelligence and machine learning algorithms.',
-      features: ['AI Agents', 'Predictive Analytics', 'Natural Language Processing', 'Computer Vision'],
-      specialization: 'Artificial Intelligence'
-    },
-    {
-      title: 'Cloud Solutions',
-      icon: 'fas fa-cloud',
-      image: 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=600&h=400&fit=crop',
-      description: 'Scalable cloud infrastructure, migration services, and cloud-native application development.',
-      features: ['AWS/Azure/GCP', 'Cloud Migration', 'DevOps Services', 'Microservices Architecture'],
-      specialization: 'Cloud Infrastructure'
-    },
-    {
-      title: 'IoT Solutions',
-      icon: 'fas fa-microchip',
-      image: 'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=600&h=400&fit=crop',
-      description: 'Internet of Things solutions connecting devices and enabling smart automation.',
-      features: ['Smart Devices', 'Sensor Integration', 'Real-time Monitoring', 'Automation Systems'],
-      specialization: 'Internet of Things'
-    },
-    {
-      title: 'Robotics',
-      icon: 'fas fa-robot',
-      image: 'https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=600&h=400&fit=crop',
-      description: 'Advanced robotics solutions for automation, manufacturing, and service applications.',
-      features: ['Industrial Automation', 'Service Robots', 'Process Optimization', 'AI Integration'],
-      specialization: 'Robotics & Automation'
-    }
-  ];
+  const services = []; // Empty the services array to remove all service cards
 
   return (
     <>

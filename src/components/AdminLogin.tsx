@@ -27,7 +27,7 @@ const AdminLogin = () => {
         setError('Invalid username or password');
       } else {
         // Redirect to admin page after successful login
-        window.location.href = '/myAdminPage';
+        window.location.href = '/admin';
       }
     } catch (err) {
       setError('Login failed. Please try again.');
@@ -111,7 +111,7 @@ const AdminLogin = () => {
                     Team Access Information:<br/>
                     Kumar Saatharla - Founder & CEO<br/>
                     Hemanth Kumar Pattem - Team Manager<br/>
-                    Pujitha Golla - Co-Founder & AI-Specialist
+Pujitha Golla - Co-Founder & AI-Specialist
                   </small>
                 </div>
               </Card.Body>

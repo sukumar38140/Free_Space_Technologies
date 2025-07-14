@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Container, Row, Col, Button, Card } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
@@ -52,26 +51,26 @@ const Index = () => {
             <Row className="text-center">
               <Col lg={3} md={6} className="mb-4 mb-lg-0">
                 <div className="animate-fade-up">
-                  <div className="stat-number">500+</div>
-                  <div className="stat-label">Projects Completed</div>
+                  <div className="stat-number text-dark">6+</div>
+                  <div className="stat-label text-dark">Years of Excellence</div>
                 </div>
               </Col>
               <Col lg={3} md={6} className="mb-4 mb-lg-0">
                 <div className="animate-fade-up animate-delay-100">
-                  <div className="stat-number">250+</div>
-                  <div className="stat-label">Happy Clients</div>
+                  <div className="stat-number text-dark">350+</div>
+                  <div className="stat-label text-dark">Projects Delivered</div>
                 </div>
               </Col>
               <Col lg={3} md={6} className="mb-4 mb-lg-0">
                 <div className="animate-fade-up animate-delay-200">
-                  <div className="stat-number">24/7</div>
-                  <div className="stat-label">Support Available</div>
+                  <div className="stat-number text-dark">180+</div>
+                  <div className="stat-label text-dark">Satisfied Clients</div>
                 </div>
               </Col>
               <Col lg={3} md={6}>
                 <div className="animate-fade-up animate-delay-300">
-                  <div className="stat-number">99.9%</div>
-                  <div className="stat-label">Uptime Guarantee</div>
+                  <div className="stat-number text-dark">35+</div>
+                  <div className="stat-label text-dark">Team Members</div>
                 </div>
               </Col>
             </Row>

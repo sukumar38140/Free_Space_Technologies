@@ -2,6 +2,8 @@
 import React, { useState } from 'react';
 import { Modal, Form, Button, Nav, Alert } from 'react-bootstrap';
 import { useAuth } from '../contexts/AuthContext';
+import { useAdminAuth } from '../contexts/AdminAuthContext';
+import { useNavigate } from 'react-router-dom';
 
 interface AuthModalProps {
   show: boolean;
@@ -9,16 +11,19 @@ interface AuthModalProps {
 }
 
 const AuthModal: React.FC<AuthModalProps> = ({ show, onHide }) => {
-  const [activeTab, setActiveTab] = useState<'login' | 'signup'>('login');
+  const [activeTab, setActiveTab] = useState<'login' | 'signup' | 'admin'>('login');
   const [formData, setFormData] = useState({
     email: '',
     password: '',
     name: '',
-    confirmPassword: ''
+    confirmPassword: '',
+    username: ''
   });
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
   const { login, signup } = useAuth();
+  const { login: adminLogin } = useAdminAuth();
+  const navigate = useNavigate();
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setFormData({
@@ -38,11 +43,11 @@ const AuthModal: React.FC<AuthModalProps> = ({ show, onHide }) => {
         const success = await login(formData.email, formData.password);
         if (success) {
           onHide();
-          setFormData({ email: '', password: '', name: '', confirmPassword: '' });
+          setFormData({ email: '', password: '', name: '', confirmPassword: '', username: '' });
         } else {
           setError('Invalid email or password');
         }
-      } else {
+      } else if (activeTab === 'signup') {
         if (formData.password !== formData.confirmPassword) {
           setError('Passwords do not match');
           setLoading(false);
@@ -57,9 +62,18 @@ const AuthModal: React.FC<AuthModalProps> = ({ show, onHide }) => {
         const success = await signup(formData.email, formData.password, formData.name);
         if (success) {
           onHide();
-          setFormData({ email: '', password: '', name: '', confirmPassword: '' });
+          setFormData({ email: '', password: '', name: '', confirmPassword: '', username: '' });
         } else {
           setError('User with this email already exists');
+        }
+      } else if (activeTab === 'admin') {
+        const success = await adminLogin(formData.username, formData.password);
+        if (success) {
+          onHide();
+          setFormData({ email: '', password: '', name: '', confirmPassword: '', username: '' });
+          navigate('/admin');
+        } else {
+          setError('Invalid username or password');
         }
       }
     } catch (err) {
@@ -69,17 +83,19 @@ const AuthModal: React.FC<AuthModalProps> = ({ show, onHide }) => {
     setLoading(false);
   };
 
-  const switchTab = (tab: 'login' | 'signup') => {
+  const switchTab = (tab: 'login' | 'signup' | 'admin') => {
     setActiveTab(tab);
     setError('');
-    setFormData({ email: '', password: '', name: '', confirmPassword: '' });
+    setFormData({ email: '', password: '', name: '', confirmPassword: '', username: '' });
   };
 
   return (
     <Modal show={show} onHide={onHide} centered>
       <Modal.Header closeButton>
         <Modal.Title>
-          {activeTab === 'login' ? 'Sign In' : 'Sign Up'}
+          {activeTab === 'login' && 'Sign In'}
+          {activeTab === 'signup' && 'Sign Up'}
+          {activeTab === 'admin' && 'Admin Sign In'}
         </Modal.Title>
       </Modal.Header>
       <Modal.Body>
@@ -100,6 +116,15 @@ const AuthModal: React.FC<AuthModalProps> = ({ show, onHide }) => {
               style={{ cursor: 'pointer' }}
             >
               Sign Up
+            </Nav.Link>
+          </Nav.Item>
+          <Nav.Item>
+            <Nav.Link 
+              active={activeTab === 'admin'} 
+              onClick={() => switchTab('admin')}
+              style={{ cursor: 'pointer' }}
+            >
+              Admin
             </Nav.Link>
           </Nav.Item>
         </Nav>
@@ -125,17 +150,33 @@ const AuthModal: React.FC<AuthModalProps> = ({ show, onHide }) => {
             </Form.Group>
           )}
 
-          <Form.Group className="mb-3">
-            <Form.Label>Email</Form.Label>
-            <Form.Control
-              type="email"
-              name="email"
-              value={formData.email}
-              onChange={handleInputChange}
-              required
-              placeholder="Enter your email"
-            />
-          </Form.Group>
+          {activeTab !== 'admin' && (
+            <Form.Group className="mb-3">
+              <Form.Label>Email</Form.Label>
+              <Form.Control
+                type="email"
+                name="email"
+                value={formData.email}
+                onChange={handleInputChange}
+                required
+                placeholder="Enter your email"
+              />
+            </Form.Group>
+          )}
+
+          {activeTab === 'admin' && (
+            <Form.Group className="mb-3">
+              <Form.Label>Username</Form.Label>
+              <Form.Control
+                type="text"
+                name="username"
+                value={formData.username}
+                onChange={handleInputChange}
+                required
+                placeholder="Enter your username"
+              />
+            </Form.Group>
+          )}
 
           <Form.Group className="mb-3">
             <Form.Label>Password</Form.Label>
@@ -168,7 +209,9 @@ const AuthModal: React.FC<AuthModalProps> = ({ show, onHide }) => {
             className="btn-gradient-primary w-100"
             disabled={loading}
           >
-            {loading ? 'Please wait...' : (activeTab === 'login' ? 'Sign In' : 'Sign Up')}
+            {loading ? 'Please wait...' : 
+              (activeTab === 'login' ? 'Sign In' :
+              (activeTab === 'signup' ? 'Sign Up' : 'Admin Sign In'))}
           </Button>
         </Form>
       </Modal.Body>
