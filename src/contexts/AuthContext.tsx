@@ -8,6 +8,10 @@ interface User {
   profileImage?: string;
 }
 
+interface StoredUser extends User {
+  password?: string; // Password is only stored, not part of public User interface
+}
+
 interface AuthContextType {
   currentUser: User | null;
   login: (email: string, password: string) => Promise<boolean>;
@@ -33,8 +37,8 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
 
   const login = async (email: string, password: string): Promise<boolean> => {
     // Simulate API call
-    const users = JSON.parse(localStorage.getItem('users') || '[]');
-    const user = users.find((u: any) => u.email === email && u.password === password);
+    const users: StoredUser[] = JSON.parse(localStorage.getItem('users') || '[]');
+    const user = users.find((u: StoredUser) => u.email === email && u.password === password);
     
     if (user) {
       const { password: _, ...userWithoutPassword } = user;
@@ -47,14 +51,14 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
 
   const signup = async (email: string, password: string, name: string): Promise<boolean> => {
     // Simulate API call
-    const users = JSON.parse(localStorage.getItem('users') || '[]');
+    const users: StoredUser[] = JSON.parse(localStorage.getItem('users') || '[]');
     
     // Check if user already exists
-    if (users.some((u: any) => u.email === email)) {
+    if (users.some((u: StoredUser) => u.email === email)) {
       return false;
     }
 
-    const newUser = {
+    const newUser: StoredUser = {
       id: Date.now().toString(),
       email,
       password,
@@ -83,8 +87,8 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
       localStorage.setItem('currentUser', JSON.stringify(updatedUser));
 
       // Update in users array
-      const users = JSON.parse(localStorage.getItem('users') || '[]');
-      const userIndex = users.findIndex((u: any) => u.id === currentUser.id);
+      const users: StoredUser[] = JSON.parse(localStorage.getItem('users') || '[]');
+      const userIndex = users.findIndex((u: StoredUser) => u.id === currentUser.id);
       if (userIndex !== -1) {
         users[userIndex] = { ...users[userIndex], name, profileImage };
         localStorage.setItem('users', JSON.stringify(users));
@@ -95,8 +99,8 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
   const changePassword = async (currentPassword: string, newPassword: string): Promise<boolean> => {
     if (!currentUser) return false;
 
-    const users = JSON.parse(localStorage.getItem('users') || '[]');
-    const userIndex = users.findIndex((u: any) => u.id === currentUser.id);
+    const users: StoredUser[] = JSON.parse(localStorage.getItem('users') || '[]');
+    const userIndex = users.findIndex((u: StoredUser) => u.id === currentUser.id);
     
     if (userIndex !== -1 && users[userIndex].password === currentPassword) {
       users[userIndex].password = newPassword;

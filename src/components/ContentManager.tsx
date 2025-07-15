@@ -95,18 +95,18 @@ const ContentManager = () => {
       servicesTitle: 'Our Core Services',
       servicesSubtitle: 'Comprehensive technology solutions tailored to your business needs',
       whyChooseTitle: 'Why Choose Free Space Technologies?',
-      whyChooseSubtitle: 'We combine technical expertise with business insight to deliver exceptional results',
+      whyChooseSubtitle: 'We combine technical expertise with business insight to deliver exceptional results.',
       ctaTitle: 'Ready to Transform Your Business?',
-      ctaSubtitle: 'Let's discuss your project and create a solution that drives real results.',
-      ctaButton: 'Start Your Project'
+      ctaSubtitle: "Let's discuss your project and create a solution that drives real results.",
+      ctaButton: 'Start Your Project',
     },
     about: {
       heroTitle: 'About Free Space Technologies',
       heroSubtitle: 'We are a dynamic technology company committed to helping businesses thrive in the digital age through innovative solutions and expert guidance.',
       journeyTitle: 'Our Journey',
-      journeySubtitle: 'Building tomorrow's solutions today',
-      journeyLead: 'Established in 2018, Free Space Technologies emerged from a simple vision: to bridge the gap between complex technology and practical business solutions.',
-      valuesTitle: 'Our Core Values',
+      journeySubtitle: "Building tomorrow's solutions today",
+      journeyLead: 'Established in 2018, Free Space Technologies emerged from a simple vision: to bridge the gap between complex technology and practical business solutions. We started as a small team of passionate developers and designers, and have since grown into a full-service digital transformation partner.',
+      valuesTitle: 'Our Core Values', 
       valuesSubtitle: 'The principles that drive our success',
       teamTitle: 'Meet Our Leadership',
       teamSubtitle: 'The experienced professionals guiding our vision',
@@ -119,7 +119,7 @@ const ContentManager = () => {
       statsClients: '180+',
       statsClientsLabel: 'Satisfied Clients',
       statsClientsDesc: 'Long-term partnerships worldwide',
-      statsTeam: '35+',
+      statsTeam: '35+', 
       statsTeamLabel: 'Team Members',
       statsTeamDesc: 'Skilled professionals and growing'
     },
@@ -129,26 +129,26 @@ const ContentManager = () => {
       techTitle: 'Technologies We Use',
       techSubtitle: 'Modern tools and frameworks that power exceptional solutions',
       ctaTitle: 'Ready to Start Your Project?',
-      ctaSubtitle: 'Let's discuss your requirements and create a solution that drives results.',
+      ctaSubtitle: "Let's discuss your requirements and create a solution that drives results. Reach out today for a free consultation.",
       ctaButtonPrimary: 'Get Quote',
       ctaButtonSecondary: 'View Portfolio'
     },
     career: {
       heroTitle: 'Join Our Team',
-      heroSubtitle: 'Be part of a dynamic team that's shaping the future of technology solutions.',
-      openingsTitle: 'Current Openings',
-      openingsSubtitle: 'Explore exciting career opportunities with us',
+      heroSubtitle: "Be part of a dynamic team that's shaping the future of technology solutions.",
+      openingsTitle: 'Current Openings', 
+      openingsSubtitle: 'Explore exciting career opportunities with us', 
       benefitsTitle: 'Why Work With Us?',
       benefitsSubtitle: 'We offer more than just a job - we offer a career and a community'
-    },
+    }, 
     contact: {
       heroTitle: 'Get In Touch',
-      heroSubtitle: 'Ready to start your next project? We'd love to hear from you.',
+      heroSubtitle: "Ready to start your next project? We'd love to hear from you.",
       formTitle: 'Send us a message',
-      formSubtitle: 'We'll get back to you within 24 hours',
+      formSubtitle: "We'll get back to you within 24 hours",
       contactInfoTitle: 'Contact Information',
       submitButton: 'Send Message'
-    }
+    } 
   };
 
   useEffect(() => {

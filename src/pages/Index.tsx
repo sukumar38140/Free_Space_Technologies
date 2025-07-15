@@ -51,25 +51,25 @@ const Index = () => {
             <Row className="text-center">
               <Col lg={3} md={6} className="mb-4 mb-lg-0">
                 <div className="animate-fade-up">
-                  <div className="stat-number text-dark">6+</div>
+                  <div className="stat-number text-dark">1+</div>
                   <div className="stat-label text-dark">Years of Excellence</div>
                 </div>
               </Col>
               <Col lg={3} md={6} className="mb-4 mb-lg-0">
                 <div className="animate-fade-up animate-delay-100">
-                  <div className="stat-number text-dark">350+</div>
+                  <div className="stat-number text-dark">35+</div>
                   <div className="stat-label text-dark">Projects Delivered</div>
                 </div>
               </Col>
               <Col lg={3} md={6} className="mb-4 mb-lg-0">
                 <div className="animate-fade-up animate-delay-200">
-                  <div className="stat-number text-dark">180+</div>
+                  <div className="stat-number text-dark">30+</div>
                   <div className="stat-label text-dark">Satisfied Clients</div>
                 </div>
               </Col>
               <Col lg={3} md={6}>
                 <div className="animate-fade-up animate-delay-300">
-                  <div className="stat-number text-dark">35+</div>
+                  <div className="stat-number text-dark">20+</div>
                   <div className="stat-label text-dark">Team Members</div>
                 </div>
               </Col>

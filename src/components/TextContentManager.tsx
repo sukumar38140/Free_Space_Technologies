@@ -1,5 +1,4 @@
-
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { Container, Row, Col, Card, Form, Button, Alert, Nav, Accordion } from 'react-bootstrap';
 
 interface TextContent {
@@ -28,14 +27,14 @@ const TextContentManager = () => {
       whyChooseTitle: 'Why Choose Free Space Technologies?',
       whyChooseSubtitle: 'We combine technical expertise with business insight to deliver exceptional results',
       ctaTitle: 'Ready to Transform Your Business?',
-      ctaSubtitle: 'Let\'s discuss your project and create a solution that drives real results.',
+      ctaSubtitle: 'Let's discuss your project and create a solution that drives real results.',
       ctaButton: 'Start Your Project'
     },
     about: {
       heroTitle: 'About Free Space Technologies',
       heroSubtitle: 'We are a dynamic technology company committed to helping businesses thrive in the digital age through innovative solutions and expert guidance.',
       journeyTitle: 'Our Journey',
-      journeySubtitle: 'Building tomorrow\'s solutions today',
+      journeySubtitle: 'Building tomorrow's solutions today',
       journeyLead: 'Established in 2018, Free Space Technologies emerged from a simple vision: to bridge the gap between complex technology and practical business solutions.',
       valuesTitle: 'Our Core Values',
       valuesSubtitle: 'The principles that drive our success',
@@ -60,13 +59,13 @@ const TextContentManager = () => {
       techTitle: 'Technologies We Use',
       techSubtitle: 'Modern tools and frameworks that power exceptional solutions',
       ctaTitle: 'Ready to Start Your Project?',
-      ctaSubtitle: 'Let\'s discuss your requirements and create a solution that drives results.',
+      ctaSubtitle: 'Let's discuss your requirements and create a solution that drives results.',
       ctaButtonPrimary: 'Get Quote',
       ctaButtonSecondary: 'View Portfolio'
     },
     career: {
       heroTitle: 'Join Our Team',
-      heroSubtitle: 'Be part of a dynamic team that\'s shaping the future of technology solutions.',
+      heroSubtitle: 'Be part of a dynamic team that's shaping the future of technology solutions.',
       openingsTitle: 'Current Openings',
       openingsSubtitle: 'Explore exciting career opportunities with us',
       benefitsTitle: 'Why Work With Us?',
@@ -74,19 +73,15 @@ const TextContentManager = () => {
     },
     contact: {
       heroTitle: 'Get In Touch',
-      heroSubtitle: 'Ready to start your next project? We\'d love to hear from you.',
+      heroSubtitle: 'Ready to start your next project? We'd love to hear from you.',
       formTitle: 'Send us a message',
-      formSubtitle: 'We\'ll get back to you within 24 hours',
+      formSubtitle: 'We'll get back to you within 24 hours',
       contactInfoTitle: 'Contact Information',
       submitButton: 'Send Message'
     }
   };
 
-  useEffect(() => {
-    loadTextContent();
-  }, []);
-
-  const loadTextContent = () => {
+  const loadTextContent = useCallback(() => {
     const savedContent = localStorage.getItem('siteTextContent');
     if (savedContent) {
       setTextContent(JSON.parse(savedContent));
@@ -94,7 +89,11 @@ const TextContentManager = () => {
       setTextContent(defaultTextContent);
       localStorage.setItem('siteTextContent', JSON.stringify(defaultTextContent));
     }
-  };
+  }, [defaultTextContent]);
+
+  useEffect(() => {
+    loadTextContent();
+  }, [loadTextContent]);
 
   const handleTextChange = (page: string, key: string, value: string) => {
     setTextContent(prev => ({
