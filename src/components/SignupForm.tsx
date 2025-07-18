@@ -6,11 +6,16 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
 import { useToast } from '@/components/ui/use-toast';
+import { Checkbox } from '@/components/ui/checkbox';
 
 const signupSchema = z.object({
   name: z.string().min(2, { message: 'Name must be at least 2 characters.' }),
   email: z.string().email({ message: 'Invalid email address.' }),
+  mobile: z.string().min(10, { message: 'Invalid mobile number.' }),
   password: z.string().min(8, { message: 'Password must be at least 8 characters.' }),
+  isNotRobot: z.boolean().refine((val) => val === true, {
+    message: 'Please confirm you are not a robot.',
+  }),
 });
 
 const SignupForm = () => {
@@ -22,7 +27,9 @@ const SignupForm = () => {
     defaultValues: {
       name: '',
       email: '',
+      mobile: '',
       password: '',
+      isNotRobot: false,
     },
   });
 
@@ -81,6 +88,19 @@ const SignupForm = () => {
         />
         <FormField
           control={form.control}
+          name="mobile"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Mobile Number</FormLabel>
+              <FormControl>
+                <Input placeholder="1234567890" {...field} />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+        <FormField
+          control={form.control}
           name="email"
           render={({ field }) => (
             <FormItem>
@@ -101,6 +121,21 @@ const SignupForm = () => {
               <FormControl>
                 <Input type="password" placeholder="********" {...field} />
               </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+        <FormField
+          control={form.control}
+          name="isNotRobot"
+          render={({ field }) => (
+            <FormItem className="flex flex-row items-start space-x-3 space-y-0 rounded-md border p-4">
+              <FormControl>
+                <Checkbox checked={field.value} onCheckedChange={field.onChange} />
+              </FormControl>
+              <div className="space-y-1 leading-none">
+                <FormLabel>I'm not a robot</FormLabel>
+              </div>
               <FormMessage />
             </FormItem>
           )}

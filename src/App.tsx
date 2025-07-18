@@ -21,6 +21,8 @@ import NotFound from "./pages/NotFound";
 import Signup from "./pages/Signup";
 import Profile from "./pages/Profile";
 import PasswordRecovery from "./pages/PasswordRecovery";
+import EmailVerification from "./pages/EmailVerification";
+import MobileVerification from "./pages/MobileVerification";
 
 // Components
 import Navbar from "./components/Navbar";
@@ -56,6 +58,8 @@ const App = () => (
                   <Route path="/signup" element={<Signup />} />
                   <Route path="/profile" element={<Profile />} />
                   <Route path="/password-recovery" element={<PasswordRecovery />} />
+                  <Route path="/verify-email" element={<EmailVerification />} />
+                  <Route path="/verify-mobile" element={<MobileVerification />} />
                   <Route path="*" element={<NotFound />} />
                 </Routes>
               </main>

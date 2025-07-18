@@ -41,6 +41,21 @@ CREATE TABLE newsletter_subscribers (
     is_active BOOLEAN DEFAULT TRUE
 );
 
+-- Users table
+CREATE TABLE users (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(255) NOT NULL,
+    email VARCHAR(255) UNIQUE NOT NULL,
+    mobile VARCHAR(20) UNIQUE NOT NULL,
+    password_hash VARCHAR(255) NOT NULL,
+    profile_image VARCHAR(500),
+    email_verified_at TIMESTAMP NULL,
+    mobile_verified_at TIMESTAMP NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    is_active BOOLEAN DEFAULT TRUE
+);
+
 -- Admin users table
 CREATE TABLE admin_users (
     id INT AUTO_INCREMENT PRIMARY KEY,

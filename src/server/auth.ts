@@ -10,23 +10,34 @@ const jwtSecret = process.env.JWT_SECRET || 'your_jwt_secret';
 
 // User Signup
 router.post('/signup', async (req, res) => {
-  const { email, password, name } = req.body;
+  const { email, password, name, mobile } = req.body;
 
-  if (!email || !password || !name) {
+  if (!email || !password || !name || !mobile) {
     return res.status(400).json({ message: 'All fields are required' });
   }
 
   try {
     const hashedPassword = await bcrypt.hash(password, saltRounds);
     const [result] = await pool.execute(
-      'INSERT INTO users (email, password_hash, name) VALUES (?, ?, ?)',
-      [email, hashedPassword, name]
+      'INSERT INTO users (email, password_hash, name, mobile) VALUES (?, ?, ?, ?)',
+      [email, hashedPassword, name, mobile]
     );
-    res.status(201).json({ message: 'User created successfully' });
+
+    // In a real application, you would generate a unique token and send an
+    // email to the user with a verification link.
+    const verificationToken = 'fake-verification-token';
+    console.log(`Verification link: http://localhost:5173/verify-email?token=${verificationToken}`);
+
+    // In a real application, you would generate a unique code and send it
+    // to the user's mobile number.
+    const verificationCode = Math.floor(100000 + Math.random() * 900000).toString();
+    console.log(`Verification code for ${mobile}: ${verificationCode}`);
+
+    res.status(201).json({ message: 'User created successfully. Please check your email and mobile to verify your account.' });
   } catch (error) {
     console.error('Signup Error:', error);
     if (error.code === 'ER_DUP_ENTRY') {
-      return res.status(409).json({ message: 'User with this email already exists' });
+      return res.status(409).json({ message: 'User with this email or mobile already exists' });
     }
     res.status(500).json({ message: 'Internal server error' });
   }
@@ -106,6 +117,38 @@ router.post('/request-password-reset', async (req, res) => {
   console.log(`Password reset requested for email: ${email}`);
 
   res.status(200).json({ message: 'If an account with that email exists, we have sent a password reset link.' });
+});
+
+// Email Verification
+router.post('/verify-email', async (req, res) => {
+    const { token } = req.body;
+
+    if (!token) {
+        return res.status(400).json({ message: 'Token is required' });
+    }
+
+    // In a real application, you would verify the token and activate the user's account.
+    // For this example, we'll just return a success message.
+
+    console.log(`Email verification requested with token: ${token}`);
+
+    res.status(200).json({ message: 'Email verified successfully.' });
+});
+
+// Mobile Verification
+router.post('/verify-mobile', async (req, res) => {
+    const { code } = req.body;
+
+    if (!code) {
+        return res.status(400).json({ message: 'Code is required' });
+    }
+
+    // In a real application, you would verify the code and activate the user's account.
+    // For this example, we'll just return a success message.
+
+    console.log(`Mobile verification requested with code: ${code}`);
+
+    res.status(200).json({ message: 'Mobile number verified successfully.' });
 });
 
 
