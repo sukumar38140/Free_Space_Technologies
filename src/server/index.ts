@@ -2,8 +2,11 @@
 import express from 'express';
 import cors from 'cors';
 import bodyParser from 'body-parser';
+import dotenv from 'dotenv';
 import { connectToDatabase } from './db';
 import { authRouter } from './auth';
+
+dotenv.config();
 
 const app = express();
 const port = 3001;

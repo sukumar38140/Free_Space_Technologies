@@ -83,15 +83,27 @@ const CustomNavbar = () => {
                   <ProfileDropdown />
                 </Nav.Item>
               ) : (
-                <Nav.Item className="ms-3">
-                  <Button 
-                    variant="primary" 
-                    size="sm"
-                    onClick={() => setShowAuthModal(true)}
-                  >
-                    Account
-                  </Button>
-                </Nav.Item>
+                <>
+                  <Nav.Item className="ms-3">
+                    <Button
+                      variant="primary"
+                      size="sm"
+                      onClick={() => setShowAuthModal(true)}
+                    >
+                      Account
+                    </Button>
+                  </Nav.Item>
+                  <Nav.Item className="ms-2">
+                    <Button
+                      as={Link}
+                      to="/signup"
+                      variant="secondary"
+                      size="sm"
+                    >
+                      Sign Up
+                    </Button>
+                  </Nav.Item>
+                </>
               )}
             </Nav>
           </Navbar.Collapse>

@@ -1,6 +1,7 @@
 
 import React, { useState } from 'react';
 import { Dropdown } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
 import ProfileModal from './ProfileModal';
 
@@ -65,9 +66,9 @@ const ProfileDropdown: React.FC = () => {
             <div className="text-muted small">{currentUser?.email}</div>
           </Dropdown.Header>
           <Dropdown.Divider />
-          <Dropdown.Item onClick={() => setShowProfileModal(true)}>
+          <Dropdown.Item as={Link} to="/profile">
             <i className="fas fa-user me-2"></i>
-            Profile Settings
+            Profile
           </Dropdown.Item>
           <Dropdown.Item onClick={() => setShowProfileModal(true)}>
             <i className="fas fa-key me-2"></i>

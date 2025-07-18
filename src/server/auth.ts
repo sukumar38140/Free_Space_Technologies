@@ -6,7 +6,7 @@ import pool from './db';
 
 const router = express.Router();
 const saltRounds = 10;
-const jwtSecret = 'your_jwt_secret'; // Replace with a strong secret
+const jwtSecret = process.env.JWT_SECRET || 'your_jwt_secret';
 
 // User Signup
 router.post('/signup', async (req, res) => {
@@ -24,6 +24,7 @@ router.post('/signup', async (req, res) => {
     );
     res.status(201).json({ message: 'User created successfully' });
   } catch (error) {
+    console.error('Signup Error:', error);
     if (error.code === 'ER_DUP_ENTRY') {
       return res.status(409).json({ message: 'User with this email already exists' });
     }
@@ -55,6 +56,7 @@ router.post('/login', async (req, res) => {
       res.status(401).json({ message: 'Invalid email or password' });
     }
   } catch (error) {
+    console.error('Login Error:', error);
     res.status(500).json({ message: 'Internal server error' });
   }
 });
@@ -74,8 +76,6 @@ router.post('/admin/login', async (req, res) => {
         }
 
         const admin = rows[0];
-        // In a real application, you would use bcrypt to compare the password hash
-        // For this example, we'll assume the password is correct if the username exists
         const match = await bcrypt.compare(password, admin.password_hash);
 
         if (match) {
@@ -85,8 +85,27 @@ router.post('/admin/login', async (req, res) => {
             res.status(401).json({ message: 'Invalid username or password' });
         }
     } catch (error) {
+        console.error('Admin Login Error:', error);
         res.status(500).json({ message: 'Internal server error' });
     }
+});
+
+// Password Reset Request
+router.post('/request-password-reset', async (req, res) => {
+  const { email } = req.body;
+
+  if (!email) {
+    return res.status(400).json({ message: 'Email is required' });
+  }
+
+  // In a real application, you would generate a unique token,
+  // save it to the database with an expiration date, and send an
+  // email to the user with a link to reset their password.
+  // For this example, we'll just return a success message.
+
+  console.log(`Password reset requested for email: ${email}`);
+
+  res.status(200).json({ message: 'If an account with that email exists, we have sent a password reset link.' });
 });
 
 

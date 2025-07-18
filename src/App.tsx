@@ -18,6 +18,9 @@ import TermsOfService from "./pages/TermsOfService";
 import Admin from "./pages/Admin";
 import LearnMore from "./pages/LearnMore";
 import NotFound from "./pages/NotFound";
+import Signup from "./pages/Signup";
+import Profile from "./pages/Profile";
+import PasswordRecovery from "./pages/PasswordRecovery";
 
 // Components
 import Navbar from "./components/Navbar";
@@ -50,6 +53,9 @@ const App = () => (
                   <Route path="/privacy-policy" element={<PrivacyPolicy />} />
                   <Route path="/terms-of-service" element={<TermsOfService />} />
                   <Route path="/admin" element={<Admin />} />
+                  <Route path="/signup" element={<Signup />} />
+                  <Route path="/profile" element={<Profile />} />
+                  <Route path="/password-recovery" element={<PasswordRecovery />} />
                   <Route path="*" element={<NotFound />} />
                 </Routes>
               </main>

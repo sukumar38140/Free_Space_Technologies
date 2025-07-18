@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { Modal, Form, Button, Nav, Alert } from 'react-bootstrap';
 import { useAuth } from '../contexts/AuthContext';
 import { useAdminAuth } from '../contexts/AdminAuthContext';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 
 interface AuthModalProps {
   show: boolean;
@@ -213,6 +213,14 @@ const AuthModal: React.FC<AuthModalProps> = ({ show, onHide }) => {
               (activeTab === 'login' ? 'Sign In' :
               (activeTab === 'signup' ? 'Sign Up' : 'Admin Sign In'))}
           </Button>
+
+          {activeTab === 'login' && (
+            <div className="text-center mt-3">
+              <Link to="/password-recovery" onClick={onHide}>
+                Forgot Password?
+              </Link>
+            </div>
+          )}
         </Form>
       </Modal.Body>
     </Modal>
